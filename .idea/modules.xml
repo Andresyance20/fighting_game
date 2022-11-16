@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/urmove-developers.iml" filepath="$PROJECT_DIR$/.idea/urmove-developers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/softwareengineering.iml" filepath="$PROJECT_DIR$/softwareengineering.iml" />
     </modules>
   </component>
 </project>
