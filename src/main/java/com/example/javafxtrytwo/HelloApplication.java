@@ -17,9 +17,25 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
+
+// Here is the main
     public static void main(String[] args) {
+
+
+        Hero hero = new Hero("testname");
+
+        hero.print_name();
+        System.out.println("test text in main");
+
         launch();
+
     }
+
+
+
+
+
+
 }
 
 
