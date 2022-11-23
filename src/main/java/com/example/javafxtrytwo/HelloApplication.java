@@ -25,7 +25,7 @@ public class HelloApplication extends Application {
         Hero hero = new Hero("testname");
 
         hero.print_name();
-        System.out.println("test text in main");
+        System.out.println("console test text in main");
 
         launch();
 
