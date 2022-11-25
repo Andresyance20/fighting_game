@@ -1,3 +1,6 @@
+// This is our MAIN
+// feel free to rename it, i'm too lazy to try and figure out each connected file name w/e
+
 package com.example.javafxtrytwo;
 
 import javafx.application.Application;

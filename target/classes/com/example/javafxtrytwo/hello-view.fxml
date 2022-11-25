@@ -3,25 +3,40 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="com.example.javafxtrytwo.HelloController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxtrytwo.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
+   <AnchorPane prefHeight="200.0" prefWidth="200.0" />
 
-    <Label fx:id="startButtonText" />
-    <Button fx:id="button_start" onAction="#startButtonClick" text="Start Game" textFill="#2129a1" />
+          <Label fx:id="startButtonText" />
+    <Button fx:id="button_start" onAction="#switchToFightScene" text="Start Game" textFill="#2129a1">
+      <font>
+         <Font size="18.0" />
+      </font></Button>
 
     <Label fx:id="shopButtonText" />
-    <Button fx:id="button_shop" onAction="#shopButtonClick" text="Shop" textFill="#2129a1" />
+    <Button fx:id="button_shop" onAction="#shopButtonClick" text="Shop" textFill="#2129a1">
+      <font>
+         <Font size="18.0" />
+      </font></Button>
 
 
     <Label fx:id="optionsButtonText" />
-    <Button fx:id="button_options" onAction="#optionsButtonClick" text="Sound Settings" textFill="#2129a1" />
+    <Button fx:id="button_options" onAction="#optionsButtonClick" text="Sound Settings" textFill="#2129a1">
+      <font>
+         <Font size="18.0" />
+      </font></Button>
 
     <Label fx:id="exitButtonText" />
-    <Button fx:id="button_exit" onAction="#exitButtonClick" text="Exit Game" textFill="#2129a1" />
+    <Button fx:id="button_exit" onAction="#exitButtonClick" text="Exit Game" textFill="#2129a1">
+      <font>
+         <Font size="18.0" />
+      </font></Button>
 
 
 
