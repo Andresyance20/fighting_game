@@ -10,6 +10,20 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <Label fx:id="welcomeText" />
-    <Button fx:id="button1" onAction="#onHelloButtonClick" text="Test test oh yeeeaaahh" textFill="#2129a1" />
+    <Label fx:id="startButtonText" />
+    <Button fx:id="button_start" onAction="#startButtonClick" text="Start Game" textFill="#2129a1" />
+
+    <Label fx:id="shopButtonText" />
+    <Button fx:id="button_shop" onAction="#shopButtonClick" text="Shop" textFill="#2129a1" />
+
+
+    <Label fx:id="optionsButtonText" />
+    <Button fx:id="button_options" onAction="#optionsButtonClick" text="Sound Settings" textFill="#2129a1" />
+
+    <Label fx:id="exitButtonText" />
+    <Button fx:id="button_exit" onAction="#exitButtonClick" text="Exit Game" textFill="#2129a1" />
+
+
+
+
 </VBox>
