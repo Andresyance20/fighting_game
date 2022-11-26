@@ -27,7 +27,7 @@ public class HelloApplication extends Application {
         try
         {
             Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-            Scene main_menu = new Scene(root, 420, 469); // can set initial size here
+            Scene main_menu = new Scene(root, 1280, 720); // can set initial size here
             stage.setTitle("FIGHT GAME!"); // name?
             stage.setScene(main_menu); // Setting stage to show screen
             stage.show(); // Render the stage.
@@ -41,9 +41,10 @@ public class HelloApplication extends Application {
     public static void main(String[] args) {
 
 
-        Hero hero = new Hero("testname");
+        Hero hero = new Hero("First Hero", 100, 10, 10, 10, 5, 0,
+                1, 0, 0, 0, 0, 66, 200);
 
-        hero.print_name();
+        hero.print_hero_info();
         System.out.println("console test text in main");
 
 

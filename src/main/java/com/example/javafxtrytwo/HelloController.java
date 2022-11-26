@@ -27,7 +27,7 @@ public class HelloController {
         Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
 //        cast to the stage
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow(); // bruh this is ridiculous to just jump into
-        scene = new Scene(root);
+        scene = new Scene(root, 1280, 720);
         stage.setScene(scene);
         stage.show();
 
@@ -36,7 +36,7 @@ public class HelloController {
     public void switchToFightScene(javafx.event.ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FightScene.fxml")); // maybe this fxml shouldn't be capitalized?
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        scene = new Scene(root,1280, 720);
         stage.setScene(scene);
         stage.show();
 
