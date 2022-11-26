@@ -63,7 +63,7 @@ public class Hero {
 
     }
 
-// GETTERS
+    // GETTERS
     public String getName() {
         return name;
     }
@@ -107,14 +107,51 @@ public class Hero {
         return weight;
     }
 
-
-
-
-
-    public void print_name()
-    {
-        System.out.println("name " + name);
+    // SETTERS
+    public void setName(String name) {
+        this.name = name;
     }
+    public void setHp(double hp) {
+        this.hp = hp;
+    }
+    public void setStrength(double strength) {
+        this.strength = strength;
+    }
+    public void setEndurance(double endurance) {
+        this.endurance = endurance;
+    }
+    public void setAgility(double agility) {
+        this.agility = agility;
+    }
+    public void setDodge(double dodge) {
+        this.dodge = dodge;
+    }
+    public void setSuperCharge(double superCharge) {
+        this.superCharge = superCharge;
+    }
+    public void setPosition(double position) {
+        this.position = position;
+    }
+    public void setExperience(double experience) {
+        this.experience = experience;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
+    }
+    public void setVictoryCount(double victoryCount) {
+        this.victoryCount = victoryCount;
+    }
+    public void setLossCount(double lossCount) {
+        this.lossCount = lossCount;
+    }
+    public void setHeight(double height) {
+        this.height = height;
+    }
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
 
     public void print_hero_info()
     {

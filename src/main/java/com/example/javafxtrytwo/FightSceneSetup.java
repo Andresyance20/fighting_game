@@ -20,6 +20,7 @@ public class FightSceneSetup {
     public void inspectHero(Hero hero)
     {
 // come back to this after hero is more complete.
+        hero.print_hero_info();
     }
 
     public void pickHero()
