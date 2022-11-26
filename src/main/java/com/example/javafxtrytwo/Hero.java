@@ -174,4 +174,9 @@ public class Hero {
         System.out.println("\n");
     }
 
+    // hero takes damage when hit with an attack
+    public void takeDamage (double hit)
+    {
+        hp = hp - hit;
+    }
 }
