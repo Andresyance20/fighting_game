@@ -51,6 +51,8 @@ public class HelloApplication extends Application {
 //        pretty sure we need to do all our constructions BEFORE we launch the app otherwise,
 //        at least for testing purposes otherwise it won't reach the lines of code after launch.
 //        You would need to have an activation setup within the app already
+
+//        have a button or method to create hero object within the controllers?
         launch();
 
     }

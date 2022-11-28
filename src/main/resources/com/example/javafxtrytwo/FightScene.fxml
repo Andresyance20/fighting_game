@@ -5,14 +5,36 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<!-- the last part of the below line "fx:controller" indicates the controller/scope -->
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxtrytwo.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxtrytwo.FightSceneController">
    <children>
-      <Label layoutX="203.0" layoutY="37.0" text="FightScene(temp)" textAlignment="CENTER" textFill="#bf0000">
+      <Label layoutX="580.0" layoutY="55.0" text="FightScene" textAlignment="CENTER" textFill="#bf0000">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Button layoutX="237.0" layoutY="188.0" mnemonicParsing="false" onAction="#switchToMainMenu" text="Switch to MainMenu" />
+      <Button fx:id="button_menu" layoutX="35.0" layoutY="43.0" mnemonicParsing="false" onAction="#switchToMainMenu" text="Back to Menu">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="button_inventory" layoutX="113.0" layoutY="489.0" mnemonicParsing="false" onAction="#inventoryButtonClick" text="Inventory">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="button_action" layoutX="113.0" layoutY="563.0" mnemonicParsing="false" onAction="#actionButtonClick" text="action (attack?)">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="button_supermove" layoutX="304.0" layoutY="563.0" mnemonicParsing="false" onAction="#supermoveButtonClick" text="Supermove">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="button_surrender" layoutX="614.0" layoutY="644.0" mnemonicParsing="false" onAction="#surrenderButtonClick" text="Surrender">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

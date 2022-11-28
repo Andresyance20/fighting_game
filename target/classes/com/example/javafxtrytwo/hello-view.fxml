@@ -6,15 +6,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<!-- the last part of the below line "fx:controller" indicates the controller/scope -->
 
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxtrytwo.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <AnchorPane prefHeight="720.0" prefWidth="1280.0" />
+   <AnchorPane prefHeight="720.0" prefWidth="1280.0">
+      <children>
+         <Text layoutX="577.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Main menu">
+            <font>
+               <Font size="25.0" />
+            </font>
+         </Text>
+      </children></AnchorPane>
 
           <Label fx:id="startButtonText" />
-    <Button fx:id="button_start" onAction="#switchToFightScene" text="Start Game" textFill="#2129a1">
+    <Button fx:id="button_start" onAction="#switchToFightSceneSetup" text="Start Game" textFill="#2129a1">
       <font>
          <Font size="18.0" />
       </font></Button>
