@@ -1,4 +1,4 @@
-// This is the control for our javaFX i think
+// This is the control for our javaFX HelloApplication (our main(start) + main menu)
 
 package com.example.javafxtrytwo;
 
@@ -18,23 +18,27 @@ public class HelloController {
 
     private Stage stage;
     private Scene scene;
-    private Parent parent;
+    private Parent root;
 
 
-// of course the tutorials are outdated and you have to update parts to w/e standardization they use now
-//    "javafx.event.ActionEvent actionEvent" NOT "ActionEvent event"
-    public void switchToMainMenu(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-//        cast to the stage
-        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow(); // bruh this is ridiculous to just jump into
-        scene = new Scene(root, 1280, 720);
-        stage.setScene(scene);
-        stage.show();
+//    Hero hero = new Hero("First Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
+//        FightSceneSetup should have 3 heroes configured to pick from. So by default we should have them created here?
 
-    }
 
-    public void switchToFightScene(javafx.event.ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("FightScene.fxml")); // maybe this fxml shouldn't be capitalized?
+//    FightSceneSetup fightSceneSetup = new FightSceneSetup(hero,"Default map", "easy");
+
+    public void switchToFightSceneSetup(javafx.event.ActionEvent actionEvent) throws IOException {
+
+        // accessing the fightscenesetupcontroller where a hero object was created and IS now accessible
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FightSceneSetup.fxml"));
+        root = loader.load();
+
+        FightSceneSetupController fightSceneSetupController = loader.getController();
+
+// messy right now but the logic should work for access to hero methods in the controllers?
+        fightSceneSetupController.hero.print_hero_info();
+
+//        root = FXMLLoader.load(getClass().getResource("FightSceneSetup.fxml"));
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root,1280, 720);
         stage.setScene(scene);
@@ -43,11 +47,22 @@ public class HelloController {
     }
 
 
+//    To do:
+//    public void switchToShopScene(){}
+//    public void switchToOptionScene(){}
+//    make controllers + fxml files for them.
+
+    // exit method?
+
+
 
     public Button button_start;
     public Button button_shop;
     public Button button_options;
     public Button button_exit;
+
+
+//    also shouldn't need to change this text so prob delete?
     @FXML
     private Label startButtonText;
     @FXML
@@ -55,17 +70,12 @@ public class HelloController {
     @FXML
     private Label optionsButtonText;
 
-//    dont think we need exitbut text, just need to call an exit method
+//    dont think we need exit but text, just need to call an exit method
     @FXML
     private Label exitButtonText;
 
 
     // so here we'd want more buttons that on click will do a transition into a different scene(node)?
-    @FXML
-    protected void startButtonClick() {
-        startButtonText.setText("Start is not yet implemented!");
-    }
-
     @FXML
     protected void shopButtonClick() {
         shopButtonText.setText("Shop is not yet implemented!");
@@ -81,6 +91,5 @@ public class HelloController {
     protected void exitButtonClick() {
         exitButtonText.setText("no exit yet >:(");
     }
-
 
 }
