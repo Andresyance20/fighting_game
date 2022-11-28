@@ -7,6 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -16,6 +18,11 @@ public class FightSceneSetupController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+
+
+    Hero hero = new Hero("First Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
+
 
 
     // of course the tutorials are outdated and you have to update parts to w/e standardization they use now

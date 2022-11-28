@@ -21,19 +21,29 @@ public class HelloController {
     private Parent root;
 
 
-//            so like here, i think we can create hero and pass it through the scenes/controllers/classes
-        Hero hero = new Hero("First Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
-
+//    Hero hero = new Hero("First Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
 //        FightSceneSetup should have 3 heroes configured to pick from. So by default we should have them created here?
 
 
+//    FightSceneSetup fightSceneSetup = new FightSceneSetup(hero,"Default map", "easy");
 
     public void switchToFightSceneSetup(javafx.event.ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("FightSceneSetup.fxml"));
+
+        // accessing the fightscenesetupcontroller where a hero object was created and IS now accessible
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FightSceneSetup.fxml"));
+        root = loader.load();
+
+        FightSceneSetupController fightSceneSetupController = loader.getController();
+
+// messy right now but the logic should work for access to hero methods in the controllers?
+        fightSceneSetupController.hero.print_hero_info();
+
+//        root = FXMLLoader.load(getClass().getResource("FightSceneSetup.fxml"));
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root,1280, 720);
         stage.setScene(scene);
         stage.show();
+
     }
 
 
@@ -60,7 +70,7 @@ public class HelloController {
     @FXML
     private Label optionsButtonText;
 
-//    dont think we need exitbut text, just need to call an exit method
+//    dont think we need exit but text, just need to call an exit method
     @FXML
     private Label exitButtonText;
 

@@ -28,9 +28,12 @@ public class HelloApplication extends Application {
         {
             Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
             Scene main_menu = new Scene(root, 1280, 720); // can set initial size here
+
             stage.setTitle("FIGHT GAME!"); // name?
+
             stage.setScene(main_menu); // Setting stage to show screen
             stage.show(); // Render the stage.
+
         } catch (IOException e) {
             e.printStackTrace();
         }
