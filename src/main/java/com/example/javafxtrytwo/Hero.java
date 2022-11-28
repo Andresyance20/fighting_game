@@ -177,6 +177,17 @@ public class Hero {
     // hero takes damage when hit with an attack
     public void takeDamage (double hit)
     {
-        hp = hp - hit;
+        System.out.println("Hero takes: " + hit + " damage.");
+        double temp = getHp() - hit;
+
+        System.out.println(temp);
+
+        setHp(temp);
+        System.out.println(getHp());
+        System.out.println("Hero has: " + getHp() + ".");
+        if (getHp() > 50)
+        {
+            takeDamage(10);
+        }
     }
 }
