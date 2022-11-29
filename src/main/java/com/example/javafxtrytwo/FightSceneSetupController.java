@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,31 +19,35 @@ public class FightSceneSetupController {
     private Scene scene;
     private Parent root;
 
+    private Scene mainScene;
+
+    public void setToMainMenu(Scene scene)
+    {
+        mainScene = scene;
+    }
+
+
+    public void openMainMenu(ActionEvent actionEvent)
+    {
+        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        primaryStage.setScene(mainScene);
+    }
 
 
     Hero hero = new Hero("First Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
 
+    public void switchToMainMenu(Scene actionEvent) throws IOException {
 
-    // of course the tutorials are outdated and you have to update parts to w/e standardization they use now
-//    "javafx.event.ActionEvent actionEvent" NOT "ActionEvent event"
-    public void switchToMainMenu(javafx.event.ActionEvent actionEvent) throws IOException {
-
-
+//        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 //        FXMLLoader loader = new FXMLLoader();
 //        loader.setLocation(getClass().getResource("FightSceneSetup.fxml"));
+//        HelloController helloController = loader.getController();
+//        root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
 
 
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
         root = loader.load();
-
-
-        HelloController helloController = loader.getController();
-
-
-//        root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-//
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow(); // bruh this is ridiculous to just jump into
+//        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow(); // bruh this is ridiculous to just jump into
         scene = new Scene(root, 1280, 720);
         stage.setScene(scene);
         stage.show();
@@ -75,14 +78,13 @@ public class FightSceneSetupController {
     public Button button_set_map;
 
 
-    //    needs to be implemented still, but showcases that it works
-//    i am not sure how to pass in the hero object? Do we need to override the method?
-//    my confusion comes form the formal parameters
+
+
     @FXML
     protected void inspectHeroButtonClick() {
 //        hero.print_hero_info();
         System.out.println("click registered for inspect hero");
-        System.out.println(hero);
+        System.out.println(hero); // print hero object id
     }
 
     @FXML
