@@ -2,6 +2,7 @@
 
 package com.example.javafxtrytwo;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -101,8 +102,7 @@ public class HelloController {
 
     //    exit just needs to exit, not change any text
     @FXML
-    protected void exitButtonClick() {
-        exitButtonText.setText("no exit yet >:(");
-    }
+    protected void exitButtonClick() {Platform.exit(); } //exitButtonText.setText("no exit yet >:(");
+
 
 }
