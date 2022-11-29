@@ -29,10 +29,18 @@ public class FightSceneSetupController {
 //    "javafx.event.ActionEvent actionEvent" NOT "ActionEvent event"
     public void switchToMainMenu(javafx.event.ActionEvent actionEvent) throws IOException {
 
+
+//        FXMLLoader loader = new FXMLLoader();
+//        loader.setLocation(getClass().getResource("FightSceneSetup.fxml"));
+
+
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
         root = loader.load();
 
+
         HelloController helloController = loader.getController();
+
 
 //        root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
 //
@@ -87,6 +95,5 @@ public class FightSceneSetupController {
         System.out.println("click registered for difficulty");
 
     }
-
 }
 

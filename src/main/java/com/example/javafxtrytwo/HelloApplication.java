@@ -36,11 +36,14 @@ public class HelloApplication extends Application {
     public static void main(String[] args) {
 
 
+
         // how to access this hero from controllers?
         Hero hero = new Hero("First Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
 
 //        hero.print_hero_info();
         System.out.println("console test text in main");
+
+
 
 
 //        pretty sure we need to do all our constructions BEFORE we launch the app otherwise,

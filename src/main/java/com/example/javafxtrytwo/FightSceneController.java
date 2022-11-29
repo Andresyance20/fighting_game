@@ -25,12 +25,13 @@ public class FightSceneController {
 
     public void switchToMainMenu(javafx.event.ActionEvent actionEvent) throws IOException {
 
-
 //        root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
         root = loader.load();
 
 //        FightSceneSetupController fightSceneSetupController = loader.getController();
+
+//        FightSceneController fightSceneController = loader.getController();
 //        fightSceneSetupController.hero.print_hero_info();
 
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow(); // cast to the stage
@@ -45,6 +46,7 @@ public class FightSceneController {
     {
         System.out.println("click registered for inventory");
 //        System.out.println(fightSceneSetupController.hero);
+//        System.out.println(hero);
 
 //        go to inventory of the hero
     }
