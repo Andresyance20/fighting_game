@@ -17,6 +17,7 @@ public class Main extends Application {
         // we need 4 persistent heroes total, 3 for player to switch around, and 1 to represent an enemy.
         Hero hero = new Hero("First Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
 //        hero.print_hero_info();
+        System.out.println(hero + " from the main print");
 
         System.out.println("console test text in main");
 //        pretty sure we need to do all our constructions BEFORE we launch the app otherwise,
@@ -42,6 +43,7 @@ public class Main extends Application {
             Parent fightSceneSetupRoot = fightSceneSetupLoader.load();
             Scene fightSceneSetupScene = new Scene(fightSceneSetupRoot, 1280, 720, Color.GRAY);
 
+
             // injecting second scene into the controller of the first scene
             MainController mainController = (MainController) mainLoader.getController();
             mainController.setToFightSceneSetup(fightSceneSetupScene);
@@ -49,6 +51,15 @@ public class Main extends Application {
             // injecting first scene into the controller of the second scene
             FightSceneSetupController fightSceneSetupController = (FightSceneSetupController) fightSceneSetupLoader.getController();
             fightSceneSetupController.setToMainMenu(mainScene);
+
+
+
+
+
+            //            MainController mainController = new MainController();
+//            FXMLLoader fxmlLoader = new FXMLLoader();
+//            fxmlLoader.setController(mainController);
+
 
 
 //            Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));

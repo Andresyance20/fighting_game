@@ -59,7 +59,6 @@ public class FightSceneSetupController {
         root = loader.load();
 
 //        HelloController helloController = loader.getController();
-
 //        Parent root = FXMLLoader.load(getClass().getResource("FightScene.fxml"));
 
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -85,17 +84,23 @@ public class FightSceneSetupController {
 //        hero.print_hero_info();
         System.out.println("click registered for inspect hero");
         System.out.println(hero); // print hero object id
+
+        // open the specific hero's character sheet (information display)
     }
 
     @FXML
     protected void mapButtonClick() {
         System.out.println("click registered for map");
+
+        // rotate map setting (background image? or anything else) - dunno what data type it should be (prob a string)
+        // that gets matched to an image background?
     }
 
     @FXML
     protected void difficultyButtonClick() {
         System.out.println("click registered for difficulty");
 
+        // rotate difficulty setting on click easy -> hard
     }
 }
 

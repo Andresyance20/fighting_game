@@ -43,14 +43,23 @@ public class MainController implements Initializable {
     }
 
 
+
+
+
+
+
+
 //    was testing initialize, if you need any data, you can load it before the view is onscreen.
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // if we initialize the
         Hero hero = new Hero("First Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
-        System.out.println("Does this called each time we go back to mainmenu?"); // yes it does
+        System.out.println("Does this called each time we go back to mainmenu?"); // not in new setup
     }
 
 //    FightSceneSetup fightSceneSetup = new FightSceneSetup(hero,"Default map", "easy");
+
+
 
     public void switchToFightSceneSetup(Scene actionEvent) throws IOException {
 //        FXMLLoader loader = new FXMLLoader();
@@ -58,12 +67,10 @@ public class MainController implements Initializable {
 //        root = loader.load();
 
 //        FXMLLoader loader = new FXMLLoader(getClass().getResource("FightSceneSetup.fxml"));
-
 //        Parent root = loader.load();
-
 //        FightSceneSetupController fightSceneSetupController = loader.getController();
-
-// messy right now but the logic should work for access to hero methods in the controllers?
+//
+//// messy right now but the logic should work for access to hero methods in the controllers?
 //        fightSceneSetupController.hero.print_hero_info();
 //        fightSceneSetupController.hero.takeDamage(1);
 //        System.out.println(" HP: " + fightSceneSetupController.hero.getHp());
