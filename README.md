@@ -1,12 +1,20 @@
 # urMove Developers
 
-###Build Instructions###
+## Build Instructions
+
 https://www.youtube.com/watch?v=dYwyKJ42Olo
 I recommend this video walkthrough on how to set up the proper environment to run our game through the IDE. The visuals are helpful.
 
 We require the IntelliJ IDE. 
 And java JDK/SDK 19 (though lower versions can work, too).
 You will need to setup JavaFX sdk 19 (again, lower versions might work).
+
+You will need GIT installed.
+Once you have GIT you can open the IDE and press alt +12 to open the terminal
+type:
+git init
+git remote add origin "repository URL/ you can grab this from the clone  with HTTPS option"
+After that you can pull branches from gitlab.
 
 In the IDE setup the run configuration to Main.java
 In build and run you will have to click the "Modify options" (alt +m)
