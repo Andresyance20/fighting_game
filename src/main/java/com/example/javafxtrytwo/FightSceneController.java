@@ -25,8 +25,8 @@ public class FightSceneController {
 
     public void switchToMainMenu(javafx.event.ActionEvent actionEvent) throws IOException {
 
-//        root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+//        root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
         root = loader.load();
 
 //        FightSceneSetupController fightSceneSetupController = loader.getController();
@@ -37,6 +37,15 @@ public class FightSceneController {
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow(); // cast to the stage
 
 
+        scene = new Scene(root, 1280, 720);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToLoseScreen(javafx.event.ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("LoseScene.fxml"));
+        root = loader.load();
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow(); // cast to the stage
         scene = new Scene(root, 1280, 720);
         stage.setScene(scene);
         stage.show();

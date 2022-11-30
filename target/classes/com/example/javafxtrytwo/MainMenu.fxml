@@ -10,7 +10,7 @@
 
 <!-- the last part of the below line "fx:controller" indicates the controller/scope -->
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxtrytwo.HelloController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxtrytwo.MainController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -22,9 +22,8 @@
             </font>
          </Text>
       </children></AnchorPane>
-
-          <Label fx:id="startButtonText" />
-    <Button fx:id="button_start" onAction="#switchToFightSceneSetup" text="Start Game" textFill="#2129a1">
+    
+    <Button fx:id="button_start" onAction="#openFightSceneSetup" text="Start Game" textFill="#2129a1">
       <font>
          <Font size="18.0" />
       </font></Button>
@@ -42,7 +41,6 @@
          <Font size="18.0" />
       </font></Button>
 
-    <Label fx:id="exitButtonText" />
     <Button fx:id="button_exit" onAction="#exitButtonClick" text="Exit Game" textFill="#2129a1">
       <font>
          <Font size="18.0" />
