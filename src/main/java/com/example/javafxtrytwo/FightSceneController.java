@@ -6,7 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -47,6 +47,8 @@ public class FightSceneController {
 
     Hero hero = new Hero("First Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
     Hero enemy = new Hero("First Hero", 100, 5, 5, 5, 5, 0, 1, 0, 0, 0, 0, 66, 200);
+
+
     public void switchToMainMenu(javafx.event.ActionEvent actionEvent) throws IOException {
 
 //        root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
@@ -103,18 +105,31 @@ public class FightSceneController {
 //        check if charged or not
     }
 
-    public void actionButtonClick()
+    public void actionButtonClick(javafx.event.ActionEvent actionEvent) throws IOException
     {
         System.out.println("click registered for action");
-        double changedHpPlayer;
-        double changedHPComp;
-        changedHPComp = hero.getStrength();
-        changedHpPlayer = enemy.getStrength();
-        
+        double dmgHpPlayer;
+        double dmgHpComp;
+        dmgHpComp = hero.getStrength();
+        dmgHpPlayer = enemy.getStrength();
+        double hpHero = hero.getHp() - dmgHpPlayer;
+        double hpComp = enemy.getHp() - dmgHpComp;
+        txt_p1Hp.setText(String.valueOf(hpHero));
+        txt_p2Hp.setText(String.valueOf(hpComp));
+        hero.setHp(hpHero);
+        enemy.setHp(hpComp);
+        if (hero.getHp() <= 0){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("LoseScene.fxml"));
+            root = loader.load();
+            stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow(); // cast to the stage
+            scene = new Scene(root, 1280, 720);
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
-    public Label label_player1;
-    public Label label_player2;
+    public TextField txt_p1Hp;
+    public TextField txt_p2Hp;
     public Button button_menu;
     public Button button_losetomenu;
     public Button button_retry;
