@@ -20,11 +20,26 @@ public class FightSceneSetupController {
     private Parent root;
 
     private Scene mainScene;
+    private Scene fightScene;
+    private Hero hero1;
 
-    public void setToMainMenu(Scene scene)
+
+    public void setToMainMenu(Scene scene, Hero hero)
     {
         mainScene = scene;
+        hero1 = hero;
+        System.out.println(hero1.getName() + " From fightSceneSetup controller");
     }
+
+
+    public void setToFightScene(Scene fightSceneScene, Hero hero)
+    {
+        fightScene = fightSceneScene;
+        hero1 = hero;
+        System.out.println(hero1.getName() + " From fightSceneSetup controller");
+
+    }
+
 
 
     public void openMainMenu(ActionEvent actionEvent)
@@ -34,7 +49,14 @@ public class FightSceneSetupController {
     }
 
 
-    Hero hero = new Hero("First Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
+    public void openFightScene(ActionEvent actionEvent)
+    {
+        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        primaryStage.setScene(fightScene);
+    }
+
+
+//    Hero hero = new Hero("First Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
 
     public void switchToMainMenu(Scene actionEvent) throws IOException {
 
@@ -83,7 +105,7 @@ public class FightSceneSetupController {
     protected void inspectHeroButtonClick() {
 //        hero.print_hero_info();
         System.out.println("click registered for inspect hero");
-        System.out.println(hero); // print hero object id
+        System.out.println(hero1 + " object ID from FightSceneSetup Controller"); // print hero object id
 
         // open the specific hero's character sheet (information display)
     }
@@ -102,5 +124,6 @@ public class FightSceneSetupController {
 
         // rotate difficulty setting on click easy -> hard
     }
+
 }
 

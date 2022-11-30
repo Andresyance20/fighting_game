@@ -1,4 +1,5 @@
-// This is the control for our javaFX HelloApplication (our main(start) + main menu)
+// This is the controller for our javaFX FXML files
+// It is going to be a single controller so we don't need to worry about data being inaccessible
 
 package com.example.javafxtrytwo;
 
@@ -25,15 +26,14 @@ public class MainController implements Initializable {
     private Parent root;
 
 
-    Hero hero = new Hero("First Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
-
-
-
     private Scene fightSceneSetupScene;
+    private Hero hero1;
 
-    public void setToFightSceneSetup(Scene scene)
+    public void setToFightSceneSetup(Scene scene, Hero hero)
     {
         fightSceneSetupScene = scene;
+        hero1 = hero;
+        System.out.println(hero1.getName() + " From main controller");
     }
 
     public void openFightSceneSetup(ActionEvent actionEvent)
@@ -53,8 +53,8 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // if we initialize the
-        Hero hero = new Hero("First Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
-        System.out.println("Does this called each time we go back to mainmenu?"); // not in new setup
+//        Hero hero = new Hero("First Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
+//        System.out.println("Does this called each time we go back to mainmenu?"); // not in new setup
     }
 
 //    FightSceneSetup fightSceneSetup = new FightSceneSetup(hero,"Default map", "easy");
@@ -114,7 +114,8 @@ public class MainController implements Initializable {
     protected void shopButtonClick() {
         shopButtonText.setText("Shop is not yet implemented!");
         System.out.println("click registered for shop button");
-        System.out.println(hero); // print hero object id
+        System.out.println(hero1 + " object ID from MainController"); // print hero object id
+        System.out.println("Hero HP is: " + hero1.getHp());
     }
     @FXML
     protected void optionsButtonClick() {

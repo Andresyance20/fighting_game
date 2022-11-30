@@ -1,5 +1,6 @@
 package com.example.javafxtrytwo;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -21,6 +22,28 @@ public class FightSceneController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    private Scene mainScene;
+    private Scene fightSceneSetup;
+
+    private Hero hero1;
+
+    public void setToMainMenu(Scene scene, Hero hero) {
+        mainScene = scene;
+        hero1 = hero;
+        System.out.println(hero1.getName() + " From fightScene controller");
+
+    }
+
+    public void openMainMenu(ActionEvent actionEvent)
+    {
+        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        primaryStage.setScene(mainScene);
+    }
+
+
+
+
 
     Hero hero = new Hero("First Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
     Hero enemy = new Hero("First Hero", 100, 5, 5, 5, 5, 0, 1, 0, 0, 0, 0, 66, 200);
@@ -64,6 +87,10 @@ public class FightSceneController {
     public void inventoryButtonClick()
     {
         System.out.println("click registered for inventory");
+        System.out.println(hero1 + " object ID from FightScene Controller"); // print hero object id
+        System.out.println("Hero HP is: " + hero1.getHp());
+        hero1.setHp(hero1.getHp()-1);
+        System.out.println("Hero HP is: " + hero1.getHp());
 //        System.out.println(fightSceneSetupController.hero);
 //        System.out.println(hero);
 
@@ -100,7 +127,6 @@ public class FightSceneController {
     public Button button_inventory;
     public Button button_supermove;
     public Button button_surrender;
-
 
 
 
