@@ -14,11 +14,11 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <Button fx:id="button_menu" layoutX="714.0" layoutY="340.0" mnemonicParsing="false" onAction="#switchToMainMenu" text="Back to Menu">
+      <Button fx:id="button_losetomenu" layoutX="714.0" layoutY="340.0" mnemonicParsing="false" onAction="#switchToMainMenu" text="Back to Menu">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button layoutX="444.0" layoutY="340.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Retry">
+      <Button fx:id="button_retry" layoutX="444.0" layoutY="340.0" mnemonicParsing="false" onAction="#switchToFightScreen" prefHeight="40.0" prefWidth="100.0" text="Retry">
          <font>
             <Font size="18.0" />
          </font>
