@@ -1,5 +1,28 @@
 # urMove Developers
 
+###Build Instructions###
+https://www.youtube.com/watch?v=dYwyKJ42Olo
+I recommend this video walkthrough on how to set up the proper environment to run our game through the IDE. The visuals are helpful.
+
+We require the IntelliJ IDE. 
+And java JDK/SDK 19 (though lower versions can work, too).
+You will need to setup JavaFX sdk 19 (again, lower versions might work).
+
+In the IDE setup the run configuration to Main.java
+In build and run you will have to click the "Modify options" (alt +m)
+You will have to check "Add VM options"
+In the new textbox for VM options add the following:
+
+--module-path "C:\Program Files\Java\javafx-sdk-19\lib"
+--add-modules javafx.controls,javafx.fxml
+
+Your javafx-sdk-19 can be elsewhere, please put in the correct path according to your local setup.
+
+click apply and you should be able to run the game in the IDE (if you just want to run the game, you won't need scenebuilder).
+
+
+
+
 
 
 ## Getting started
