@@ -22,7 +22,7 @@
             </font>
          </Text>
       </children></AnchorPane>
-    
+
     <Button fx:id="button_start" onAction="#openFightSceneSetup" text="Start Game" textFill="#2129a1">
       <font>
          <Font size="18.0" />
