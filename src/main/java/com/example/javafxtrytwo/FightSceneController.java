@@ -11,10 +11,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-// This is where we do most of the game I think.
-// going to need buttons/methods for each action?
-
-
 
 public class FightSceneController {
 
@@ -28,6 +24,7 @@ public class FightSceneController {
 
     private Hero hero1;
 
+    // set data
     public void setToMainMenu(Scene scene, Hero hero) {
         mainScene = scene;
         hero1 = hero;
@@ -35,6 +32,7 @@ public class FightSceneController {
 
     }
 
+    // move scene
     public void openMainMenu(ActionEvent actionEvent)
     {
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -43,26 +41,19 @@ public class FightSceneController {
 
 
 
-
-
+    // will need to update these to be from the main via new access method of copying data
     Hero hero = new Hero("First Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
     Hero enemy = new Hero("First Hero", 100, 5, 5, 5, 5, 0, 1, 0, 0, 0, 0, 66, 200);
 
 
+
+    // these are older implementation of transitions that won't persist data
+    // to be updated to new way
     public void switchToMainMenu(javafx.event.ActionEvent actionEvent) throws IOException {
 
-//        root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
         root = loader.load();
-
-//        FightSceneSetupController fightSceneSetupController = loader.getController();
-
-//        FightSceneController fightSceneController = loader.getController();
-//        fightSceneSetupController.hero.print_hero_info();
-
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow(); // cast to the stage
-
-
         scene = new Scene(root, 1280, 720);
         stage.setScene(scene);
         stage.show();
@@ -86,6 +77,7 @@ public class FightSceneController {
         stage.show();
     }
 
+//    some troubleshooting prints
     public void inventoryButtonClick()
     {
         System.out.println("click registered for inventory");
@@ -93,8 +85,6 @@ public class FightSceneController {
         System.out.println("Hero HP is: " + hero1.getHp());
         hero1.setHp(hero1.getHp()-1);
         System.out.println("Hero HP is: " + hero1.getHp());
-//        System.out.println(fightSceneSetupController.hero);
-//        System.out.println(hero);
 
 //        go to inventory of the hero
     }

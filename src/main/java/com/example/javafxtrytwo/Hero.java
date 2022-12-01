@@ -174,6 +174,7 @@ public class Hero {
         System.out.println("\n");
     }
 
+    // some troubleshooting print statements in here from earlier tests
     // hero takes damage when hit with an attack
     public void takeDamage (double hit)
     {

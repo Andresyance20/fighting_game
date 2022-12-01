@@ -6,7 +6,6 @@ package com.example.javafxtrytwo;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -14,21 +13,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class MainController implements Initializable {
+public class MainController {
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
-
+    // make the scene and hero in here but we copy data into them (via methods here) from the main when we call this MainController.
     private Scene fightSceneSetupScene;
     private Hero hero1;
 
+    // set the data
     public void setToFightSceneSetup(Scene scene, Hero hero)
     {
         fightSceneSetupScene = scene;
@@ -36,6 +31,7 @@ public class MainController implements Initializable {
         System.out.println(hero1.getName() + " From main controller");
     }
 
+    // set the stage and scene
     public void openFightSceneSetup(ActionEvent actionEvent)
     {
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -44,58 +40,13 @@ public class MainController implements Initializable {
 
 
 
-
-
-
-
-
 //    was testing initialize, if you need any data, you can load it before the view is onscreen.
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        // if we initialize the
-//        Hero hero = new Hero("First Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
-//        System.out.println("Does this called each time we go back to mainmenu?"); // not in new setup
-    }
+//    idk that we will need to do this, but if we have issues with null data, this might be a solution so I will leave it here for now.
 
-//    FightSceneSetup fightSceneSetup = new FightSceneSetup(hero,"Default map", "easy");
-
-
-
-    public void switchToFightSceneSetup(Scene actionEvent) throws IOException {
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(getClass().getResource("FightSceneSetup.fxml"));
-//        root = loader.load();
-
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("FightSceneSetup.fxml"));
-//        Parent root = loader.load();
-//        FightSceneSetupController fightSceneSetupController = loader.getController();
-//
-//// messy right now but the logic should work for access to hero methods in the controllers?
-//        fightSceneSetupController.hero.print_hero_info();
-//        fightSceneSetupController.hero.takeDamage(1);
-//        System.out.println(" HP: " + fightSceneSetupController.hero.getHp());
-
-//        System.out.println(fightSceneSetupController.hero);
-//        So current issue seems to be that we are creating a new hero each time.
-
-        root = FXMLLoader.load(getClass().getResource("FightSceneSetup.fxml"));
-//        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-//        name the scene?
-        scene = new Scene(root,1280, 720);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-
-
-
-
-
-//    To do:
-//    public void switchToShopScene(){}
-//    public void switchToOptionScene(){}
-//    make controllers + fxml files for them.
-
+//    public class MainController implements Initializable {
+//    @Override
+//    public void initialize(URL url, ResourceBundle resourceBundle) {
+//    }
 
 
     public Button button_start;
@@ -109,7 +60,7 @@ public class MainController implements Initializable {
     private Label optionsButtonText;
 
 
-    // so here we'd want more buttons that on click will do a transition into a different scene(node)?
+    // some testing is leftover from troubleshooting, good for getting a feel of the program functionality.
     @FXML
     protected void shopButtonClick() {
         shopButtonText.setText("Shop is not yet implemented!");
