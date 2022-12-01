@@ -14,6 +14,7 @@ public class FightSceneSetupController {
     private Hero hero1;
 
 //  setting data
+    // rename to like hero 1,2,3 and ai to be explicit/clear about names
     public void setToMainMenu(Scene scene, Hero hero)
     {
         mainScene = scene;

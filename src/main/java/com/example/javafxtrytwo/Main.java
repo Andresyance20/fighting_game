@@ -47,6 +47,9 @@ public class Main extends Application {
             Scene fightSceneScene = new Scene(fightSceneRoot, 1280, 720);
 
 
+
+
+
             // These are how we pass data to the controller classes, check the controller classes to see the data copy
             // injecting second scene into the controller of the first scene
             MainController mainController = (MainController) mainLoader.getController();
