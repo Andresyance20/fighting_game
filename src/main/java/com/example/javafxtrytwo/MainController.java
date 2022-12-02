@@ -6,9 +6,7 @@ package com.example.javafxtrytwo;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -16,8 +14,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 
 public class MainController {
@@ -73,7 +69,7 @@ public class MainController {
         shopButtonText.setText("Shop is not yet implemented!");
         System.out.println("click registered for shop button");
         System.out.println(hero1 + " object ID from MainController"); // print hero object id
-        System.out.println("Hero HP is: " + hero1.getHp());
+        System.out.println("Hero HP is: " + hero1.getCurrenthp());
     }
     @FXML
     protected void optionsButtonClick() {

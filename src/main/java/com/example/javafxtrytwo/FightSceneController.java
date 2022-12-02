@@ -1,15 +1,12 @@
 package com.example.javafxtrytwo;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 
 public class FightSceneController {
@@ -67,9 +64,9 @@ public class FightSceneController {
     {
         System.out.println("click registered for inventory");
         System.out.println(hero1 + " object ID from FightScene Controller"); // print hero object id
-        System.out.println("Hero HP is: " + hero1.getHp());
-        hero1.setHp(hero1.getHp()-1);
-        System.out.println("Hero HP is: " + hero1.getHp());
+        System.out.println("Hero HP is: " + hero1.getCurrenthp());
+        hero1.setCurrenthp(hero1.getCurrenthp()-1);
+        System.out.println("Hero HP is: " + hero1.getCurrenthp());
 
 //        go to inventory of the hero
     }

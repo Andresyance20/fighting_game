@@ -28,10 +28,10 @@ public class Main extends Application {
     {
         // Construct heroes here, so they are passable as parameters in the javafx scope.
         // we need 4 persistent heroes total, 3 for player to switch around, and 1 to represent an enemy.
-        Hero playerHero1 = new Hero("First Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
-        Hero playerHero2 = new Hero("Second Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
-        Hero playerHero3 = new Hero("Third Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
-        Hero aiHero = new Hero("AI Hero", 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
+        Hero playerHero1 = new Hero("First Hero", 100, 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
+        Hero playerHero2 = new Hero("Second Hero", 100, 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
+        Hero playerHero3 = new Hero("Third Hero", 100, 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
+        Hero aiHero = new Hero("AI Hero", 100, 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
 
 //        now that I am thinking about it, we might need to premake our other classes, too, such as fightscenesetup
 //        or any other data we need to access.
@@ -69,16 +69,21 @@ public class Main extends Application {
 
             FXMLLoader fightSceneSetupLoader = new FXMLLoader(getClass().getResource("FightSceneSetup.fxml"));
             Parent fightSceneSetupRoot = fightSceneSetupLoader.load();
-            Scene fightSceneSetupScene = new Scene(fightSceneSetupRoot, 1280, 720);
+            Scene fightSceneSetupScene = new Scene(fightSceneSetupRoot, 1080, 600);
 
 
             FXMLLoader fightSceneLoader = new FXMLLoader(getClass().getResource("FightScene.fxml"));
             Parent fightSceneRoot = fightSceneLoader.load();
-            Scene fightSceneScene = new Scene(fightSceneRoot, 1280, 720);
+            Scene fightSceneScene = new Scene(fightSceneRoot, 1080, 600);
 
             FXMLLoader loseSceneLoader = new FXMLLoader(getClass().getResource("LoseScene.fxml"));
             Parent loseSceneRoot = loseSceneLoader.load();
-            Scene loseSceneScene = new Scene(loseSceneRoot, 1280, 720);
+            Scene loseSceneScene = new Scene(loseSceneRoot, 1080, 600);
+
+
+            FXMLLoader heroSheetLoader = new FXMLLoader(getClass().getResource("HeroSheet.fxml"));
+            Parent heroSheetRoot = heroSheetLoader.load();
+            Scene heroSheetScene = new Scene(heroSheetRoot, 1080, 600);
 
             // These are how we pass data to the controller classes, check the controller classes to see the data copy
             // injecting second scene into the controller of the first scene
@@ -97,6 +102,8 @@ public class Main extends Application {
             // idk if that's the EXACT process, there's a lot of parts to it.
             fightSceneSetupController.setToMainMenu(mainScene, playerHero1);
             fightSceneSetupController.setToFightScene(fightSceneScene, playerHero1);
+            fightSceneSetupController.setToHeroSheet(heroSheetScene, playerHero1);
+            // add navigation method to fight sheet
 
 
             // so, passing reference to the scene and hero object and storing it inside a private variable inside this specific control, basically we just copy contents of hero onto another hero object.
@@ -107,6 +114,17 @@ public class Main extends Application {
             LoseSceneController loseSceneController = (LoseSceneController) loseSceneLoader.getController();
             loseSceneController.setToMainMenu(mainScene, playerHero1);
             loseSceneController.setToFightScene(fightSceneScene, playerHero1);
+
+
+            HeroSheetController heroSheetController = (HeroSheetController) heroSheetLoader.getController();
+            heroSheetController.setToFightSceneSetup(fightSceneSetupScene, playerHero1);
+
+//                    heroSheetLoader
+//                    heroSheetRoot
+//                    heroSheetScene
+
+
+
 
             primaryStage.setTitle("FIGHT GAME!");
             primaryStage.setResizable(true);

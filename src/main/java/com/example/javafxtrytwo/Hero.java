@@ -5,7 +5,8 @@ public class Hero {
     String name;
 
 //    stats
-    double hp;
+    double currenthp;
+    double maxhp;
     double strength;
     double endurance;
     double agility;
@@ -40,12 +41,13 @@ public class Hero {
 // we handle these somehow in abilities?
 //    double atkDmg,
 //    double blockAmount,
-    public Hero(String name, double hp, double strength, double endurance, double agility,
+    public Hero(String name, double currenthp, double maxhp, double strength, double endurance, double agility,
                 double dodge, double superCharge, double position, double experience,
                 double money, double victoryCount, double lossCount, double height, double weight)
     {
         this.name = name;
-        this.hp = hp;
+        this.currenthp = currenthp;
+        this.maxhp = maxhp;
         this.strength = strength;
         this.endurance = endurance;
         this.agility = agility;
@@ -67,9 +69,14 @@ public class Hero {
     public String getName() {
         return name;
     }
-    public double getHp() {
-        return hp;
+    public double getCurrenthp() {
+        return currenthp;
     }
+    public double getMaxhp()
+    {
+        return maxhp;
+    }
+
     public double getStrength() {
         return strength;
     }
@@ -111,8 +118,8 @@ public class Hero {
     public void setName(String name) {
         this.name = name;
     }
-    public void setHp(double hp) {
-        this.hp = hp;
+    public void setCurrenthp(double currenthp) {
+        this.currenthp = currenthp;
     }
     public void setStrength(double strength) {
         this.strength = strength;
@@ -158,7 +165,7 @@ public class Hero {
         System.out.println("\n");
         System.out.println("==========HERO==========");
         System.out.println("Name: " + getName());
-        System.out.println("HP: " + getHp());
+        System.out.println("HP: " + getCurrenthp() + "/" + getMaxhp());
         System.out.println("Strength: " + getStrength());
         System.out.println("Endurance: " + getEndurance());
         System.out.println("Agility: " + getAgility());
@@ -179,14 +186,14 @@ public class Hero {
     public void takeDamage (double hit)
     {
         System.out.println("Hero takes: " + hit + " damage.");
-        double temp = getHp() - hit;
+        double temp = getCurrenthp() - hit;
 
         System.out.println(temp);
 
-        setHp(temp);
-        System.out.println(getHp());
-        System.out.println("Hero has: " + getHp() + ".");
-        if (getHp() > 50)
+        setCurrenthp(temp);
+        System.out.println(getCurrenthp());
+        System.out.println("Hero has: " + getCurrenthp() + ".");
+        if (getCurrenthp() > 50)
         {
             takeDamage(10);
         }

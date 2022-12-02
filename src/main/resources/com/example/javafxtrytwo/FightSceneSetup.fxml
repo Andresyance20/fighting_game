@@ -19,7 +19,7 @@
             <Font size="25.0" />
          </font>
       </Text>
-      <Button fx:id="button_inspect_hero1" layoutX="155.0" layoutY="230.0" mnemonicParsing="false" onAction="#inspectHeroButtonClick" text="Inspect Hero 1 (console output test)">
+      <Button fx:id="button_inspect_hero1" layoutX="155.0" layoutY="230.0" mnemonicParsing="false" onAction="#openHeroSheetScene" text="Inspect Hero 1 (console output test)">
          <font>
             <Font size="14.0" />
          </font></Button>

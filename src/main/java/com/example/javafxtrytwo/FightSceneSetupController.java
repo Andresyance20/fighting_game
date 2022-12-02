@@ -11,21 +11,30 @@ public class FightSceneSetupController {
 
     private Scene mainScene;
     private Scene fightScene;
-    private Hero hero1;
+    private Scene heroSheetScene;
+    private Hero playerHero1;
+    private Hero PlayerHero2;
+    private Hero PlayerHero3;
 
 //  setting data
-    public void setToMainMenu(Scene scene, Hero hero)
+    public void setToMainMenu(Scene scene, Hero hero1)
     {
         mainScene = scene;
-        hero1 = hero;
-        System.out.println(hero1.getName() + " From fightSceneSetup controller");
+        playerHero1 = hero1;
+        System.out.println(playerHero1.getName() + " From fightSceneSetup controller");
     }
 
-    public void setToFightScene(Scene fightSceneScene, Hero hero)
+    public void setToFightScene(Scene fightSceneScene, Hero hero1)
     {
         fightScene = fightSceneScene;
-        hero1 = hero;
-        System.out.println(hero1.getName() + " From fightSceneSetup controller");
+        playerHero1 = hero1;
+//        System.out.println(playerHero1.getName() + " From fightSceneSetup controller");
+    }
+
+    public void setToHeroSheet(Scene scene, Hero hero1)
+    {
+        heroSheetScene = scene;
+        playerHero1 = hero1;
     }
 
 
@@ -43,6 +52,13 @@ public class FightSceneSetupController {
         primaryStage.setScene(fightScene);
     }
 
+    public void openHeroSheetScene(ActionEvent actionEvent)
+    {
+        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        primaryStage.setScene(heroSheetScene);
+    }
+
+
     public Button button_menu;
     public Button button_goto_fight_scene;
     public Button button_inspect_hero1;
@@ -55,7 +71,7 @@ public class FightSceneSetupController {
     @FXML
     protected void inspectHeroButtonClick() {
         System.out.println("click registered for inspect hero");
-        System.out.println(hero1 + " object ID from FightSceneSetup Controller"); // print hero object id
+        System.out.println(playerHero1 + " object ID from FightSceneSetup Controller"); // print hero object id
 
         // to do: open the specific hero's character sheet (information display)
     }
