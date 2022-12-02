@@ -2,9 +2,16 @@ package com.example.javafxtrytwo;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
+
+import java.awt.*;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 
 
 public class Main extends Application {
@@ -30,12 +37,35 @@ public class Main extends Application {
 //        or any other data we need to access.
 //        no matter, it will follow the same process, so it is solved, and it can be done.
 
+        // add background
+        /*Image image  = new Image("background2.jpg");
+        ImageView imageView = new ImageView(image);
+
+        Group root = new Group();
+        root.getChildren().addAll(imageView);
+
+        Scene scene = new Scene(root,500,300);
+        primaryStage.setScene(scene);*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         try {
             // Making loaders for controllers.
             // all of them will be made here. Feel free to observe/copy patterns and get these done.
             FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
             Parent mainRoot = mainLoader.load();
-            Scene mainScene = new Scene(mainRoot, 1280, 720);
+            Scene mainScene = new Scene(mainRoot, 1080, 600);
 
             FXMLLoader fightSceneSetupLoader = new FXMLLoader(getClass().getResource("FightSceneSetup.fxml"));
             Parent fightSceneSetupRoot = fightSceneSetupLoader.load();
@@ -79,7 +109,7 @@ public class Main extends Application {
             loseSceneController.setToFightScene(fightSceneScene, playerHero1);
 
             primaryStage.setTitle("FIGHT GAME!");
-            primaryStage.setResizable(false);
+            primaryStage.setResizable(true);
 //    scene is a "drawing surface for graphical content and a container for nodes"
             primaryStage.setScene(mainScene); // Add scene to the stage
             primaryStage.show(); // Render the stage. This is always the last step.

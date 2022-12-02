@@ -84,24 +84,16 @@ public class MainController {
     protected void exitButtonClick(ActionEvent actionEvent) {
 
 
-        /*Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("quit");
-        alert.setHeaderText("you are about to quit the game");
+        Alert  alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Exit");
+        alert.setHeaderText("You are about to quit the game!");
         alert.setContentText("Are you sure?");
 
         if(alert.showAndWait().get() == ButtonType.OK)
         {
-            //stage = (Stage) anchorPane.getScene().getWindow();
             System.out.println("you quit successfully");
-            //primaryStage.close(); this doesn't work for some reason :(
-
-            System.out.println("you quit successfully");
-
-       }     //Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-*/
-        Platform.exit();
-
-
+            Platform.exit();
+        }
     }
 
 
