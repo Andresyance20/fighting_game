@@ -46,6 +46,9 @@ public class Main extends Application {
             Parent fightSceneRoot = fightSceneLoader.load();
             Scene fightSceneScene = new Scene(fightSceneRoot, 1280, 720);
 
+            FXMLLoader loseSceneLoader = new FXMLLoader(getClass().getResource("LoseScene.fxml"));
+            Parent loseSceneRoot = loseSceneLoader.load();
+            Scene loseSceneScene = new Scene(loseSceneRoot, 1280, 720);
 
             // These are how we pass data to the controller classes, check the controller classes to see the data copy
             // injecting second scene into the controller of the first scene
@@ -69,8 +72,11 @@ public class Main extends Application {
             // so, passing reference to the scene and hero object and storing it inside a private variable inside this specific control, basically we just copy contents of hero onto another hero object.
             FightSceneController fightSceneController = (FightSceneController) fightSceneLoader.getController();
             fightSceneController.setToMainMenu(mainScene, playerHero1);
+            fightSceneController.setToLoseScene(loseSceneScene, playerHero1);
 
-
+            LoseSceneController loseSceneController = (LoseSceneController) loseSceneLoader.getController();
+            loseSceneController.setToMainMenu(mainScene, playerHero1);
+            loseSceneController.setToFightScene(fightSceneScene, playerHero1);
 
             primaryStage.setTitle("FIGHT GAME!");
             primaryStage.setResizable(false);
