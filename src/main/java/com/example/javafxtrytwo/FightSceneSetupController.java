@@ -12,7 +12,14 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FightSceneSetupController implements Initializable {
+
+// I am going to try and make this controller be the controller for HeroSheet.fxml,
+// too so we don't have to see dummy/fake data on first visit
+// due to not being able to change data to hero data because the hero data reference is null until first visit to scene.
+
+
+
+public class FightSceneSetupController {
 
     private Scene mainScene;
     private Scene fightScene;
@@ -20,16 +27,6 @@ public class FightSceneSetupController implements Initializable {
     private Hero playerHero1;
     private Hero playerHero2;
     private Hero playerHero3;
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
-
-    @FXML
-    private Text hero_text_str;
-
 
 
 //  setting data
@@ -42,9 +39,9 @@ public class FightSceneSetupController implements Initializable {
 
     }
 
-    public void setToFightScene(Scene fightSceneScene, Hero hero1, Hero hero2, Hero hero3)
+    public void setToFightScene(Scene scene, Hero hero1, Hero hero2, Hero hero3)
     {
-        fightScene = fightSceneScene;
+        fightScene = scene;
         playerHero1 = hero1;
         playerHero2 = hero2;
         playerHero3 = hero3;
@@ -59,7 +56,7 @@ public class FightSceneSetupController implements Initializable {
     }
 
 
-//  moving scenes/stages
+    //  moving scenes/stages
     public void openMainMenu(ActionEvent actionEvent)
     {
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -80,22 +77,16 @@ public class FightSceneSetupController implements Initializable {
         button_inspect_hero2.setText(playerHero2.getName());
         button_inspect_hero3.setText(playerHero3.getName());
         primaryStage.setScene(heroSheetScene);
-
-
     }
 
 
-    public void updateHeroInfo()
-    {
-        hero_text_str.setText("Strength: ");
-//        hero_text_str.setText("Strength: " + playerHero1.getStrength());
-    }
 
 
 
 
     public Button button_menu;
     public Button button_goto_fight_scene;
+
     public Button button_inspect_hero1;
     public Button button_inspect_hero2;
     public Button button_inspect_hero3;

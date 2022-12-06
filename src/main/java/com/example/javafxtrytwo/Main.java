@@ -77,7 +77,6 @@ public class Main extends Application {
 
 
 
-
             // These are how we pass data to the controller classes, check the controller classes to see the data copy
             // injecting second scene into the controller of the first scene
             MainController mainController = (MainController) mainLoader.getController();
@@ -110,11 +109,8 @@ public class Main extends Application {
 
 
             HeroSheetController heroSheetController = (HeroSheetController) heroSheetLoader.getController();
-            heroSheetController.setToFightSceneSetup(fightSceneSetupScene, playerHero1);
+            heroSheetController.setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3);
 
-//                    heroSheetLoader
-//                    heroSheetRoot
-//                    heroSheetScene
 
 
 

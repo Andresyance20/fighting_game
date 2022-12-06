@@ -18,6 +18,14 @@ import javafx.stage.Stage;
 
 public class MainController {
 
+
+//    in here we could try to write a fast loop to go visit each scene to initialize it?
+//    so data won't be null and the scene will be accessible?
+
+
+
+
+
     // make the scene and hero in here but we copy data into them (via methods here) from the main when we call this MainController.
     private Scene fightSceneSetupScene;
     private Hero playerHero1;

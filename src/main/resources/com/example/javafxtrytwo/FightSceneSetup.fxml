@@ -37,7 +37,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="button_inspect_hero3" layoutX="802.0" layoutY="230.0" mnemonicParsing="false" onAction="#inspectHeroButtonClick" text="Inspect Hero 3 (console output test)">
+      <Button fx:id="button_inspect_hero3" layoutX="802.0" layoutY="230.0" mnemonicParsing="false" onAction="#openHeroSheetScene" text="Inspect Hero 3 (console output test)">
          <font>
             <Font size="14.0" />
          </font>

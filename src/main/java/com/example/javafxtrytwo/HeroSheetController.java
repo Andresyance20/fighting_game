@@ -25,79 +25,91 @@ import java.util.ResourceBundle;
 
 // the scene that will display the characteristics of a specific hero.
 
-public class HeroSheetController implements Initializable {
-
-    @FXML
-    private Text hero_text_str;
-
-    public void updateHeroinfo() {
-        hero_text_str.setText("Strength: " + playerHero1.getStrength());
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        hero_text_str.setText("Stre");
-
-//        updateHeroInfo();
-//        hero_text_str.setText(playerHero1.getName());
-
-//        hero_text_str.setText("Strength: " + playerHero1.getStrength());
-
-
-
-
-    }
-
-
-
+public class HeroSheetController {
 
     private Hero playerHero1;
-    private Hero PlayerHero2;
-    private Hero PlayerHero3;
+    private Hero playerHero2;
+    private Hero playerHero3;
     private Scene fightSceneSetupScene;
 
-
-
-    public void setToFightSceneSetup(Scene scene, Hero hero1)
+    public void setToFightSceneSetup(Scene scene, Hero hero1, Hero hero2, Hero hero3)
     {
         fightSceneSetupScene = scene;
         playerHero1 = hero1;
+        playerHero2 = hero2;
+        playerHero3 = hero3;
     }
 
     public void openFightSceneSetup(ActionEvent actionEvent)
     {
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-
-        hero_text_str.setText("Strength: " + playerHero1.getStrength());
-
-//        System.out.println(playerHero1 + " From HeroSheet controller");
-//        playerHero1.setName("new name set test");
-
         primaryStage.setScene(fightSceneSetupScene);
     }
 
 
 
 
-    public Button button_fightscenesetup;
+    public Button button_fight_scene_setup;
 
 
 
-
-
-    public void updateHeroInfo()
+    public void loadHeroData1()
     {
-        hero_text_str.setText(String.valueOf(playerHero1.getStrength()));
+        hero_text_str.setText("Strength: " + playerHero1.getStrength() + ".");
+        hero_text_end.setText("Endurance: " + playerHero1.getEndurance() + ".");
+        hero_text_agi.setText("Agility: " + playerHero1.getAgility() + ".");
+        hero_text_name.setText("Name: " + playerHero1.getName() + ".");
+        hero_text_exp.setText("Experience: " + playerHero1.getExperience() + ".");
+        hero_text_money.setText("Money: " + playerHero1.getMoney() + ".");
+        hero_text_victories.setText("Victories: " + playerHero1.getVictoryCount() + ".");
+        hero_text_losses.setText("Losses: " + playerHero1.getLossCount() + ".");
+        hero_text_hp.setText("HP: " + playerHero1.getCurrenthp() + "/" + playerHero1.getMaxhp() + ".");
+        hero_text_dodge.setText("Dodge: " + playerHero1.getDodge() + "%");
+        hero_text_cost_str.setText("Cost: " + (playerHero1.getStrength() * 69) + ".");
+        hero_text_cost_end.setText("Cost: " + (playerHero1.getEndurance() * 69)+ ".");
+        hero_text_cost_agi.setText("Cost: " + (playerHero1.getAgility() * 69)+ ".");
+
     }
+    public void loadHeroData2()
+    {}
+    public void loadHeroData3()
+    {}
+
+    @FXML
+    private Text hero_text_str;
+    @FXML
+    private Text hero_text_end;
+    @FXML
+    private Text hero_text_agi;
+    @FXML
+    private Text hero_text_name;
+    @FXML
+    private Text hero_text_exp;
+    @FXML
+    private Text hero_text_money;
+    @FXML
+    private Text hero_text_victories;
+    @FXML
+    private Text hero_text_losses;
+    @FXML
+    private Text hero_text_hp;
+    @FXML
+    private Text hero_text_dodge;
+    @FXML
+    private Text hero_text_cost_str;
+    @FXML
+    private Text hero_text_cost_end;
+    @FXML
+    private Text hero_text_cost_agi;
 
 
 
 
-    public void displayInfo()
-    {
-//        playerHero1.print_hero_info();
 
-    }
+
+
+
+
 
 //    exp or money -> stat increase
     public void increaseStat(double experience)
