@@ -20,16 +20,22 @@ public class MainController {
 
     // make the scene and hero in here but we copy data into them (via methods here) from the main when we call this MainController.
     private Scene fightSceneSetupScene;
-    private Hero hero1;
+    private Hero playerHero1;
+    private Hero playerHero2;
+    private Hero playerHero3;
+
     Stage stage;
 
 
     // set the data
-    public void setToFightSceneSetup(Scene scene, Hero hero)
+    public void setToFightSceneSetup(Scene scene, Hero hero1, Hero hero2, Hero hero3)
     {
         fightSceneSetupScene = scene;
-        hero1 = hero;
-        System.out.println(hero1.getName() + " From main controller");
+        playerHero1 = hero1;
+        playerHero2 = hero2;
+        playerHero3 = hero3;
+
+        System.out.println(playerHero1.getName() + " From main controller");
     }
 
     // set the stage and scene
@@ -68,12 +74,16 @@ public class MainController {
     protected void shopButtonClick() {
         shopButtonText.setText("Shop is not yet implemented!");
         System.out.println("click registered for shop button");
-        System.out.println(hero1 + " object ID from MainController"); // print hero object id
-        System.out.println("Hero HP is: " + hero1.getCurrenthp());
+        System.out.println(playerHero1 + " object ID from MainController"); // print hero object id
+        System.out.println("Hero HP is: " + playerHero1.getCurrenthp());
     }
     @FXML
     protected void optionsButtonClick() {
         optionsButtonText.setText("Options are not yet implemented!");
+        // testing changing text, seems labels ar easier than text
+        optionsButtonText.setText(playerHero1.getName());
+
+
     }
 
     @FXML

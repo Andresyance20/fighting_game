@@ -28,9 +28,9 @@ public class Main extends Application {
     {
         // Construct heroes here, so they are passable as parameters in the javafx scope.
         // we need 4 persistent heroes total, 3 for player to switch around, and 1 to represent an enemy.
-        Hero playerHero1 = new Hero("First Hero", 100, 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
-        Hero playerHero2 = new Hero("Second Hero", 100, 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
-        Hero playerHero3 = new Hero("Third Hero", 100, 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
+        Hero playerHero1 = new Hero("First Hero name", 100, 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
+        Hero playerHero2 = new Hero("Second Hero name", 100, 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
+        Hero playerHero3 = new Hero("Third Hero name", 100, 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
         Hero aiHero = new Hero("AI Hero", 100, 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
 
 //        now that I am thinking about it, we might need to premake our other classes, too, such as fightscenesetup
@@ -46,16 +46,6 @@ public class Main extends Application {
 
         Scene scene = new Scene(root,500,300);
         primaryStage.setScene(scene);*/
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -91,7 +81,7 @@ public class Main extends Application {
             // These are how we pass data to the controller classes, check the controller classes to see the data copy
             // injecting second scene into the controller of the first scene
             MainController mainController = (MainController) mainLoader.getController();
-            mainController.setToFightSceneSetup(fightSceneSetupScene, playerHero1);
+            mainController.setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3);
             //    To do:
             //    add logic for switchToShopScene (will require heros / inventory)
             //    add logic for switchToOptionScene (idk if we need to pass references here? maybe because it might lose reference on reenter? I am unsure)
@@ -103,10 +93,10 @@ public class Main extends Application {
             FightSceneSetupController fightSceneSetupController = (FightSceneSetupController) fightSceneSetupLoader.getController();
             // example: we access the "fightscenesetup controller" class methods(activate on buttons) and pass in the data we have here.
             // idk if that's the EXACT process, there's a lot of parts to it.
-            fightSceneSetupController.setToMainMenu(mainScene, playerHero1);
-            fightSceneSetupController.setToFightScene(fightSceneScene, playerHero1);
-            fightSceneSetupController.setToHeroSheet(heroSheetScene, playerHero1);
-            // add navigation method to fight sheet
+            fightSceneSetupController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3);
+            fightSceneSetupController.setToFightScene(fightSceneScene, playerHero1, playerHero2, playerHero3);
+            fightSceneSetupController.setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3);
+//            fightSceneSetupController.updateHeroInfo();
 
 
             // so, passing reference to the scene and hero object and storing it inside a private variable inside this specific control, basically we just copy contents of hero onto another hero object.
