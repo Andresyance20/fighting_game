@@ -160,6 +160,8 @@ public class Hero {
     }
 
 
+
+//    might need to add an active tag to the hero so we know which one to take into the fight scene?
     public void print_hero_info()
     {
         System.out.println("\n");

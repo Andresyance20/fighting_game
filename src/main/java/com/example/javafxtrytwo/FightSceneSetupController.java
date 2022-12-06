@@ -73,10 +73,10 @@ public class FightSceneSetupController {
     public void openHeroSheetScene(ActionEvent actionEvent)
     {
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        button_inspect_hero1.setText(playerHero1.getName());
-        button_inspect_hero2.setText(playerHero2.getName());
-        button_inspect_hero3.setText(playerHero3.getName());
+//        how to set active hero?
+//        button_inspect_heroes.setText(playerHero1.getName());
         primaryStage.setScene(heroSheetScene);
+
     }
 
 
@@ -87,9 +87,7 @@ public class FightSceneSetupController {
     public Button button_menu;
     public Button button_goto_fight_scene;
 
-    public Button button_inspect_hero1;
-    public Button button_inspect_hero2;
-    public Button button_inspect_hero3;
+    public Button button_inspect_heroes;
     public Button button_set_difficulty;
     public Button button_set_map;
 

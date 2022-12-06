@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxtrytwo.FightSceneSetupController">
    <children>
-      <Button fx:id="button_goto_fight_scene" layoutX="786.0" layoutY="467.0" mnemonicParsing="false" onAction="#openFightScene" text="Go to FightScene">
+      <Button fx:id="button_goto_fight_scene" layoutX="662.0" layoutY="360.0" mnemonicParsing="false" onAction="#openFightScene" text="Go to FightScene">
          <font>
             <Font size="18.0" />
          </font>
@@ -19,7 +19,7 @@
             <Font size="25.0" />
          </font>
       </Text>
-      <Button fx:id="button_inspect_hero1" layoutX="155.0" layoutY="230.0" mnemonicParsing="false" onAction="#openHeroSheetScene" text="Inspect Hero 1 (console output test)">
+      <Button fx:id="button_inspect_heroes" layoutX="239.0" layoutY="281.0" mnemonicParsing="false" onAction="#openHeroSheetScene" text="Inspect Heros">
          <font>
             <Font size="14.0" />
          </font></Button>
@@ -28,21 +28,11 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="button_set_map" layoutX="553.0" layoutY="467.0" mnemonicParsing="false" onAction="#mapButtonClick" text="Set Map">
+      <Button fx:id="button_set_map" layoutX="434.0" layoutY="427.0" mnemonicParsing="false" onAction="#mapButtonClick" text="Set Map">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button fx:id="button_inspect_hero2" layoutX="478.0" layoutY="230.0" mnemonicParsing="false" onAction="#openHeroSheetScene" text="Inspect Hero 2 (console output test)">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="button_inspect_hero3" layoutX="802.0" layoutY="230.0" mnemonicParsing="false" onAction="#openHeroSheetScene" text="Inspect Hero 3 (console output test)">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="button_set_difficulty" layoutX="275.0" layoutY="467.0" mnemonicParsing="false" onAction="#difficultyButtonClick" text="Set Difficulty">
+      <Button fx:id="button_set_difficulty" layoutX="218.0" layoutY="427.0" mnemonicParsing="false" onAction="#difficultyButtonClick" text="Set Difficulty">
          <font>
             <Font size="18.0" />
          </font>
