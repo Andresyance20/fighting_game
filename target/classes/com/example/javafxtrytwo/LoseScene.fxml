@@ -5,23 +5,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<!-- the last part of the below line "fx:controller" indicates the controller/scope -->
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxtrytwo.FightSceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxtrytwo.LoseSceneController">
    <children>
-      <Label layoutX="580.0" layoutY="55.0" text="You Lose" textAlignment="CENTER" textFill="#bf0000">
+      <Label layoutX="602.0" layoutY="57.0" text="You Lose!" textFill="RED">
          <font>
-            <Font size="25.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="button_losetomenu" layoutX="714.0" layoutY="340.0" mnemonicParsing="false" onAction="#switchToMainMenu" text="Back to Menu">
-         <font>
-            <Font size="18.0" />
-         </font></Button>
-      <Button fx:id="button_retry" layoutX="444.0" layoutY="340.0" mnemonicParsing="false" onAction="#switchToFightScreen" prefHeight="40.0" prefWidth="100.0" text="Retry">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
+      <Button fx:id="button_retry" layoutX="328.0" layoutY="435.0" mnemonicParsing="false" onAction="#openFightScene" prefHeight="60.0" prefWidth="114.0" text="Retry" />
+      <Button fx:id="button_losetomenu" layoutX="834.0" layoutY="435.0" mnemonicParsing="false" onAction="#openMainMenu" prefHeight="60.0" prefWidth="114.0" text="Main Menu" />
    </children>
 </AnchorPane>

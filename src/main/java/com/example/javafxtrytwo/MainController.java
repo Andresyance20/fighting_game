@@ -6,9 +6,7 @@ package com.example.javafxtrytwo;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -16,8 +14,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 
 public class MainController {
@@ -73,7 +69,7 @@ public class MainController {
         shopButtonText.setText("Shop is not yet implemented!");
         System.out.println("click registered for shop button");
         System.out.println(hero1 + " object ID from MainController"); // print hero object id
-        System.out.println("Hero HP is: " + hero1.getHp());
+        System.out.println("Hero HP is: " + hero1.getCurrenthp());
     }
     @FXML
     protected void optionsButtonClick() {
@@ -84,24 +80,16 @@ public class MainController {
     protected void exitButtonClick(ActionEvent actionEvent) {
 
 
-        /*Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("quit");
-        alert.setHeaderText("you are about to quit the game");
+        Alert  alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Exit");
+        alert.setHeaderText("You are about to quit the game!");
         alert.setContentText("Are you sure?");
 
         if(alert.showAndWait().get() == ButtonType.OK)
         {
-            //stage = (Stage) anchorPane.getScene().getWindow();
             System.out.println("you quit successfully");
-            //primaryStage.close(); this doesn't work for some reason :(
-
-            System.out.println("you quit successfully");
-
-       }     //Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-*/
-        Platform.exit();
-
-
+            Platform.exit();
+        }
     }
 
 
