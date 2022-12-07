@@ -2,8 +2,8 @@ package com.example.javafxtrytwo;
 
 public class Hero {
 
+    boolean active;
     String name;
-
 //    stats
     double currenthp;
     double maxhp;
@@ -41,10 +41,11 @@ public class Hero {
 // we handle these somehow in abilities?
 //    double atkDmg,
 //    double blockAmount,
-    public Hero(String name, double currenthp, double maxhp, double strength, double endurance, double agility,
+    public Hero(boolean active, String name, double currenthp, double maxhp, double strength, double endurance, double agility,
                 double dodge, double superCharge, double position, double experience,
                 double money, double victoryCount, double lossCount, double height, double weight)
     {
+        this.active = active;
         this.name = name;
         this.currenthp = currenthp;
         this.maxhp = maxhp;
@@ -63,9 +64,14 @@ public class Hero {
         this.height = height;
         this.weight = weight;
 
+
     }
 
     // GETTERS
+    public boolean getActive()
+    {
+        return active;
+    }
     public String getName() {
         return name;
     }
@@ -115,6 +121,10 @@ public class Hero {
     }
 
     // SETTERS
+    public void setActive(boolean active)
+    {
+        this.active = active;
+    }
     public void setName(String name) {
         this.name = name;
     }

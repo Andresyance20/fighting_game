@@ -68,6 +68,9 @@ public class FightSceneSetupController {
     {
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(fightScene);
+
+        // need to call some methods and pass some parameters to it?
+        // map, difficulty?
     }
 
     public void openHeroSheetScene(ActionEvent actionEvent)
@@ -82,8 +85,6 @@ public class FightSceneSetupController {
 
 
 
-
-
     public Button button_menu;
     public Button button_goto_fight_scene;
 
@@ -92,17 +93,6 @@ public class FightSceneSetupController {
     public Button button_set_map;
 
 
-    @FXML
-    protected void inspectHeroButtonClick() {
-        System.out.println("click registered for inspect hero");
-        System.out.println(playerHero1 + " object ID from FightSceneSetup Controller"); // print hero object id
-//        button_inspect_hero1.setText("Inspect: " + playerHero1.getName() + ".");
-
-
-
-
-        // to do: open the specific hero's character sheet (information display)
-    }
 
     // probably easiest for these to rotate through pre-made options on click
     @FXML

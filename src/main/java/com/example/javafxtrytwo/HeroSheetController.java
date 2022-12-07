@@ -45,31 +45,8 @@ public class HeroSheetController {
     public void openFightSceneSetup(ActionEvent actionEvent)
     {
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        if (activeHero == 1)
-        {
-//            set data on hero to be selected?
-//            or do we just want 3 fightscenesetups/methods that each take a different hero?
-            System.out.println("ACTIVE HERO1: " + playerHero1.getName());
-        }
-        else if (activeHero == 2)
-        {
-            System.out.println("ACTIVE HERO2: " + playerHero2.getName());
-
-        }
-        else if (activeHero == 3)
-        {
-            System.out.println("ACTIVE HERO3: " + playerHero3.getName());
-
-        }
-        else
-        {
-
-            System.out.println("testing, please pick a hero");
-        }
-
         primaryStage.setScene(fightSceneSetupScene);
     }
-
 
 
 
@@ -94,7 +71,12 @@ public class HeroSheetController {
         hero_text_cost_agi.setText("Cost: " + (playerHero1.getAgility() * 69)+ ".");
 
         hero_text_active_hero.setText("Active Hero: " + playerHero1.getName() + ".");
-        activeHero = 1;
+        // set the loaded hero to active, and others to not active.
+        playerHero1.active = true;
+        playerHero2.active = false;
+        playerHero3.active = false;
+        System.out.println("Hero1: " + playerHero1.getName() + ".\nActive: " + playerHero1.getActive() + ".");
+        System.out.println("Hero2: " + playerHero2.getActive() + " Hero3: " + playerHero3.getActive());
     }
     public void loadHeroData2()
     {
@@ -113,7 +95,12 @@ public class HeroSheetController {
         hero_text_cost_agi.setText("Cost: " + (playerHero2.getAgility() * 69)+ ".");
 
         hero_text_active_hero.setText("Active Hero: " + playerHero2.getName() + ".");
-        activeHero = 2;
+        // set the loaded hero to active, and others to not active.
+        playerHero1.active = false;
+        playerHero2.active = true;
+        playerHero3.active = false;
+        System.out.println("Hero2: " + playerHero2.getName() + ".\nActive: " + playerHero2.getActive() + ".");
+        System.out.println("Hero1: " + playerHero1.getActive() + " Hero3: " + playerHero3.getActive());
     }
     public void loadHeroData3()
     {
@@ -132,7 +119,12 @@ public class HeroSheetController {
         hero_text_cost_agi.setText("Cost: " + (playerHero3.getAgility() * 69)+ ".");
 
         hero_text_active_hero.setText("Active Hero: " + playerHero3.getName() + ".");
-        activeHero = 3;
+        // set the loaded hero to active, and others to not active.
+        playerHero1.active = false;
+        playerHero2.active = false;
+        playerHero3.active = true;
+        System.out.println("Hero3: " + playerHero3.getName() + ".\nActive: " + playerHero3.getActive() + ".");
+        System.out.println("Hero1: " + playerHero2.getActive() + " Hero2: " + playerHero2.getActive());
     }
 
     @FXML
@@ -163,11 +155,6 @@ public class HeroSheetController {
     private Text hero_text_cost_agi;
     @FXML
     private Text hero_text_active_hero;
-
-
-
-
-
 
 
 
