@@ -28,9 +28,9 @@ public class Main extends Application {
     {
         // Construct heroes here, so they are passable as parameters in the javafx scope.
         // we need 4 persistent heroes total, 3 for player to switch around, and 1 to represent an enemy.
-        Hero playerHero1 = new Hero(false,"First Hero name", 100, 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
-        Hero playerHero2 = new Hero(false,"Second Hero name", 100, 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
-        Hero playerHero3 = new Hero(false,"Third Hero name", 100, 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
+        Hero playerHero1 = new Hero(false,"First Hero name", 100, 100, 10, 10, 10, 5, 0, 1, 10000, 0, 0, 0, 66, 200);
+        Hero playerHero2 = new Hero(false,"Second Hero name", 100, 100, 10, 10, 10, 5, 0, 1, 10000, 0, 0, 0, 66, 200);
+        Hero playerHero3 = new Hero(false,"Third Hero name", 100, 100, 10, 10, 10, 5, 0, 1, 10000, 0, 0, 0, 66, 200);
         Hero aiHero = new Hero(false,"AI Hero", 100, 100, 10, 10, 10, 5, 0, 1, 0, 0, 0, 0, 66, 200);
 
 //        now that I am thinking about it, we might need to premake our other classes, too, such as fightscenesetup
