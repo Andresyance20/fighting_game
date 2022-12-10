@@ -171,7 +171,7 @@ public class Hero {
 
 
 
-//    might need to add an active tag to the hero so we know which one to take into the fight scene?
+//    For bug testing
     public void print_hero_info()
     {
         System.out.println("\n");
@@ -192,6 +192,18 @@ public class Hero {
         System.out.println("Weight: " + getWeight());
         System.out.println("\n");
     }
+
+//    For resetting a hero (player or AI) after a win or loss / retry
+    public void reset_hero_full_recovery()
+    {
+        // reset hp
+        this.setCurrenthp(getMaxhp());
+        // set supercharge back down to 0
+        this.setSuperCharge(0);
+        // idk, we'll figure out what else we need when we run into it
+    }
+
+
 
     // some troubleshooting print statements in here from earlier tests
     // hero takes damage when hit with an attack
