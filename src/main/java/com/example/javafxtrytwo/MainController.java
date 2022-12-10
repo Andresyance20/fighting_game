@@ -42,8 +42,6 @@ public class MainController {
         playerHero1 = hero1;
         playerHero2 = hero2;
         playerHero3 = hero3;
-
-        System.out.println(playerHero1.getName() + " From main controller");
     }
 
     // set the stage and scene

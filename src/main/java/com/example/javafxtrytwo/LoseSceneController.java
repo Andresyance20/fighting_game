@@ -15,13 +15,11 @@ public class LoseSceneController {
     public void setToMainMenu(Scene scene, Hero hero) {
         mainScene = scene;
         hero1 = hero;
-        System.out.println(hero1.getName() + " From fightScene controller");
     }
 
     public void setToFightScene(Scene scene, Hero hero) {
         fightScene = scene;
         hero1 = hero;
-        System.out.println(hero1.getName() + " From fightScene controller");
     }
 
     public void openMainMenu(ActionEvent actionEvent)

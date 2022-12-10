@@ -72,7 +72,7 @@ public class HeroSheetController {
         playerHero1.active = true;
         playerHero2.active = false;
         playerHero3.active = false;
-        System.out.println("Hero1: " + playerHero1.getName() + ".\nActive: " + playerHero1.getActive() + ".");
+        System.out.println("\nHero1: " + playerHero1.getName() + ".\nActive: " + playerHero1.getActive() + ".");
         System.out.println("Hero2: " + playerHero2.getActive() + " Hero3: " + playerHero3.getActive());
     }
 
@@ -97,7 +97,7 @@ public class HeroSheetController {
         playerHero1.active = false;
         playerHero2.active = true;
         playerHero3.active = false;
-        System.out.println("Hero2: " + playerHero2.getName() + ".\nActive: " + playerHero2.getActive() + ".");
+        System.out.println("\nHero2: " + playerHero2.getName() + ".\nActive: " + playerHero2.getActive() + ".");
         System.out.println("Hero1: " + playerHero1.getActive() + " Hero3: " + playerHero3.getActive());
     }
     public void loadHeroData3()
@@ -121,7 +121,7 @@ public class HeroSheetController {
         playerHero1.active = false;
         playerHero2.active = false;
         playerHero3.active = true;
-        System.out.println("Hero3: " + playerHero3.getName() + ".\nActive: " + playerHero3.getActive() + ".");
+        System.out.println("\nHero3: " + playerHero3.getName() + ".\nActive: " + playerHero3.getActive() + ".");
         System.out.println("Hero1: " + playerHero2.getActive() + " Hero2: " + playerHero2.getActive());
     }
 
@@ -282,7 +282,7 @@ public class HeroSheetController {
                 playerHero3.setAgility(playerHero3.getAgility() + 1);
                 loadHeroData3();
             }
-            else { System.out.println("Not enough exp! "); }
+            else { System.out.println("Not enough exp! "); } // Add some visual signal?
         } else { System.out.println("No active hero? try to load one by clicking the button "); }
     }
 
