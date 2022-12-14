@@ -20,27 +20,108 @@ public class FightSceneController {
     private Scene loseScene;
     private Scene fightSceneSetup;
 
-    private Hero hero1;
+    private Hero playerHero1;
+    private Hero playerHero2;
+    private Hero playerHero3;
+    private Hero playerActiveHero;
+    private Hero heroAI;
+
+
+
 
     // set data
-    public void setToMainMenu(Scene scene, Hero hero) {
+    public void setToMainMenu(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai) {
         mainScene = scene;
-        hero1 = hero;
+        playerHero1 = hero1;
+        playerHero2 = hero2;
+        playerHero3 = hero3;
+        playerActiveHero = activeHero;
+        heroAI = heroai;
     }
 
-    public void setToLoseScene(Scene scene, Hero hero) {
+    public void setToLoseScene(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai) {
         loseScene = scene;
-        hero1 = hero;
+        playerHero1 = hero1;
+        playerHero2 = hero2;
+        playerHero3 = hero3;
+        playerActiveHero = activeHero;
+        heroAI = heroai;
     }
     // move scene
     // main menu
     public void openMainMenu(ActionEvent actionEvent)
     {
+
+
+        // add some logic to make sure there is an active hero before going to fightscene?
+        if (playerHero1.getActive() == true)
+        {
+            System.out.println("Hero1 is: " + playerHero1.getActive());
+            playerActiveHero = playerHero1;
+        }
+        if (playerHero2.getActive() == true)
+        {
+            System.out.println("Hero2 is: " + playerHero2.getActive());
+            playerActiveHero = playerHero2;
+        }
+        if (playerHero3.getActive() == true)
+        {
+            System.out.println("Hero3 is: " + playerHero3.getActive());
+            playerActiveHero = playerHero3;
+            System.out.println(playerActiveHero.getCurrenthp());
+        }
+
+        setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI);
+
+        System.out.println("\nGrand Test Print");
+        System.out.println("in class: FightSceneController. ");
+        System.out.println("Hero 1 name: " + playerHero1.getName());
+        System.out.println("Hero 1 hp: " + playerHero1.getCurrenthp());
+        System.out.println("Hero 1 active: " + playerHero1.getActive());
+
+        System.out.println("\nHero 2 name: " + playerHero2.getName());
+        System.out.println("Hero 2 hp: " + playerHero2.getCurrenthp());
+        System.out.println("Hero 2 active: " + playerHero2.getActive());
+
+        System.out.println("\nHero 3 name: " + playerHero3.getName());
+        System.out.println("Hero 3 hp: " + playerHero3.getCurrenthp());
+        System.out.println("Hero 3 active: " + playerHero3.getActive());
+
+        System.out.println("\nACTIVEheroobject name: " + playerActiveHero.getName());
+        System.out.println("ACTIVEheroobject hp: " + playerActiveHero.getCurrenthp());
+        System.out.println("ACTIVEheroobject active:  " + playerActiveHero.getActive());
+
+
+
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(mainScene);
     }
     // lose scene
     public void openLoseScene(ActionEvent actionEvent) {
+
+        playerHero1 = playerHero1;
+        playerHero2 = playerHero2;
+        playerHero3 = playerHero3;
+        heroAI = heroAI;
+
+        // add some logic to make sure there is an active hero before going to fightscene?
+        if (playerHero1.getActive() == true)
+        {
+            System.out.println("Hero1 is: " + playerHero1.getActive());
+            playerActiveHero = playerHero1;
+        }
+        if (playerHero2.getActive() == true)
+        {
+            System.out.println("Hero2 is: " + playerHero2.getActive());
+            playerActiveHero = playerHero2;
+        }
+        if (playerHero3.getActive() == true)
+        {
+            System.out.println("Hero3 is: " + playerHero3.getActive());
+            playerActiveHero = playerHero3;
+            System.out.println(playerActiveHero.getCurrenthp());
+        }
+
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(loseScene);
     }
@@ -48,23 +129,36 @@ public class FightSceneController {
     // back to fight scene
 
 
-    // will need to update these to be from the main via new access method of copying data
-
-
-
-    // these are older implementation of transitions that won't persist data
-    // to be updated to new way
-
 
 
 //    some troubleshooting prints
     public void inventoryButtonClick()
     {
-        System.out.println("click registered for inventory");
-        System.out.println(hero1 + " object ID from FightScene Controller"); // print hero object id
-        System.out.println("Hero HP is: " + hero1.getCurrenthp());
-        hero1.setCurrenthp(hero1.getCurrenthp()-1);
-        System.out.println("Hero HP is: " + hero1.getCurrenthp());
+
+        if (playerHero1.getActive() == true)
+        {
+            System.out.println("Hero1 is: " + playerHero1.getActive());
+            playerActiveHero = playerHero1;
+        }
+        if (playerHero2.getActive() == true)
+        {
+            System.out.println("Hero2 is: " + playerHero2.getActive());
+            playerActiveHero = playerHero2;
+        }
+        if (playerHero3.getActive() == true)
+        {
+            System.out.println("Hero3 is: " + playerHero3.getActive());
+            playerActiveHero = playerHero3;
+            System.out.println(playerActiveHero.getCurrenthp());
+        }
+
+        System.out.println("\n\n" + playerActiveHero.getName());
+
+//        System.out.println("click registered for inventory");
+        System.out.println(playerActiveHero + " object ID from FightScene Controller"); // print hero object id
+        System.out.println("Hero HP is: " + playerActiveHero.getCurrenthp());
+        playerActiveHero.setCurrenthp(playerActiveHero.getCurrenthp()-1);
+        System.out.println("Hero HP is: " + playerActiveHero.getCurrenthp());
 
 //        go to inventory of the hero
     }

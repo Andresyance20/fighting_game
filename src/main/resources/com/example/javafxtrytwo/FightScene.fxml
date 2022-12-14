@@ -8,9 +8,9 @@
 
 <!-- the last part of the below line "fx:controller" indicates the controller/scope -->
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxtrytwo.FightSceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxtrytwo.FightSceneController">
    <children>
-      <Label layoutX="580.0" layoutY="55.0" text="FightScene" textAlignment="CENTER" textFill="#bf0000">
+      <Label layoutX="417.0" layoutY="55.0" text="FightScene" textAlignment="CENTER" textFill="#bf0000">
          <font>
             <Font size="25.0" />
          </font>
@@ -19,25 +19,25 @@
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button fx:id="button_inventory" layoutX="113.0" layoutY="489.0" mnemonicParsing="false" onAction="#inventoryButtonClick" text="Inventory">
+      <Button fx:id="button_inventory" layoutX="111.0" layoutY="415.0" mnemonicParsing="false" onAction="#inventoryButtonClick" text="Inventory">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button fx:id="button_action" layoutX="113.0" layoutY="563.0" mnemonicParsing="false" onAction="#actionButtonClick" text="action (attack?)">
+      <Button fx:id="button_action" layoutX="111.0" layoutY="489.0" mnemonicParsing="false" onAction="#actionButtonClick" text="action (attack?)">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button fx:id="button_supermove" layoutX="304.0" layoutY="563.0" mnemonicParsing="false" onAction="#supermoveButtonClick" text="Supermove">
+      <Button fx:id="button_supermove" layoutX="302.0" layoutY="489.0" mnemonicParsing="false" onAction="#supermoveButtonClick" text="Supermove">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="button_surrender" layoutX="614.0" layoutY="644.0" mnemonicParsing="false" onAction="#openLoseScene" text="Surrender">
+      <Button fx:id="button_surrender" layoutX="511.0" layoutY="498.0" mnemonicParsing="false" onAction="#openLoseScene" text="Surrender">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
       <TextField fx:id="txt_p1Hp" layoutX="163.0" layoutY="150.0" promptText="Player 1" text="100" />
-      <TextField fx:id="txt_p2Hp" layoutX="867.0" layoutY="150.0" promptText="Player 2" text="100" />
+      <TextField fx:id="txt_p2Hp" layoutX="704.0" layoutY="150.0" promptText="Player 2" text="100" />
    </children>
 </AnchorPane>
