@@ -86,6 +86,8 @@ public class Main extends Application {
             //    make controllers + fxml files for them.
 
 
+            HeroSheetController heroSheetController = (HeroSheetController) heroSheetLoader.getController();
+            heroSheetController.setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
 
             // injecting first scene into the controller of the second scene
             FightSceneSetupController fightSceneSetupController = (FightSceneSetupController) fightSceneSetupLoader.getController();
@@ -93,7 +95,7 @@ public class Main extends Application {
             // idk if that's the EXACT process, there's a lot of parts to it.
             fightSceneSetupController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
             fightSceneSetupController.setToFightScene(fightSceneScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
-            fightSceneSetupController.setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
+            fightSceneSetupController.setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, heroSheetController);
 //            fightSceneSetupController.updateHeroInfo();
 
 
@@ -107,8 +109,6 @@ public class Main extends Application {
             loseSceneController.setToFightScene(fightSceneScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
 
 
-            HeroSheetController heroSheetController = (HeroSheetController) heroSheetLoader.getController();
-            heroSheetController.setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
 
 
 

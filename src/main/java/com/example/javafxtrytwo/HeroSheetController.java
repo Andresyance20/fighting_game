@@ -39,6 +39,7 @@ public class HeroSheetController {
     // So we should be able to just do if checks to set it to the correct one?
     public void setToFightSceneSetup(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai)
     {
+
         fightSceneSetupScene = scene;
         playerHero1 = hero1;
         playerHero2 = hero2;

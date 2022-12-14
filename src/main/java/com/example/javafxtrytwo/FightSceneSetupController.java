@@ -29,6 +29,7 @@ public class FightSceneSetupController {
     private Hero playerHero3;
     private Hero playerActiveHero;
     private Hero heroAI;
+    private HeroSheetController heroSheetControllernotfrommain;
 
 //    public void setActiveHero()
 //    {
@@ -65,8 +66,9 @@ public class FightSceneSetupController {
         heroAI = heroai;
     }
 
-    public void setToHeroSheet(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai)
+    public void setToHeroSheet(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai, HeroSheetController heroSheetControllernotfrommain1)
     {
+        heroSheetControllernotfrommain = heroSheetControllernotfrommain1;
         heroSheetScene = scene;
         playerHero1 = hero1;
         playerHero2 = hero2;
@@ -187,23 +189,30 @@ public class FightSceneSetupController {
         {
             System.out.println("Hero1 is: " + playerHero1.getActive());
             playerActiveHero = playerHero1;
+
+            heroSheetControllernotfrommain.loadHeroData1();
         }
         if (playerHero2.getActive() == true)
         {
             System.out.println("Hero2 is: " + playerHero2.getActive());
             playerActiveHero = playerHero2;
+
+            heroSheetControllernotfrommain.loadHeroData2();
         }
         if (playerHero3.getActive() == true)
         {
             System.out.println("Hero3 is: " + playerHero3.getActive());
             playerActiveHero = playerHero3;
             System.out.println(playerActiveHero.getCurrenthp());
+
+
+            heroSheetControllernotfrommain.loadHeroData3();
         }
 
 //I would like to call the hero sheet controller and load the hero data of the active hero so it's current data
 //        heroSheetController.load
 
-        setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI);
+        setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, heroSheetControllernotfrommain);
 
 
 
@@ -240,7 +249,7 @@ public class FightSceneSetupController {
 
 
 
-        setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI);
+        setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, heroSheetControllernotfrommain);
 
 
         if (playerHero1.getActive() == true)
