@@ -71,11 +71,11 @@ public class FightSceneController {
 //    some troubleshooting prints
     public void inventoryButtonClick()
     {
-        System.out.println("click registered for inventory");
-        System.out.println(playerHero1 + " object ID from FightScene Controller"); // print hero object id
-        System.out.println("Hero HP is: " + playerHero1.getCurrenthp());
-        playerHero1.setCurrenthp(playerHero1.getCurrenthp()-1);
-        System.out.println("Hero HP is: " + playerHero1.getCurrenthp());
+//        System.out.println("click registered for inventory");
+        System.out.println(playerActiveHero + " object ID from FightScene Controller"); // print hero object id
+        System.out.println("Hero HP is: " + playerActiveHero.getCurrenthp());
+        playerActiveHero.setCurrenthp(playerActiveHero.getCurrenthp()-1);
+        System.out.println("Hero HP is: " + playerActiveHero.getCurrenthp());
 
 //        go to inventory of the hero
     }

@@ -33,12 +33,17 @@ public class HeroSheetController {
     private Hero playerActiveHero;
     private Hero heroAI;
 
+
+    // The only place we change activeHero is here ...
+    // So we should be able to just do if checks to set it to the correct one?
     public void setToFightSceneSetup(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai)
     {
         fightSceneSetupScene = scene;
         playerHero1 = hero1;
         playerHero2 = hero2;
         playerHero3 = hero3;
+
+        // add some logic to make sure there is an active hero before going to fightscene?
         playerActiveHero = activeHero;
         heroAI = heroai;
 
@@ -58,6 +63,7 @@ public class HeroSheetController {
 
     public void loadHeroData1()
     {
+        System.out.println("Start by printing playerActiveHero name: "+ playerActiveHero.getName());
         hero_text_str.setText("Strength: " + playerHero1.getStrength() + ".");
         hero_text_end.setText("Endurance: " + playerHero1.getEndurance() + ".");
         hero_text_agi.setText("Agility: " + playerHero1.getAgility() + ".");
@@ -79,10 +85,23 @@ public class HeroSheetController {
         playerHero3.active = false;
         System.out.println("\nHero1: " + playerHero1.getName() + ".\nActive: " + playerHero1.getActive() + ".");
         System.out.println("Hero2: " + playerHero2.getActive() + " Hero3: " + playerHero3.getActive());
+
+
+
+// testing an "Active" hero ref to make combat easier
+        playerActiveHero = playerHero1;
+        System.out.println("playerActiveHero name: "+ playerActiveHero.getName());
+        System.out.println("playerHero1 name: "+ playerHero1.getName());
+
+
+
+
+
     }
 
     public void loadHeroData2()
     {
+        System.out.println("Start by printing playerActiveHero name: "+ playerActiveHero.getName());
         hero_text_str.setText("Strength: " + playerHero2.getStrength() + ".");
         hero_text_end.setText("Endurance: " + playerHero2.getEndurance() + ".");
         hero_text_agi.setText("Agility: " + playerHero2.getAgility() + ".");
@@ -104,9 +123,18 @@ public class HeroSheetController {
         playerHero3.active = false;
         System.out.println("\nHero2: " + playerHero2.getName() + ".\nActive: " + playerHero2.getActive() + ".");
         System.out.println("Hero1: " + playerHero1.getActive() + " Hero3: " + playerHero3.getActive());
+
+
+// testing an "Active" hero ref to make combat easier
+        playerActiveHero = playerHero2;
+        System.out.println("playerActiveHero name: "+ playerActiveHero.getName());
+        System.out.println("playerHero2 name: "+ playerHero2.getName());
+
+
     }
     public void loadHeroData3()
     {
+        System.out.println("Start by printing playerActiveHero name: "+ playerActiveHero.getName());
         hero_text_str.setText("Strength: " + playerHero3.getStrength() + ".");
         hero_text_end.setText("Endurance: " + playerHero3.getEndurance() + ".");
         hero_text_agi.setText("Agility: " + playerHero3.getAgility() + ".");
@@ -128,6 +156,25 @@ public class HeroSheetController {
         playerHero3.active = true;
         System.out.println("\nHero3: " + playerHero3.getName() + ".\nActive: " + playerHero3.getActive() + ".");
         System.out.println("Hero1: " + playerHero2.getActive() + " Hero2: " + playerHero2.getActive());
+
+
+
+// testing an "Active" hero ref to make combat easier
+        playerActiveHero = playerHero3;
+        System.out.println("playerActiveHero name: "+ playerActiveHero.getName());
+        System.out.println("playerHero3 name: "+ playerHero3.getName());
+
+//        playerHero3.setCurrenthp(playerHero3.getCurrenthp()-1);
+        System.out.println("playerHero3 current hp: " + playerHero3.getCurrenthp());
+
+
+        playerActiveHero.setCurrenthp(playerActiveHero.getCurrenthp()-1);
+        System.out.println("playerActiveHero current hp: " + playerActiveHero.getCurrenthp() + " did not change this one directly");
+
+        System.out.println("After changing the active hero, here is playerHero3's current hp:" + playerHero3.getCurrenthp());
+
+
+
     }
 
     @FXML
