@@ -27,32 +27,52 @@ public class FightSceneSetupController {
     private Hero playerHero1;
     private Hero playerHero2;
     private Hero playerHero3;
+    private Hero playerActiveHero;
+    private Hero heroAI;
+
+//    public void setActiveHero()
+//    {
+//        if (playerHero1.getActive())
+//        {
+//            playerActiveHero = playerHero1;
+//        }
+//    }
 
 
 //  setting data
-    public void setToMainMenu(Scene scene, Hero hero1, Hero hero2, Hero hero3)
+    public void setToMainMenu(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai)
     {
         mainScene = scene;
         playerHero1 = hero1;
         playerHero2 = hero2;
         playerHero3 = hero3;
-
+        playerActiveHero = activeHero;
+        heroAI = heroai;
     }
 
-    public void setToFightScene(Scene scene, Hero hero1, Hero hero2, Hero hero3)
+//    Hero activeHeroPlayer
+    public void setToFightScene(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai)
     {
         fightScene = scene;
+        // would be nice if this works, and we just have to write combat once for any active hero,
+        // and not 3 times to specific hero 1 or hero 2 or 3
+//        activeHero = activeHeroPlayer;
+
         playerHero1 = hero1;
         playerHero2 = hero2;
         playerHero3 = hero3;
+        playerActiveHero = activeHero;
+        heroAI = heroai;
     }
 
-    public void setToHeroSheet(Scene scene, Hero hero1, Hero hero2, Hero hero3)
+    public void setToHeroSheet(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai)
     {
         heroSheetScene = scene;
         playerHero1 = hero1;
         playerHero2 = hero2;
         playerHero3 = hero3;
+        playerActiveHero = activeHero;
+        heroAI = heroai;
     }
 
 

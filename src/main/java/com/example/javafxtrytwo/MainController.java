@@ -31,17 +31,21 @@ public class MainController {
     private Hero playerHero1;
     private Hero playerHero2;
     private Hero playerHero3;
+    private Hero playerActiveHero;
+    private Hero heroAI;
 
     Stage stage;
 
 
     // set the data
-    public void setToFightSceneSetup(Scene scene, Hero hero1, Hero hero2, Hero hero3)
+    public void setToFightSceneSetup(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai)
     {
         fightSceneSetupScene = scene;
         playerHero1 = hero1;
         playerHero2 = hero2;
         playerHero3 = hero3;
+        playerActiveHero = activeHero;
+        heroAI = heroai;
     }
 
     // set the stage and scene

@@ -20,17 +20,35 @@ public class FightSceneController {
     private Scene loseScene;
     private Scene fightSceneSetup;
 
-    private Hero hero1;
+    private Hero playerHero1;
+    private Hero playerHero2;
+    private Hero playerHero3;
+    private Hero playerActiveHero;
+    private Hero heroAI;
+
+
+
+
+
+
 
     // set data
-    public void setToMainMenu(Scene scene, Hero hero) {
+    public void setToMainMenu(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai) {
         mainScene = scene;
-        hero1 = hero;
+        playerHero1 = hero1;
+        playerHero2 = hero2;
+        playerHero3 = hero3;
+        playerActiveHero = activeHero;
+        heroAI = heroai;
     }
 
-    public void setToLoseScene(Scene scene, Hero hero) {
+    public void setToLoseScene(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai) {
         loseScene = scene;
-        hero1 = hero;
+        playerHero1 = hero1;
+        playerHero2 = hero2;
+        playerHero3 = hero3;
+        playerActiveHero = activeHero;
+        heroAI = heroai;
     }
     // move scene
     // main menu
@@ -48,23 +66,16 @@ public class FightSceneController {
     // back to fight scene
 
 
-    // will need to update these to be from the main via new access method of copying data
-
-
-
-    // these are older implementation of transitions that won't persist data
-    // to be updated to new way
-
 
 
 //    some troubleshooting prints
     public void inventoryButtonClick()
     {
         System.out.println("click registered for inventory");
-        System.out.println(hero1 + " object ID from FightScene Controller"); // print hero object id
-        System.out.println("Hero HP is: " + hero1.getCurrenthp());
-        hero1.setCurrenthp(hero1.getCurrenthp()-1);
-        System.out.println("Hero HP is: " + hero1.getCurrenthp());
+        System.out.println(playerHero1 + " object ID from FightScene Controller"); // print hero object id
+        System.out.println("Hero HP is: " + playerHero1.getCurrenthp());
+        playerHero1.setCurrenthp(playerHero1.getCurrenthp()-1);
+        System.out.println("Hero HP is: " + playerHero1.getCurrenthp());
 
 //        go to inventory of the hero
     }

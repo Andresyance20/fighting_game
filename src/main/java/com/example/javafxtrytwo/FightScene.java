@@ -1,6 +1,8 @@
 package com.example.javafxtrytwo;
 
 
+import javafx.scene.Scene;
+
 public class FightScene {
 
 // Need to get basics done first: Simple turn logic (attack, calculate, pass turn to enemy) / enemy AI response)
@@ -18,6 +20,19 @@ public class FightScene {
     double heroNameDisplay;
     double roundWinCount;
 
+
+    private Hero activeHero;
+
+//    public void setActiveHero(Hero hero1)
+//    {
+//       Hero activeHero = hero1;
+//    }
+
+//    add ai hero
+    public FightScene(Hero activeHero)
+    {
+        this.activeHero = activeHero;
+    }
 
 
 
