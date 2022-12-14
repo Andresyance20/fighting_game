@@ -75,6 +75,11 @@ public class Main extends Application {
             Parent heroSheetRoot = heroSheetLoader.load();
             Scene heroSheetScene = new Scene(heroSheetRoot, 1080, 600);
 
+           /* FXMLLoader ResultLoader = new FXMLLoader(getClass().getResource("Result.fxml"));
+            Parent ResultRoot = ResultLoader.load();
+            Scene ResultScene = new Scene(ResultRoot, 1080, 600);
+*/
+
 
 
             // These are how we pass data to the controller classes, check the controller classes to see the data copy
@@ -111,9 +116,12 @@ public class Main extends Application {
             HeroSheetController heroSheetController = (HeroSheetController) heroSheetLoader.getController();
             heroSheetController.setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3);
 
+            //ResultController ResultController = (ResultController) ResultLoader.getController();
 
+           /* ResultController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3);
+            ResultController.setToFightScene(fightSceneScene, playerHero1, playerHero2, playerHero3);
 
-
+*/
 
             primaryStage.setTitle("Way of the Fist");
             primaryStage.setResizable(true);
