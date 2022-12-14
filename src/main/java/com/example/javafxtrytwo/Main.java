@@ -112,8 +112,6 @@ public class Main extends Application {
 
 
 
-
-
             primaryStage.setTitle("Way of the Fist");
             primaryStage.setResizable(true);
 //    scene is a "drawing surface for graphical content and a container for nodes"

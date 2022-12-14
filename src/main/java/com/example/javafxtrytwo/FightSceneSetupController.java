@@ -76,9 +76,53 @@ public class FightSceneSetupController {
     }
 
 
+
+
     //  moving scenes/stages
     public void openMainMenu(ActionEvent actionEvent)
     {
+
+        // add some logic to make sure there is an active hero before going to fightscene?
+        if (playerHero1.getActive() == true)
+        {
+            System.out.println("Hero1 is: " + playerHero1.getActive());
+            playerActiveHero = playerHero1;
+        }
+        if (playerHero2.getActive() == true)
+        {
+            System.out.println("Hero2 is: " + playerHero2.getActive());
+            playerActiveHero = playerHero2;
+        }
+        if (playerHero3.getActive() == true)
+        {
+            System.out.println("Hero3 is: " + playerHero3.getActive());
+            playerActiveHero = playerHero3;
+            System.out.println(playerActiveHero.getCurrenthp());
+        }
+
+        setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI);
+
+        System.out.println("\nGrand Test Print");
+        System.out.println("in class: FightSceneSetupController. ");
+        System.out.println("Hero 1 name: " + playerHero1.getName());
+        System.out.println("Hero 1 hp: " + playerHero1.getCurrenthp());
+        System.out.println("Hero 1 active: " + playerHero1.getActive());
+
+        System.out.println("\nHero 2 name: " + playerHero2.getName());
+        System.out.println("Hero 2 hp: " + playerHero2.getCurrenthp());
+        System.out.println("Hero 2 active: " + playerHero2.getActive());
+
+        System.out.println("\nHero 3 name: " + playerHero3.getName());
+        System.out.println("Hero 3 hp: " + playerHero3.getCurrenthp());
+        System.out.println("Hero 3 active: " + playerHero3.getActive());
+
+
+
+        System.out.println("\nACTIVEheroobject name: " + playerActiveHero.getName());
+        System.out.println("ACTIVEheroobject hp: " + playerActiveHero.getCurrenthp());
+        System.out.println("ACTIVEheroobject active:  " + playerActiveHero.getActive());
+
+
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(mainScene);
     }
@@ -86,6 +130,49 @@ public class FightSceneSetupController {
 
     public void openFightScene(ActionEvent actionEvent)
     {
+
+        // add some logic to make sure there is an active hero before going to fightscene?
+        if (playerHero1.getActive() == true)
+        {
+            System.out.println("Hero1 is: " + playerHero1.getActive());
+            playerActiveHero = playerHero1;
+        }
+        if (playerHero2.getActive() == true)
+        {
+            System.out.println("Hero2 is: " + playerHero2.getActive());
+            playerActiveHero = playerHero2;
+        }
+        if (playerHero3.getActive() == true)
+        {
+            System.out.println("Hero3 is: " + playerHero3.getActive());
+            playerActiveHero = playerHero3;
+            System.out.println(playerActiveHero.getCurrenthp());
+        }
+
+        setToFightScene(fightScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI);
+
+
+
+        System.out.println("\nGrand Test Print");
+        System.out.println("in class: FightSceneSetupController. ");
+        System.out.println("Hero 1 name: " + playerHero1.getName());
+        System.out.println("Hero 1 hp: " + playerHero1.getCurrenthp());
+        System.out.println("Hero 1 active: " + playerHero1.getActive());
+
+        System.out.println("\nHero 2 name: " + playerHero2.getName());
+        System.out.println("Hero 2 hp: " + playerHero2.getCurrenthp());
+        System.out.println("Hero 2 active: " + playerHero2.getActive());
+
+        System.out.println("\nHero 3 name: " + playerHero3.getName());
+        System.out.println("Hero 3 hp: " + playerHero3.getCurrenthp());
+        System.out.println("Hero 3 active: " + playerHero3.getActive());
+
+
+        System.out.println("\nACTIVEheroobject name: " + playerActiveHero.getName());
+        System.out.println("ACTIVEheroobject hp: " + playerActiveHero.getCurrenthp());
+        System.out.println("ACTIVEheroobject active:  " + playerActiveHero.getActive());
+
+
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(fightScene);
 
@@ -95,6 +182,31 @@ public class FightSceneSetupController {
 
     public void openHeroSheetScene(ActionEvent actionEvent)
     {
+        // add some logic to make sure there is an active hero before going to fightscene?
+        if (playerHero1.getActive() == true)
+        {
+            System.out.println("Hero1 is: " + playerHero1.getActive());
+            playerActiveHero = playerHero1;
+        }
+        if (playerHero2.getActive() == true)
+        {
+            System.out.println("Hero2 is: " + playerHero2.getActive());
+            playerActiveHero = playerHero2;
+        }
+        if (playerHero3.getActive() == true)
+        {
+            System.out.println("Hero3 is: " + playerHero3.getActive());
+            playerActiveHero = playerHero3;
+            System.out.println(playerActiveHero.getCurrenthp());
+        }
+
+//I would like to call the hero sheet controller and load the hero data of the active hero so it's current data
+//        heroSheetController.load
+
+        setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI);
+
+
+
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 //        how to set active hero?
 //        button_inspect_heroes.setText(playerHero1.getName());
@@ -125,7 +237,35 @@ public class FightSceneSetupController {
 
     @FXML
     protected void difficultyButtonClick() {
-        System.out.println("click registered for difficulty");
+
+
+
+        setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI);
+
+
+        if (playerHero1.getActive() == true)
+        {
+            System.out.println("Hero1 is: " + playerHero1.getActive());
+            playerActiveHero = playerHero1;
+        }
+        if (playerHero2.getActive() == true)
+        {
+            System.out.println("Hero2 is: " + playerHero2.getActive());
+            playerActiveHero = playerHero2;
+        }
+        if (playerHero3.getActive() == true)
+        {
+            System.out.println("Hero3 is: " + playerHero3.getActive());
+            playerActiveHero = playerHero3;
+            System.out.println(playerActiveHero.getCurrenthp());
+        }
+
+
+        // there seems to be a delay before it updates still ?
+        System.out.println("Hero3 name: " + playerHero3.getName());
+        System.out.println("playerActiveHero name: " + playerActiveHero.getName());
+
+//        System.out.println("click registered for difficulty");
 
         // rotate difficulty setting on click easy -> hard
     }

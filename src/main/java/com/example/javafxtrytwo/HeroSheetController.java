@@ -34,6 +34,7 @@ public class HeroSheetController {
     private Hero heroAI;
 
 
+//    These sets are only the initial setting of data.
     // The only place we change activeHero is here ...
     // So we should be able to just do if checks to set it to the correct one?
     public void setToFightSceneSetup(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai)
@@ -42,15 +43,55 @@ public class HeroSheetController {
         playerHero1 = hero1;
         playerHero2 = hero2;
         playerHero3 = hero3;
-
-        // add some logic to make sure there is an active hero before going to fightscene?
         playerActiveHero = activeHero;
         heroAI = heroai;
-
     }
 
+    // here is where we can update the data we pass between scenes
     public void openFightSceneSetup(ActionEvent actionEvent)
     {
+                // add some logic to make sure there is an active hero before going to fightscene?
+        if (playerHero1.getActive() == true)
+        {
+            System.out.println("Hero1 is: " + playerHero1.getActive());
+            playerActiveHero = playerHero1;
+        }
+        if (playerHero2.getActive() == true)
+        {
+            System.out.println("Hero2 is: " + playerHero2.getActive());
+            playerActiveHero = playerHero2;
+        }
+        if (playerHero3.getActive() == true)
+        {
+            System.out.println("Hero3 is: " + playerHero3.getActive());
+            playerActiveHero = playerHero3;
+            System.out.println(playerActiveHero.getCurrenthp());
+        }
+
+        setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI);
+
+
+
+
+        System.out.println("\nGrand Test Print");
+        System.out.println("in class: HeroSheetController. ");
+        System.out.println("Hero 1 name: " + playerHero1.getName());
+        System.out.println("Hero 1 hp: " + playerHero1.getCurrenthp());
+        System.out.println("Hero 1 active: " + playerHero1.getActive());
+
+        System.out.println("\nHero 2 name: " + playerHero2.getName());
+        System.out.println("Hero 2 hp: " + playerHero2.getCurrenthp());
+        System.out.println("Hero 2 active: " + playerHero2.getActive());
+
+        System.out.println("\nHero 3 name: " + playerHero3.getName());
+        System.out.println("Hero 3 hp: " + playerHero3.getCurrenthp());
+        System.out.println("Hero 3 active: " + playerHero3.getActive());
+
+        System.out.println("\nACTIVEheroobject name: " + playerActiveHero.getName());
+        System.out.println("ACTIVEheroobject hp: " + playerActiveHero.getCurrenthp());
+        System.out.println("ACTIVEheroobject active:  " + playerActiveHero.getActive());
+
+
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(fightSceneSetupScene);
     }
@@ -61,8 +102,27 @@ public class HeroSheetController {
 
 
 
+
     public void loadHeroData1()
     {
+
+        if (playerHero1.getActive() == true)
+        {
+            System.out.println("Hero1 is: " + playerHero1.getActive());
+            playerActiveHero = playerHero1;
+        }
+        if (playerHero2.getActive() == true)
+        {
+            System.out.println("Hero2 is: " + playerHero2.getActive());
+            playerActiveHero = playerHero2;
+        }
+        if (playerHero3.getActive() == true)
+        {
+            System.out.println("Hero3 is: " + playerHero3.getActive());
+            playerActiveHero = playerHero3;
+            System.out.println(playerActiveHero.getCurrenthp());
+        }
+
         System.out.println("Start by printing playerActiveHero name: "+ playerActiveHero.getName());
         hero_text_str.setText("Strength: " + playerHero1.getStrength() + ".");
         hero_text_end.setText("Endurance: " + playerHero1.getEndurance() + ".");
@@ -83,13 +143,15 @@ public class HeroSheetController {
         playerHero1.active = true;
         playerHero2.active = false;
         playerHero3.active = false;
-        System.out.println("\nHero1: " + playerHero1.getName() + ".\nActive: " + playerHero1.getActive() + ".");
-        System.out.println("Hero2: " + playerHero2.getActive() + " Hero3: " + playerHero3.getActive());
+//        System.out.println("\nHero1: " + playerHero1.getName() + ".\nActive: " + playerHero1.getActive() + ".");
+//        System.out.println("Hero2: " + playerHero2.getActive() + " Hero3: " + playerHero3.getActive());
 
 
 
 // testing an "Active" hero ref to make combat easier
         playerActiveHero = playerHero1;
+
+
         System.out.println("playerActiveHero name: "+ playerActiveHero.getName());
         System.out.println("playerHero1 name: "+ playerHero1.getName());
 
@@ -101,6 +163,23 @@ public class HeroSheetController {
 
     public void loadHeroData2()
     {
+        if (playerHero1.getActive() == true)
+        {
+            System.out.println("Hero1 is: " + playerHero1.getActive());
+            playerActiveHero = playerHero1;
+        }
+        if (playerHero2.getActive() == true)
+        {
+            System.out.println("Hero2 is: " + playerHero2.getActive());
+            playerActiveHero = playerHero2;
+        }
+        if (playerHero3.getActive() == true)
+        {
+            System.out.println("Hero3 is: " + playerHero3.getActive());
+            playerActiveHero = playerHero3;
+            System.out.println(playerActiveHero.getCurrenthp());
+        }
+
         System.out.println("Start by printing playerActiveHero name: "+ playerActiveHero.getName());
         hero_text_str.setText("Strength: " + playerHero2.getStrength() + ".");
         hero_text_end.setText("Endurance: " + playerHero2.getEndurance() + ".");
@@ -121,8 +200,8 @@ public class HeroSheetController {
         playerHero1.active = false;
         playerHero2.active = true;
         playerHero3.active = false;
-        System.out.println("\nHero2: " + playerHero2.getName() + ".\nActive: " + playerHero2.getActive() + ".");
-        System.out.println("Hero1: " + playerHero1.getActive() + " Hero3: " + playerHero3.getActive());
+//        System.out.println("\nHero2: " + playerHero2.getName() + ".\nActive: " + playerHero2.getActive() + ".");
+//        System.out.println("Hero1: " + playerHero1.getActive() + " Hero3: " + playerHero3.getActive());
 
 
 // testing an "Active" hero ref to make combat easier
@@ -134,6 +213,26 @@ public class HeroSheetController {
     }
     public void loadHeroData3()
     {
+
+
+        if (playerHero1.getActive() == true)
+        {
+            System.out.println("Hero1 is: " + playerHero1.getActive());
+            playerActiveHero = playerHero1;
+        }
+        if (playerHero2.getActive() == true)
+        {
+            System.out.println("Hero2 is: " + playerHero2.getActive());
+            playerActiveHero = playerHero2;
+        }
+        if (playerHero3.getActive() == true)
+        {
+            System.out.println("Hero3 is: " + playerHero3.getActive());
+            playerActiveHero = playerHero3;
+            System.out.println(playerActiveHero.getCurrenthp());
+        }
+
+
         System.out.println("Start by printing playerActiveHero name: "+ playerActiveHero.getName());
         hero_text_str.setText("Strength: " + playerHero3.getStrength() + ".");
         hero_text_end.setText("Endurance: " + playerHero3.getEndurance() + ".");
@@ -154,8 +253,8 @@ public class HeroSheetController {
         playerHero1.active = false;
         playerHero2.active = false;
         playerHero3.active = true;
-        System.out.println("\nHero3: " + playerHero3.getName() + ".\nActive: " + playerHero3.getActive() + ".");
-        System.out.println("Hero1: " + playerHero2.getActive() + " Hero2: " + playerHero2.getActive());
+//        System.out.println("\nHero3: " + playerHero3.getName() + ".\nActive: " + playerHero3.getActive() + ".");
+//        System.out.println("Hero1: " + playerHero2.getActive() + " Hero2: " + playerHero2.getActive());
 
 
 
