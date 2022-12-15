@@ -74,6 +74,10 @@ public class Main extends Application {
             Parent heroSheetRoot = heroSheetLoader.load();
             Scene heroSheetScene = new Scene(heroSheetRoot, 1080, 600);
 
+            FXMLLoader shopLoader = new FXMLLoader(getClass().getResource("ShopScene.fxml"));
+            Parent shopRoot = shopLoader.load();
+            Scene shopScene = new Scene(shopRoot, 1080, 600);
+
            /* FXMLLoader ResultLoader = new FXMLLoader(getClass().getResource("Result.fxml"));
             Parent ResultRoot = ResultLoader.load();
             Scene ResultScene = new Scene(ResultRoot, 1080, 600);
@@ -85,6 +89,7 @@ public class Main extends Application {
             // injecting second scene into the controller of the first scene
             MainController mainController = (MainController) mainLoader.getController();
             mainController.setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
+            mainController.setToShop(shopScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
             //    To do:
             //    add logic for switchToShopScene (will require heros / inventory)
             //    add logic for switchToOptionScene (idk if we need to pass references here? maybe because it might lose reference on reenter? I am unsure)
@@ -112,6 +117,9 @@ public class Main extends Application {
             LoseSceneController loseSceneController = (LoseSceneController) loseSceneLoader.getController();
             loseSceneController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
             loseSceneController.setToFightScene(fightSceneScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
+
+            ShopController shopController = (ShopController) shopLoader.getController();
+            shopController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
 
             //ResultController ResultController = (ResultController) ResultLoader.getController();
 

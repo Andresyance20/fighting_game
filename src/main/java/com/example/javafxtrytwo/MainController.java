@@ -28,6 +28,7 @@ public class MainController {
 
     // make the scene and hero in here but we copy data into them (via methods here) from the main when we call this MainController.
     private Scene fightSceneSetupScene;
+    private Scene shopScene;
     private Hero playerHero1;
     private Hero playerHero2;
     private Hero playerHero3;
@@ -47,6 +48,15 @@ public class MainController {
         playerActiveHero = activeHero;
         heroAI = heroai;
 
+    }
+
+    public void setToShop (Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai) {
+        shopScene = scene;
+        playerHero1 = hero1;
+        playerHero2 = hero2;
+        playerHero3 = hero3;
+        playerActiveHero = activeHero;
+        heroAI = heroai;
     }
 
     // set the stage and scene
@@ -99,6 +109,53 @@ public class MainController {
         primaryStage.setScene(fightSceneSetupScene);
     }
 
+    public void openShop(ActionEvent actionEvent)
+    {
+        // add some logic to make sure there is an active hero before going to fightscene?
+        if (playerHero1.getActive() == true)
+        {
+            System.out.println("Hero1 is: " + playerHero1.getActive());
+            playerActiveHero = playerHero1;
+        }
+        if (playerHero2.getActive() == true)
+        {
+            System.out.println("Hero2 is: " + playerHero2.getActive());
+            playerActiveHero = playerHero2;
+        }
+        if (playerHero3.getActive() == true)
+        {
+            System.out.println("Hero3 is: " + playerHero3.getActive());
+            playerActiveHero = playerHero3;
+            System.out.println(playerActiveHero.getCurrenthp());
+        }
+
+
+        setToShop(shopScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI);
+
+
+        System.out.println("\nGrand Test Print");
+        System.out.println("in class: MainController. ");
+        System.out.println("Hero 1 name: " + playerHero1.getName());
+        System.out.println("Hero 1 hp: " + playerHero1.getCurrenthp());
+        System.out.println("Hero 1 active: " + playerHero1.getActive());
+
+        System.out.println("\nHero 2 name: " + playerHero2.getName());
+        System.out.println("Hero 2 hp: " + playerHero2.getCurrenthp());
+        System.out.println("Hero 2 active: " + playerHero2.getActive());
+
+        System.out.println("\nHero 3 name: " + playerHero3.getName());
+        System.out.println("Hero 3 hp: " + playerHero3.getCurrenthp());
+        System.out.println("Hero 3 active: " + playerHero3.getActive());
+
+
+        System.out.println("\nACTIVEheroobject name: " + playerActiveHero.getName());
+        System.out.println("ACTIVEheroobject hp: " + playerActiveHero.getCurrenthp());
+        System.out.println("ACTIVEheroobject active:  " + playerActiveHero.getActive());
+
+
+        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        primaryStage.setScene(shopScene);
+    }
 
 
 //    was testing initialize, if you need any data, you can load it before the view is onscreen.

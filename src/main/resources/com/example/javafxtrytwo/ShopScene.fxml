@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxtrytwo.ShopController">
+   <children>
+      <Label layoutX="446.0" layoutY="37.0" text="Welcome to the Shop">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="501.0" layoutY="219.0" text="Select Shop Type">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="button_potionShop" layoutX="307.0" layoutY="473.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="115.0" text="Potions">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="button_abilityShop" layoutX="704.0" layoutY="472.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="121.0" text="Abilities">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="button_shopToMenu" layoutX="65.0" layoutY="27.0" mnemonicParsing="false" onAction="#openMainMenu" prefHeight="56.0" prefWidth="115.0" text="Back to Menu">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

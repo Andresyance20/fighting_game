@@ -29,7 +29,7 @@
          <Font size="18.0" />
       </font>
    </Button>
-    <Button fx:id="button_shop" onAction="#shopButtonClick" text="Shop" textFill="#2129a1">
+    <Button fx:id="button_shop" onAction="#openShop" text="Shop" textFill="#2129a1">
       <font>
          <Font size="18.0" />
       </font>
