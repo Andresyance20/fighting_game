@@ -33,6 +33,13 @@ public class Main extends Application {
         Hero playerActiveHero = new Hero(false,"Default active Hero", 100, 100, 10, 10, 10, 5, 5, 0, 1, 0, 0, 0, 0, 66, 200);
         Hero aiHero = new Hero(false,"AI Hero", 100, 100, 10, 10, 10, 5, 5, 0, 1, 0, 0, 0, 0, 66, 200);
 
+        // default money supply
+        int money = 500;
+
+        // default potion count
+        int hpPotionCount = 0;
+        int attackPotionCount = 0;
+        int superPotionCount = 0;
 
         // add background
         /*Image image  = new Image("background2.jpg");

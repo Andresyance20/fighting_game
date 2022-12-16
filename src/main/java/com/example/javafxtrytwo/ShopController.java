@@ -19,7 +19,17 @@ public class ShopController {
     private Hero playerHero3;
     private Hero playerActiveHero;
     private Hero heroAI;
+    private int money;
+    private int hpPotionCount;
+    private int attackPotionCount;
+    private int superPotionCount;
 
+
+    // setting money to textfield
+
+    public void setText_money(TextField text_money) {
+        this.text_money = text_money;
+    }
 
     public void setToMainMenu(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai) {
         mainScene = scene;
@@ -84,4 +94,71 @@ public class ShopController {
     public Button button_attackPotion;
     public Button button_superPotion;
     public TextField text_money;
+
+    // potion buttons clicked
+    @FXML
+    protected void hpPotionClick (ActionEvent actionEvent)
+    {
+        int hpCost = 100;
+        if (money >= hpCost)
+        {
+            Alert  alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirm Purchase");
+            alert.setHeaderText("Ready to buy Health Potion");
+            alert.setContentText("Confirm Purchase?");
+            if(alert.showAndWait().get() == ButtonType.OK)
+            {
+                money -= hpCost;
+                hpPotionCount++;
+                System.out.println("Money: " + money);
+                System.out.println("Number of Health Potions: " + hpPotionCount);
+            }
+        }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Not Enough Money");
+            alert.setHeaderText("You don't have enough money");
+        }
+    }
+    @FXML
+    protected void attackPotionClick (ActionEvent actionEvent) {
+        int attackCost = 100;
+        if (money >= attackCost) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirm Purchase");
+            alert.setHeaderText("Ready to buy Attack Potion");
+            alert.setContentText("Confirm Purchase?");
+            if (alert.showAndWait().get() == ButtonType.OK) {
+                money -= attackCost;
+                attackPotionCount++;
+                System.out.println("Money: " + money);
+                System.out.println("Number of Attack Potions: " + attackPotionCount);
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Not Enough Money");
+            alert.setHeaderText("You don't have enough money");
+        }
+    }
+    @FXML
+    protected void superPotionClick (ActionEvent actionEvent) {
+        int superCost = 300;
+        if (money >= superCost) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirm Purchase");
+            alert.setHeaderText("Ready to buy Super Potion");
+            alert.setContentText("Confirm Purchase?");
+            if (alert.showAndWait().get() == ButtonType.OK) {
+                money -= superCost;
+                superPotionCount++;
+                System.out.println("Money: " + money);
+                System.out.println("Number of Super Potions: " + superPotionCount);
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Not Enough Money");
+            alert.setHeaderText("You don't have enough money");
+        }
+    }
 }
