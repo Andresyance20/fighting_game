@@ -1,5 +1,7 @@
 package com.example.javafxtrytwo;
 
+import java.util.Random;
+
 public class Hero {
 
     boolean active;
@@ -12,7 +14,7 @@ public class Hero {
     double agility;
 
 //    maybe dont need atk dmg if we're handling that in ability class, we can just use the 3 stats, Str, End, Agi for calculations?
-    double atkDmg;
+    double attackDamage;
 //    yeh it might make more sense to have block be an ability (like reduce/absorb dmg and build up super gauge?).
     double blockAmount;
 //    ok but i think dodge chance makes sense to keep here based on ability as it is a reactive action, not an active action.
@@ -41,7 +43,7 @@ public class Hero {
 // we handle these somehow in abilities?
 //    double atkDmg,
 //    double blockAmount,
-    public Hero(boolean active, String name, double currenthp, double maxhp, double strength, double endurance, double agility,
+    public Hero(boolean active, String name, double currenthp, double maxhp, double strength, double endurance, double agility, double attackDamage,
                 double dodge, double superCharge, double position, double experience,
                 double money, double victoryCount, double lossCount, double height, double weight)
     {
@@ -52,7 +54,7 @@ public class Hero {
         this.strength = strength;
         this.endurance = endurance;
         this.agility = agility;
-//        this.atkDmg = strength + (agility / 2);
+        this.attackDamage = attackDamage;
 //        this.blockAmount = blockAmount;
         this.dodge = dodge;
         this.superCharge = superCharge;
@@ -91,6 +93,10 @@ public class Hero {
     }
     public double getAgility() {
         return agility;
+    }
+    public double getAttackDamage()
+    {
+        return attackDamage;
     }
     public double getDodge() {
         return dodge;
@@ -131,6 +137,10 @@ public class Hero {
     public void setCurrenthp(double currenthp) {
         this.currenthp = currenthp;
     }
+    public void setMaxhp(double maxhp)
+    {
+        this.maxhp = maxhp;
+    }
     public void setStrength(double strength) {
         this.strength = strength;
     }
@@ -139,6 +149,10 @@ public class Hero {
     }
     public void setAgility(double agility) {
         this.agility = agility;
+    }
+    public void setAttackDamage(double attack)
+    {
+        this.attackDamage = attack;
     }
     public void setDodge(double dodge) {
         this.dodge = dodge;
@@ -181,6 +195,7 @@ public class Hero {
         System.out.println("Strength: " + getStrength());
         System.out.println("Endurance: " + getEndurance());
         System.out.println("Agility: " + getAgility());
+        System.out.println("Attack: " + getAttackDamage());
         System.out.println("Dodge Chance: " + getDodge() + "%");
         System.out.println("Supercharge: " + getSuperCharge() + "% out of 100%" );
         System.out.println("Position " + getPosition()); // crouching, standing, jumping?
@@ -202,6 +217,72 @@ public class Hero {
         this.setSuperCharge(0);
         // idk, we'll figure out what else we need when we run into it
     }
+
+
+
+// recalculate stat results if any stat changes
+// if player increases endurance, see if their hp should go up.
+    public void updatehp()
+    {
+        this.setMaxhp((this.getEndurance() + (this.getStrength() / 2)) * 10);
+        this.setCurrenthp(this.getMaxhp());
+    }
+    public void updateDodge()
+    {
+        this.setDodge(this.getAgility() + (this.getEndurance() / 2) * 0.1);
+    }
+    // i think we just need an atk method for now, can change if abilities get made
+    public void updateAttack()
+    {
+//        this.set
+
+
+    }
+
+    public void updateAllStats()
+    {
+        updatehp();
+        updateDodge();
+        updateAttack();
+    }
+
+
+
+// For AI hero to set stats
+// some RNG for spice?
+    public void setAIdifficultry(String difficulty)
+    {
+        Random rng = new Random();
+        if (difficulty.equals("normal"))
+        {
+//            set the stats for AIhero.
+            this.setStrength(10 + rng.nextDouble(5));
+            this.setEndurance(10 + rng.nextDouble(5));
+            this.setAgility(10 + rng.nextDouble(5));
+
+
+//            hp = (endurance + (strength / 2)) * 10
+            this.setMaxhp((this.getEndurance() + (this.getStrength() / 2)) * 10);
+            this.setCurrenthp(this.getMaxhp());
+
+//            just off top of elijahs head
+//            dodge = agility + (endurance/2) * 0.1
+            this.setDodge(this.getAgility() + (this.getEndurance() / 2) * 0.1);
+//            we can grab these numbers from AI and simply give to the playerActiveHero if they win
+            this.setExperience(100 + rng.nextDouble(25));
+            this.setMoney(100 + rng.nextDouble(25));
+
+
+
+        }
+        else if (difficulty.equals("hard"))
+        {
+
+
+        }
+
+    }
+
 
 
 
