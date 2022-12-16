@@ -13,11 +13,11 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <Button fx:id="button_healthPotion" layoutX="163.0" layoutY="473.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="115.0" text="Health">
+      <Button fx:id="button_healthPotion" layoutX="259.0" layoutY="473.0" mnemonicParsing="false" onAction="#hpPotionClick" prefHeight="56.0" prefWidth="115.0" text="\$100">
          <font>
             <Font size="15.0" />
          </font></Button>
-      <Button fx:id="button_attackPotion" layoutX="375.0" layoutY="473.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="121.0" text="Attack">
+      <Button fx:id="button_attackPotion" layoutX="479.0" layoutY="473.0" mnemonicParsing="false" onAction="#attackPotionClick" prefHeight="55.0" prefWidth="121.0" text="\$100">
          <font>
             <Font size="15.0" />
          </font></Button>
@@ -36,16 +36,26 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <TextField editable="false" layoutX="890.0" layoutY="42.0" />
-      <Button fx:id="button_defensePotion" layoutX="607.0" layoutY="473.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="121.0" text="Defense">
+      <TextField fx:id="text_money" editable="false" layoutX="890.0" layoutY="42.0" />
+      <Button fx:id="button_superPotion" layoutX="705.0" layoutY="473.0" mnemonicParsing="false" onAction="#superPotionClick" prefHeight="55.0" prefWidth="121.0" text="\$300">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="button_superPotion" layoutX="810.0" layoutY="473.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="121.0" text="Super Meter">
+      <Label layoutX="280.0" layoutY="409.0" text="Health">
          <font>
-            <Font size="15.0" />
+            <Font size="25.0" />
          </font>
-      </Button>
+      </Label>
+      <Label layoutX="504.0" layoutY="409.0" text="Attack">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="697.0" layoutY="409.0" text="Super Meter">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
