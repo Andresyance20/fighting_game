@@ -215,6 +215,7 @@ public class Hero {
         this.setCurrenthp(getMaxhp());
         // set supercharge back down to 0
         this.setSuperCharge(0);
+        updateAllStats();
         // idk, we'll figure out what else we need when we run into it
     }
 
@@ -222,21 +223,23 @@ public class Hero {
 
 // recalculate stat results if any stat changes
 // if player increases endurance, see if their hp should go up.
+// hp = (endurance + (strength / 2)) * 10
     public void updatehp()
     {
         this.setMaxhp((this.getEndurance() + (this.getStrength() / 2)) * 10);
         this.setCurrenthp(this.getMaxhp());
     }
+
+//    dodge = agility + (endurance/2) * 0.1
     public void updateDodge()
     {
         this.setDodge(this.getAgility() + (this.getEndurance() / 2) * 0.1);
     }
-    // i think we just need an atk method for now, can change if abilities get made
+
+//    i think we just need an atk method for now, can change if abilities get made
     public void updateAttack()
     {
-//        this.set
-
-
+        this.setAttackDamage(this.getStrength() + (this.getAgility() / 2) * 0.4);
     }
 
     public void updateAllStats()
@@ -255,35 +258,44 @@ public class Hero {
         Random rng = new Random();
         if (difficulty.equals("normal"))
         {
-//            set the stats for AIhero.
-            this.setStrength(10 + rng.nextDouble(5));
-            this.setEndurance(10 + rng.nextDouble(5));
-            this.setAgility(10 + rng.nextDouble(5));
+//  set the stats for AIhero.
+            this.setStrength(10 + rng.nextDouble(7));
+            this.setEndurance(10 + rng.nextDouble(7));
+            this.setAgility(10 + rng.nextDouble(7));
 
-
-//            hp = (endurance + (strength / 2)) * 10
             this.setMaxhp((this.getEndurance() + (this.getStrength() / 2)) * 10);
             this.setCurrenthp(this.getMaxhp());
 
-//            just off top of elijahs head
-//            dodge = agility + (endurance/2) * 0.1
-            this.setDodge(this.getAgility() + (this.getEndurance() / 2) * 0.1);
-//            we can grab these numbers from AI and simply give to the playerActiveHero if they win
+            this.setDodge((this.getAgility() + (this.getEndurance() / 2) * 0.1 ));
+
+
+            this.setAttackDamage(this.getStrength() + (this.getAgility() / 2) * 0.4);
+
+
+//  we can grab these numbers from AI and simply give to the playerActiveHero if they win
             this.setExperience(100 + rng.nextDouble(25));
             this.setMoney(100 + rng.nextDouble(25));
-
-
-
         }
+
         else if (difficulty.equals("hard"))
         {
+            //            set the stats for AIhero.
+            this.setStrength(10 + rng.nextDouble(14));
+            this.setEndurance(10 + rng.nextDouble(14));
+            this.setAgility(10 + rng.nextDouble(14));
 
+            this.setMaxhp((this.getEndurance() + (this.getStrength() / 2)) * 10);
+            this.setCurrenthp(this.getMaxhp());
 
+            this.setDodge((this.getAgility() + (this.getEndurance() / 2) * 0.1 ));
+
+            this.setAttackDamage(this.getStrength() + (this.getAgility() / 2) * 0.4);
+
+//            we can grab these numbers from AI and simply give to the playerActiveHero if they win
+            this.setExperience(200 + rng.nextDouble(80));
+            this.setMoney(200 + rng.nextDouble(80));
         }
-
     }
-
-
 
 
     // some troubleshooting print statements in here from earlier tests

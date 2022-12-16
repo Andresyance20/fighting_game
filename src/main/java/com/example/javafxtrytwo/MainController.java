@@ -24,8 +24,6 @@ public class MainController {
 
 
 
-
-
     // make the scene and hero in here but we copy data into them (via methods here) from the main when we call this MainController.
     private Scene fightSceneSetupScene;
     private Scene shopScene;
@@ -82,6 +80,8 @@ public class MainController {
         }
 
 
+
+
         setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI);
 
 
@@ -129,9 +129,7 @@ public class MainController {
             System.out.println(playerActiveHero.getCurrenthp());
         }
 
-
         setToShop(shopScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI);
-
 
         System.out.println("\nGrand Test Print");
         System.out.println("in class: MainController. ");
