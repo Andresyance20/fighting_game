@@ -189,9 +189,9 @@ public class HeroSheetController {
         hero_text_losses.setText("Losses: " + playerHero2.getLossCount() + ".");
         hero_text_hp.setText("HP: " + playerHero2.getCurrenthp() + "/" + playerHero2.getMaxhp() + ".");
         hero_text_dodge.setText("Dodge: " + playerHero2.getDodge() + "%");
-        hero_text_cost_str.setText("Cost: " + (playerHero2.getStrength() * 69) + ".");
-        hero_text_cost_end.setText("Cost: " + (playerHero2.getEndurance() * 69)+ ".");
-        hero_text_cost_agi.setText("Cost: " + (playerHero2.getAgility() * 69)+ ".");
+        hero_text_cost_str.setText("Cost: " + (playerHero2.getStrength() * 69 * 1.2) + ".");
+        hero_text_cost_end.setText("Cost: " + (playerHero2.getEndurance() * 69 * 1.2)+ ".");
+        hero_text_cost_agi.setText("Cost: " + (playerHero2.getAgility() * 69 * 1.2)+ ".");
 
         hero_text_active_hero.setText("Active Hero: " + playerHero2.getName() + ".");
         // set the loaded hero to active, and others to not active.
@@ -241,9 +241,9 @@ public class HeroSheetController {
         hero_text_losses.setText("Losses: " + playerHero3.getLossCount() + ".");
         hero_text_hp.setText("HP: " + playerHero3.getCurrenthp() + "/" + playerHero3.getMaxhp() + ".");
         hero_text_dodge.setText("Dodge: " + playerHero3.getDodge() + "%");
-        hero_text_cost_str.setText("Cost: " + (playerHero3.getStrength() * 69) + ".");
-        hero_text_cost_end.setText("Cost: " + (playerHero3.getEndurance() * 69)+ ".");
-        hero_text_cost_agi.setText("Cost: " + (playerHero3.getAgility() * 69)+ ".");
+        hero_text_cost_str.setText("Cost: " + (playerHero3.getStrength() * 69 * 1.2) + ".");
+        hero_text_cost_end.setText("Cost: " + (playerHero3.getEndurance() * 69 * 1.2)+ ".");
+        hero_text_cost_agi.setText("Cost: " + (playerHero3.getAgility() * 69 * 1.2)+ ".");
 
         hero_text_active_hero.setText("Active Hero: " + playerHero3.getName() + ".");
         // set the loaded hero to active, and others to not active.

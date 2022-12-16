@@ -24,6 +24,7 @@ public class FightSceneSetupController {
     private Hero playerActiveHero;
     private Hero heroAI;
     private HeroSheetController heroSheetControllernotfrommain;
+    private FightSceneController fightSceneControllernotfrommain;
 
     public boolean selectedDifficulty = false;
     public boolean selectedBackground = false;
@@ -45,13 +46,11 @@ public class FightSceneSetupController {
     }
 
 //    Hero activeHeroPlayer
-    public void setToFightScene(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai)
+    public void setToFightScene(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai, FightSceneController fightSceneControllernotfrommain1)
     {
-        fightScene = scene;
-        // would be nice if this works, and we just have to write combat once for any active hero,
-        // and not 3 times to specific hero 1 or hero 2 or 3
-//        activeHero = activeHeroPlayer;
 
+        fightSceneControllernotfrommain = fightSceneControllernotfrommain1;
+        fightScene = scene;
         playerHero1 = hero1;
         playerHero2 = hero2;
         playerHero3 = hero3;
@@ -140,8 +139,7 @@ public class FightSceneSetupController {
             System.out.println(playerActiveHero.getCurrenthp());
         }
 
-        setToFightScene(fightScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI);
-
+        setToFightScene(fightScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, fightSceneControllernotfrommain);
 
 //        Checks in to see difficulty was set, background set, and hero set
         if (playerActiveHero.getActive() == true)
@@ -153,10 +151,16 @@ public class FightSceneSetupController {
         if (selectedDifficulty == true && selectedBackground == true && selectedHero == true)
         {
 
-
-
 //            before going to fightscene also need to get a reference to its controller so we can load the activeHero
 //            data into the fightscene
+
+// here we can now call             fightSceneControllernotfrommain. insert method name to set/update data on the text/buttons
+
+
+
+
+
+
             Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             primaryStage.setScene(fightScene);
         }
@@ -164,29 +168,6 @@ public class FightSceneSetupController {
         {
             System.out.println("\nSelect a hero, and a difficulty, and a background");
         }
-
-
-
-//        System.out.println("\nGrand Test Print");
-//        System.out.println("in class: FightSceneSetupController. ");
-//        System.out.println("Hero 1 name: " + playerHero1.getName());
-//        System.out.println("Hero 1 hp: " + playerHero1.getCurrenthp());
-//        System.out.println("Hero 1 active: " + playerHero1.getActive());
-//
-//        System.out.println("\nHero 2 name: " + playerHero2.getName());
-//        System.out.println("Hero 2 hp: " + playerHero2.getCurrenthp());
-//        System.out.println("Hero 2 active: " + playerHero2.getActive());
-//
-//        System.out.println("\nHero 3 name: " + playerHero3.getName());
-//        System.out.println("Hero 3 hp: " + playerHero3.getCurrenthp());
-//        System.out.println("Hero 3 active: " + playerHero3.getActive());
-//
-//
-//        System.out.println("\nACTIVEheroobject name: " + playerActiveHero.getName());
-//        System.out.println("ACTIVEheroobject hp: " + playerActiveHero.getCurrenthp());
-//        System.out.println("ACTIVEheroobject active:  " + playerActiveHero.getActive());
-
-
 
 
     }
@@ -198,6 +179,8 @@ public class FightSceneSetupController {
         {
             System.out.println("Hero1 is: " + playerHero1.getActive());
             playerActiveHero = playerHero1;
+            // very start of experiment with color to showcase satisfied selection
+            button_inspect_heroes.setStyle("-fx-background-color: green");
 
             heroSheetControllernotfrommain.loadHeroData1();
         }
@@ -220,7 +203,7 @@ public class FightSceneSetupController {
 
         setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, heroSheetControllernotfrommain);
 
-        button_inspect_heroes.setText(playerActiveHero.getName());
+//        button_inspect_heroes.setText(playerActiveHero.getName());
 
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(heroSheetScene);

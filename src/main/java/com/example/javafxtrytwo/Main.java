@@ -106,20 +106,23 @@ public class Main extends Application {
             HeroSheetController heroSheetController = (HeroSheetController) heroSheetLoader.getController();
             heroSheetController.setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
 
-            // injecting first scene into the controller of the second scene
-            FightSceneSetupController fightSceneSetupController = (FightSceneSetupController) fightSceneSetupLoader.getController();
-            // example: we access the "fightscenesetup controller" class methods(activate on buttons) and pass in the data we have here.
-            // idk if that's the EXACT process, there's a lot of parts to it.
-            fightSceneSetupController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
-            fightSceneSetupController.setToFightScene(fightSceneScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
-            fightSceneSetupController.setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, heroSheetController);
-//            fightSceneSetupController.updateHeroInfo();
-
 
             // so, passing reference to the scene and hero object and storing it inside a private variable inside this specific control, basically we just copy contents of hero onto another hero object.
             FightSceneController fightSceneController = (FightSceneController) fightSceneLoader.getController();
             fightSceneController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
             fightSceneController.setToLoseScene(loseSceneScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
+
+
+            // injecting first scene into the controller of the second scene
+            FightSceneSetupController fightSceneSetupController = (FightSceneSetupController) fightSceneSetupLoader.getController();
+            // example: we access the "fightscenesetup controller" class methods(activate on buttons) and pass in the data we have here.
+            // idk if that's the EXACT process, there's a lot of parts to it.
+            fightSceneSetupController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
+            fightSceneSetupController.setToFightScene(fightSceneScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, fightSceneController);
+            fightSceneSetupController.setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, heroSheetController);
+//            fightSceneSetupController.updateHeroInfo();
+
+
 
             LoseSceneController loseSceneController = (LoseSceneController) loseSceneLoader.getController();
             loseSceneController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
