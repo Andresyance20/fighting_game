@@ -19,7 +19,7 @@
             <Font size="25.0" />
          </font>
       </Text>
-      <Button fx:id="button_inspect_heroes" layoutX="239.0" layoutY="281.0" mnemonicParsing="false" onAction="#openHeroSheetScene" text="Inspect Heros">
+      <Button fx:id="button_inspect_heroes" layoutX="133.0" layoutY="283.0" mnemonicParsing="false" onAction="#openHeroSheetScene" text="Select Hero">
          <font>
             <Font size="14.0" />
          </font></Button>
@@ -28,14 +28,29 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="button_set_map" layoutX="434.0" layoutY="427.0" mnemonicParsing="false" onAction="#mapButtonClick" text="Set Map">
+      <Button fx:id="button_set_map" layoutX="347.0" layoutY="430.0" mnemonicParsing="false" onAction="#mapButtonClick" text="Select Background">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button fx:id="button_set_difficulty" layoutX="218.0" layoutY="427.0" mnemonicParsing="false" onAction="#difficultyButtonClick" text="Set Difficulty">
+      <Button fx:id="button_set_difficulty" layoutX="127.0" layoutY="427.0" mnemonicParsing="false" onAction="#difficultyButtonClick" text="Select Difficulty">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
+      <Text layoutX="127.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulty:">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text layoutX="347.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Background:">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Text layoutX="133.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hero:">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

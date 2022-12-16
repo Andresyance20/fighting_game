@@ -13,7 +13,7 @@ import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-// think we need to initialize the text?
+//    think we need to initialize the text?
 //    was testing initialize, if you need any data, you can load it before the view is onscreen.
 //    idk that we will need to do this, but if we have issues with null data, this might be a solution so I will leave it here for now.
 
@@ -46,6 +46,9 @@ public class HeroSheetController {
         playerHero3 = hero3;
         playerActiveHero = activeHero;
         heroAI = heroai;
+
+
+
     }
 
     // here is where we can update the data we pass between scenes
@@ -106,7 +109,6 @@ public class HeroSheetController {
 
     public void loadHeroData1()
     {
-
         if (playerHero1.getActive() == true)
         {
             System.out.println("Hero1 is: " + playerHero1.getActive());
@@ -155,11 +157,6 @@ public class HeroSheetController {
 
         System.out.println("playerActiveHero name: "+ playerActiveHero.getName());
         System.out.println("playerHero1 name: "+ playerHero1.getName());
-
-
-
-
-
     }
 
     public void loadHeroData2()
@@ -211,11 +208,10 @@ public class HeroSheetController {
         System.out.println("playerHero2 name: "+ playerHero2.getName());
 
 
+
     }
     public void loadHeroData3()
     {
-
-
         if (playerHero1.getActive() == true)
         {
             System.out.println("Hero1 is: " + playerHero1.getActive());
@@ -272,8 +268,6 @@ public class HeroSheetController {
         System.out.println("playerActiveHero current hp: " + playerActiveHero.getCurrenthp() + " did not change this one directly");
 
         System.out.println("After changing the active hero, here is playerHero3's current hp:" + playerHero3.getCurrenthp());
-
-
 
     }
 
@@ -441,9 +435,6 @@ public class HeroSheetController {
 
 
 
-
-
-
 //    not totally sure how we are linking these up, but we should/can access/manage/view the hero objects inventory from here.
     public void viewInventory()
     {
@@ -456,11 +447,11 @@ public class HeroSheetController {
 
     }
 
+
+
     public void inspectAspect(int buttonElement)
     {
 //        display some deeper level of info about the clicked element
 //        clicking the Strength stat would make a popup explaining how it is used in calculations or something.
     }
-
-
 }

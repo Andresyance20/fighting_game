@@ -233,13 +233,13 @@ public class Hero {
 //    dodge = agility + (endurance/2) * 0.1
     public void updateDodge()
     {
-        this.setDodge(this.getAgility() + (this.getEndurance() / 2) * 0.1);
+        this.setDodge((this.getAgility() + (this.getEndurance() / 2)) * 0.1);
     }
 
 //    i think we just need an atk method for now, can change if abilities get made
     public void updateAttack()
     {
-        this.setAttackDamage(this.getStrength() + (this.getAgility() / 2) * 0.4);
+        this.setAttackDamage((this.getStrength() + (this.getAgility() / 2)) * 0.4);
     }
 
     public void updateAllStats()
@@ -253,7 +253,7 @@ public class Hero {
 
 // For AI hero to set stats
 // some RNG for spice?
-    public void setAIdifficultry(String difficulty)
+    public void setAiDifficulty(String difficulty)
     {
         Random rng = new Random();
         if (difficulty.equals("normal"))
@@ -266,10 +266,10 @@ public class Hero {
             this.setMaxhp((this.getEndurance() + (this.getStrength() / 2)) * 10);
             this.setCurrenthp(this.getMaxhp());
 
-            this.setDodge((this.getAgility() + (this.getEndurance() / 2) * 0.1 ));
+            this.setDodge(((this.getAgility() + (this.getEndurance() / 2)) * 0.1));
 
 
-            this.setAttackDamage(this.getStrength() + (this.getAgility() / 2) * 0.4);
+            this.setAttackDamage((this.getStrength() + (this.getAgility() / 2)) * 0.4);
 
 
 //  we can grab these numbers from AI and simply give to the playerActiveHero if they win
@@ -287,9 +287,9 @@ public class Hero {
             this.setMaxhp((this.getEndurance() + (this.getStrength() / 2)) * 10);
             this.setCurrenthp(this.getMaxhp());
 
-            this.setDodge((this.getAgility() + (this.getEndurance() / 2) * 0.1 ));
+            this.setDodge(((this.getAgility() + (this.getEndurance() / 2)) * 0.1));
 
-            this.setAttackDamage(this.getStrength() + (this.getAgility() / 2) * 0.4);
+            this.setAttackDamage((this.getStrength() + (this.getAgility() / 2)) * 0.4);
 
 //            we can grab these numbers from AI and simply give to the playerActiveHero if they win
             this.setExperience(200 + rng.nextDouble(80));
