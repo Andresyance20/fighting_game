@@ -12,7 +12,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class ShopController {
-    private Scene PotionShopScene;
     private Scene mainScene;
     private Hero playerHero1;
     private Hero playerHero2;
@@ -80,6 +79,8 @@ public class ShopController {
     }
 
     public Button button_shopToMenu;
-    public Button button_potionShop;
-    public Button button_abilityShop;
+    public Button button_healthPotion;
+    public Button button_attackPotion;
+    public Button button_defensePotion;
+    public Button button_superPotion;
 }
