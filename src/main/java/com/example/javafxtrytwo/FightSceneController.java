@@ -7,9 +7,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.awt.*;
 
 
 public class FightSceneController {
@@ -30,6 +30,8 @@ public class FightSceneController {
     private Hero heroAI;
 
 
+    // update every turn
+    public int turn_count = 0;
 
 
     // set data
@@ -169,6 +171,13 @@ public class FightSceneController {
     @FXML
     private Label hero_ai_hp_text;
 
+    @FXML
+    private Label hero_player_super_text;
+    @FXML
+    private Label hero_ai_super_text;
+    @FXML
+    private Label turn_count_text;
+
 
     public void loadFightSceneData()
     {
@@ -191,21 +200,25 @@ public class FightSceneController {
 
         hero_player_text_name.setText("" + playerActiveHero.getName());
         hero_player_hp_text.setText("" + (playerActiveHero.getCurrenthp() + " / " + playerActiveHero.getMaxhp()));
+        hero_player_super_text.setText("" + playerActiveHero.getCurrentSuperCharge() + " / " + playerActiveHero.getMaxSuperCharge());
+
+        hero_player_hp_text.setStyle("-fx-background-color: limegreen");
+        hero_player_super_text.setStyle("-fx-background-color: lightblue");
 
         hero_ai_text_name.setText("" + heroAI.getName());
         hero_ai_hp_text.setText("" + (heroAI.getCurrenthp() + " / " + heroAI.getMaxhp()));
+        hero_ai_super_text.setText("" + heroAI.getCurrentSuperCharge() + " / " + heroAI.getMaxSuperCharge());
+
+        hero_ai_hp_text.setStyle("-fx-background-color: limegreen");
+        hero_ai_super_text.setStyle("-fx-background-color: lightblue");
+
+        turn_count_text.setText("Turn Count: " + turn_count);
+
 
 
     }
 
-//    public TextField txt_p1Hp;
-//    public TextField txt_p2Hp;
     public Button button_menu;
-
-
-
-
-
 
 
 //    i still dont know how we wanna do abilities but here is a dummy action button

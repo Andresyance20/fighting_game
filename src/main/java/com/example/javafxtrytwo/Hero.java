@@ -19,7 +19,8 @@ public class Hero {
     double blockAmount;
 //    ok but i think dodge chance makes sense to keep here based on ability as it is a reactive action, not an active action.
     int dodge;
-    int superCharge;
+    int currentSuperCharge;
+    int maxSuperCharge;
 
 //    may need to rethink position? Not totally sure how we're implementing it, but it'll be tied to abilities somehow.
     int position;
@@ -44,7 +45,7 @@ public class Hero {
 //    double atkDmg,
 //    double blockAmount,
     public Hero(boolean active, String name, int currenthp, int maxhp, int strength, int endurance, int agility, int attackDamage,
-                int dodge, int superCharge, int position, int experience,
+                int dodge, int currentSuperCharge, int maxSuperCharge, int position, int experience,
                 int money, int victoryCount, int lossCount, double height, double weight)
     {
         this.active = active;
@@ -57,7 +58,8 @@ public class Hero {
         this.attackDamage = attackDamage;
 //        this.blockAmount = blockAmount;
         this.dodge = dodge;
-        this.superCharge = superCharge;
+        this.currentSuperCharge = currentSuperCharge;
+        this.maxSuperCharge = maxSuperCharge;
         this.position = position;
         this.experience =experience;
         this.money = money;
@@ -101,8 +103,12 @@ public class Hero {
     public int getDodge() {
         return dodge;
     }
-    public int getSuperCharge() {
-        return superCharge;
+    public int getCurrentSuperCharge()
+    {
+        return currentSuperCharge;
+    }
+    public int getMaxSuperCharge() {
+        return maxSuperCharge;
     }
 //    public double getPosition() {
 //        return position;
@@ -157,8 +163,12 @@ public class Hero {
     public void setDodge(int dodge) {
         this.dodge = dodge;
     }
-    public void setSuperCharge(int superCharge) {
-        this.superCharge = superCharge;
+    public void setCurrentSuperCharge(int currentSuperCharge)
+    {
+        this.currentSuperCharge = currentSuperCharge;
+    }
+    public void setMaxSuperCharge(int maxSuperCharge) {
+        this.maxSuperCharge = maxSuperCharge;
     }
     public void setPosition(int position) {
         this.position = position;
@@ -197,7 +207,7 @@ public class Hero {
         System.out.println("Agility: " + getAgility());
         System.out.println("Attack: " + getAttackDamage());
         System.out.println("Dodge Chance: " + getDodge() + "%");
-        System.out.println("Supercharge: " + getSuperCharge() + "% out of 100%" );
+        System.out.println("Supercharge: " + getMaxSuperCharge() + "% out of 100%" );
 //        System.out.println("Position " + getPosition()); // crouching, standing, jumping?
         System.out.println("Experience: " + getExperience());
         System.out.println("Money " + getMoney());
@@ -214,7 +224,7 @@ public class Hero {
         // reset hp
         this.setCurrenthp((int) getMaxhp());
         // set supercharge back down to 0
-        this.setSuperCharge(0);
+        this.setMaxSuperCharge(0);
         updateAllStats();
         // idk, we'll figure out what else we need when we run into it
     }

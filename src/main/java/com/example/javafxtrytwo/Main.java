@@ -25,13 +25,13 @@ public class Main extends Application {
     {
         // Construct heroes or other data here, so they are passable as parameters in the javafx scope.
         // we need 4 persistent heroes total, 3 for player to switch around, and 1 to represent an enemy.
-        Hero playerHero1 = new Hero(false,"Hero1 name", 150, 150, 10, 10, 10,  5,5, 0, 1, 10000, 0, 0, 0, 66, 200);
-        Hero playerHero2 = new Hero(false,"Hero2 name", 150, 150, 10, 10, 10, 5, 5, 0, 1, 10000, 0, 0, 0, 66, 200);
-        Hero playerHero3 = new Hero(false,"Hero3 name", 150, 150, 10, 10, 10, 5, 5, 0, 1, 10000, 0, 0, 0, 66, 200);
+        Hero playerHero1 = new Hero(false,"Hero1 name", 150, 150, 10, 10, 10,  5,5, 0, 100,1, 10000, 0, 0, 0, 66, 200);
+        Hero playerHero2 = new Hero(false,"Hero2 name", 150, 150, 10, 10, 10, 5, 5, 0,100, 1, 10000, 0, 0, 0, 66, 200);
+        Hero playerHero3 = new Hero(false,"Hero3 name", 150, 150, 10, 10, 10, 5, 5, 0,100, 1, 10000, 0, 0, 0, 66, 200);
 
         // TESTING
-        Hero playerActiveHero = new Hero(false,"Default active Hero", 100, 100, 10, 10, 10, 5, 5, 0, 1, 0, 0, 0, 0, 66, 200);
-        Hero aiHero = new Hero(false,"AI Hero", 100, 100, 10, 10, 10, 5, 5, 0, 1, 0, 0, 0, 0, 66, 200);
+        Hero playerActiveHero = new Hero(false,"Default active Hero", 100, 100, 10, 10, 10, 5, 5, 100,0, 1, 0, 0, 0, 0, 66, 200);
+        Hero aiHero = new Hero(false,"AI Hero", 100, 100, 10, 10, 10, 5, 5, 0, 100,1, 0, 0, 0, 0, 66, 200);
 
         // default money supply
         int money = 500;

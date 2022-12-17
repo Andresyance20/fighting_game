@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxtrytwo.FightSceneController">
    <children>
-      <Label layoutX="417.0" layoutY="55.0" text="FightScene" textAlignment="CENTER" textFill="#bf0000">
+      <Label layoutX="417.0" layoutY="25.0" text="FightScene" textAlignment="CENTER" textFill="#bf0000">
          <font>
             <Font size="25.0" />
          </font>
@@ -52,6 +52,21 @@
          </font>
       </Label>
       <Label fx:id="hero_player_hp_text" layoutX="97.0" layoutY="167.0" text="HP / HP">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="hero_player_super_text" layoutX="97.0" layoutY="203.0" text="Player Super: % / %">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="hero_ai_super_text" layoutX="656.0" layoutY="203.0" text="Enemy Super: % / %">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="turn_count_text" layoutX="417.0" layoutY="82.0" text="Turn Count:">
          <font>
             <Font size="20.0" />
          </font>
