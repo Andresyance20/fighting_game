@@ -136,6 +136,8 @@ public class HeroSheetController {
         hero_text_cost_end.setText("Cost: " + (playerHero1.getEndurance() * 69)+ ".");
         hero_text_cost_agi.setText("Cost: " + (playerHero1.getAgility() * 69) + ".");
 
+        hero_text_damage.setText("Attack Damage: " + playerHero1.getAttackDamage() + ".");
+
         hero_text_active_hero.setText("Active Hero: " + playerHero1.getName() + ".");
         hero_text_active_hero.setFill(Color.BLACK);
         button_load_hero1.setStyle("-fx-background-color: limegreen");
@@ -192,6 +194,8 @@ public class HeroSheetController {
         hero_text_cost_end.setText("Cost: " + (playerHero2.getEndurance() * 69)+ ".");
         hero_text_cost_agi.setText("Cost: " + (playerHero2.getAgility() * 69)+ ".");
 
+        hero_text_damage.setText("Attack Damage: " + playerHero2.getAttackDamage() + ".");
+
         hero_text_active_hero.setText("Active Hero: " + playerHero2.getName() + ".");
         hero_text_active_hero.setFill(Color.BLACK);
         button_load_hero1.setStyle("-fx-background-color: lightgray");
@@ -246,6 +250,7 @@ public class HeroSheetController {
         hero_text_cost_str.setText("Cost: " + (playerHero3.getStrength() * 69) + ".");
         hero_text_cost_end.setText("Cost: " + (playerHero3.getEndurance() * 69)+ ".");
         hero_text_cost_agi.setText("Cost: " + (playerHero3.getAgility() * 69)+ ".");
+        hero_text_damage.setText("Attack Damage: " + playerHero3.getAttackDamage() + ".");
 
         hero_text_active_hero.setText("Active Hero: " + playerHero3.getName() + ".");
         hero_text_active_hero.setFill(Color.BLACK);
@@ -305,6 +310,10 @@ public class HeroSheetController {
     private Text hero_text_cost_agi;
     @FXML
     private Text hero_text_active_hero;
+    @FXML
+    private Text hero_text_damage;
+
+
 
     @FXML
     Button button_increase_str;

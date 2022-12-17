@@ -13,13 +13,13 @@
       <Text fx:id="hero_text_end" layoutX="47.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Endurance" />
       <Text fx:id="hero_text_agi" layoutX="53.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agility" />
       <Button fx:id="button_inventory_abilities" layoutX="45.0" layoutY="311.0" mnemonicParsing="false" text="Inventory / abilities" />
-      <Text fx:id="hero_text_name" layoutX="345.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name: " />
-      <Text fx:id="hero_text_exp" layoutX="345.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exp:" />
-      <Text fx:id="hero_text_money" layoutX="345.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money:" />
-      <Text fx:id="hero_text_victories" layoutX="345.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Victories:" />
-      <Text fx:id="hero_text_losses" layoutX="347.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Losses:" />
-      <Text fx:id="hero_text_hp" layoutX="350.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HP:" />
-      <Text fx:id="hero_text_dodge" layoutX="342.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dodge Chance:" />
+      <Text fx:id="hero_text_name" layoutX="340.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name: " />
+      <Text fx:id="hero_text_exp" layoutX="340.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exp:" />
+      <Text fx:id="hero_text_money" layoutX="340.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money:" />
+      <Text fx:id="hero_text_victories" layoutX="340.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Victories:" />
+      <Text fx:id="hero_text_losses" layoutX="340.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Losses:" />
+      <Text fx:id="hero_text_hp" layoutX="340.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HP:" />
+      <Text fx:id="hero_text_dodge" layoutX="340.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dodge Chance:" />
       <Button fx:id="button_increase_str" layoutX="57.0" layoutY="95.0" mnemonicParsing="false" onAction="#increaseStrength" text="+" />
       <Button fx:id="button_increase_end" layoutX="57.0" layoutY="166.0" mnemonicParsing="false" onAction="#increaseEndurance" text="+" />
       <Button fx:id="button_increase_agi" layoutX="57.0" layoutY="236.0" mnemonicParsing="false" onAction="#increaseAgility" text="+" />
@@ -30,5 +30,6 @@
       <Button fx:id="button_load_hero2" layoutX="398.0" layoutY="336.0" mnemonicParsing="false" onAction="#loadHeroData2" text="Hero2" />
       <Button fx:id="button_load_hero3" layoutX="474.0" layoutY="336.0" mnemonicParsing="false" onAction="#loadHeroData3" text="Hero3" />
       <Text fx:id="hero_text_active_hero" layoutX="321.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Active Hero: none" />
+      <Text fx:id="hero_text_damage" layoutX="340.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attack Damage:" />
    </children>
 </AnchorPane>
