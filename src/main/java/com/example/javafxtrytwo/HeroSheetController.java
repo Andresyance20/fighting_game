@@ -132,9 +132,9 @@ public class HeroSheetController {
         hero_text_losses.setText("Losses: " + playerHero1.getLossCount() + ".");
         hero_text_hp.setText("HP: " + playerHero1.getCurrenthp() + "/" + playerHero1.getMaxhp() + ".");
         hero_text_dodge.setText("Dodge: " + playerHero1.getDodge() + "%");
-        hero_text_cost_str.setText("Cost: " + (playerHero1.getStrength() * 69 * 1.2) + ".");
-        hero_text_cost_end.setText("Cost: " + (playerHero1.getEndurance() * 69 * 1.2)+ ".");
-        hero_text_cost_agi.setText("Cost: " + (playerHero1.getAgility() * 69 * 1.2) + ".");
+        hero_text_cost_str.setText("Cost: " + (playerHero1.getStrength() * 69) + ".");
+        hero_text_cost_end.setText("Cost: " + (playerHero1.getEndurance() * 69)+ ".");
+        hero_text_cost_agi.setText("Cost: " + (playerHero1.getAgility() * 69) + ".");
 
         hero_text_active_hero.setText("Active Hero: " + playerHero1.getName() + ".");
         hero_text_active_hero.setFill(Color.BLACK);
@@ -188,9 +188,9 @@ public class HeroSheetController {
         hero_text_losses.setText("Losses: " + playerHero2.getLossCount() + ".");
         hero_text_hp.setText("HP: " + playerHero2.getCurrenthp() + "/" + playerHero2.getMaxhp() + ".");
         hero_text_dodge.setText("Dodge: " + playerHero2.getDodge() + "%");
-        hero_text_cost_str.setText("Cost: " + (playerHero2.getStrength() * 69 * 1.2) + ".");
-        hero_text_cost_end.setText("Cost: " + (playerHero2.getEndurance() * 69 * 1.2)+ ".");
-        hero_text_cost_agi.setText("Cost: " + (playerHero2.getAgility() * 69 * 1.2)+ ".");
+        hero_text_cost_str.setText("Cost: " + (playerHero2.getStrength() * 69) + ".");
+        hero_text_cost_end.setText("Cost: " + (playerHero2.getEndurance() * 69)+ ".");
+        hero_text_cost_agi.setText("Cost: " + (playerHero2.getAgility() * 69)+ ".");
 
         hero_text_active_hero.setText("Active Hero: " + playerHero2.getName() + ".");
         hero_text_active_hero.setFill(Color.BLACK);
@@ -229,7 +229,6 @@ public class HeroSheetController {
         {
             System.out.println("Hero3 is: " + playerHero3.getActive());
             playerActiveHero = playerHero3;
-            System.out.println(playerActiveHero.getCurrenthp());
         }
 
 
@@ -244,9 +243,9 @@ public class HeroSheetController {
         hero_text_losses.setText("Losses: " + playerHero3.getLossCount() + ".");
         hero_text_hp.setText("HP: " + playerHero3.getCurrenthp() + "/" + playerHero3.getMaxhp() + ".");
         hero_text_dodge.setText("Dodge: " + playerHero3.getDodge() + "%");
-        hero_text_cost_str.setText("Cost: " + (playerHero3.getStrength() * 69 * 1.2) + ".");
-        hero_text_cost_end.setText("Cost: " + (playerHero3.getEndurance() * 69 * 1.2)+ ".");
-        hero_text_cost_agi.setText("Cost: " + (playerHero3.getAgility() * 69 * 1.2)+ ".");
+        hero_text_cost_str.setText("Cost: " + (playerHero3.getStrength() * 69) + ".");
+        hero_text_cost_end.setText("Cost: " + (playerHero3.getEndurance() * 69)+ ".");
+        hero_text_cost_agi.setText("Cost: " + (playerHero3.getAgility() * 69)+ ".");
 
         hero_text_active_hero.setText("Active Hero: " + playerHero3.getName() + ".");
         hero_text_active_hero.setFill(Color.BLACK);
@@ -271,7 +270,7 @@ public class HeroSheetController {
         System.out.println("playerHero3 current hp: " + playerHero3.getCurrenthp());
 
 
-        playerActiveHero.setCurrenthp(playerActiveHero.getCurrenthp()-1);
+        playerActiveHero.setCurrenthp((int) (playerActiveHero.getCurrenthp()-1));
         System.out.println("playerActiveHero current hp: " + playerActiveHero.getCurrenthp() + " did not change this one directly");
 
         System.out.println("After changing the active hero, here is playerHero3's current hp:" + playerHero3.getCurrenthp());
@@ -329,9 +328,9 @@ public class HeroSheetController {
     // idk formula can be 69 funny number * 1.2
     public void increaseStrength()
     {
-        double costFormulaHero1 = playerHero1.getStrength() * 69 * 1.2;
-        double costFormulaHero2 = playerHero2.getStrength() * 69 * 1.2;
-        double costFormulaHero3 = playerHero3.getStrength() * 69 * 1.2;
+        int costFormulaHero1 = (int) (playerHero1.getStrength() * 70);
+        int costFormulaHero2 = (int) (playerHero2.getStrength() * 70);
+        int costFormulaHero3 = (int) (playerHero3.getStrength() * 70);
 
         // check if active
         if (playerHero1.getActive())
@@ -340,9 +339,11 @@ public class HeroSheetController {
             if (playerHero1.getExperience() >= costFormulaHero1)
             {
                 // pay the cost, increase the stat
-                playerHero1.setExperience(playerHero1.getExperience() - (costFormulaHero1));
-                playerHero1.setStrength(playerHero1.getStrength() + 1);
+                playerHero1.setExperience((int) (playerHero1.getExperience() - (costFormulaHero1)));
+                playerHero1.setStrength((int) (playerHero1.getStrength() + 1));
                 // update the screen to current data
+
+                playerHero1.updateAllStats();
                 loadHeroData1();
             }
             else { System.out.println("Not enough exp! "); }
@@ -351,8 +352,10 @@ public class HeroSheetController {
         {
             if (playerHero2.getExperience() >= costFormulaHero2)
             {
-                playerHero2.setExperience(playerHero2.getExperience() - (costFormulaHero2));
-                playerHero2.setStrength(playerHero2.getStrength() + 1);
+                playerHero2.setExperience((int) (playerHero2.getExperience() - (costFormulaHero2)));
+                playerHero2.setStrength((int) (playerHero2.getStrength() + 1));
+
+                playerHero2.updateAllStats();
                 loadHeroData2();
             }
             else { System.out.println("Not enough exp! "); }
@@ -362,8 +365,10 @@ public class HeroSheetController {
         {
             if (playerHero3.getExperience() >= costFormulaHero3)
             {
-                playerHero3.setExperience(playerHero3.getExperience() - (costFormulaHero3));
-                playerHero3.setStrength(playerHero3.getStrength() + 1);
+                playerHero3.setExperience((int) (playerHero3.getExperience() - (costFormulaHero3)));
+                playerHero3.setStrength((int) (playerHero3.getStrength() + 1));
+
+                playerHero3.updateAllStats();
                 loadHeroData3();
             }
             else { System.out.println("Not enough exp! "); }
@@ -372,16 +377,18 @@ public class HeroSheetController {
 
     public void increaseEndurance()
     {
-        double costFormulaHero1 = playerHero1.getEndurance() * 69 * 1.2;
-        double costFormulaHero2 = playerHero2.getEndurance() * 69 * 1.2;
-        double costFormulaHero3 = playerHero3.getEndurance() * 69 * 1.2;
+        int costFormulaHero1 = (int) (playerHero1.getEndurance() * 69);
+        int costFormulaHero2 = (int) (playerHero2.getEndurance() * 69);
+        int costFormulaHero3 = (int) (playerHero3.getEndurance() * 69);
 
         if (playerHero1.getActive())
         {
             if (playerHero1.getExperience() >= costFormulaHero1)
             {
-                playerHero1.setExperience(playerHero1.getExperience() - (costFormulaHero1));
-                playerHero1.setEndurance(playerHero1.getEndurance() + 1);
+                playerHero1.setExperience((int) (playerHero1.getExperience() - (costFormulaHero1)));
+                playerHero1.setEndurance((int) (playerHero1.getEndurance() + 1));
+
+                playerHero1.updateAllStats();
                 loadHeroData1();
             }
             else { System.out.println("Not enough exp! "); }
@@ -390,8 +397,10 @@ public class HeroSheetController {
         {
             if (playerHero2.getExperience() >= costFormulaHero2)
             {
-                playerHero2.setExperience(playerHero2.getExperience() - (costFormulaHero2));
-                playerHero2.setEndurance(playerHero2.getEndurance() + 1);
+                playerHero2.setExperience((int) (playerHero2.getExperience() - (costFormulaHero2)));
+                playerHero2.setEndurance((int) (playerHero2.getEndurance() + 1));
+
+                playerHero2.updateAllStats();
                 loadHeroData2();
             }
             else { System.out.println("Not enough exp! "); }
@@ -400,8 +409,10 @@ public class HeroSheetController {
         {
             if (playerHero3.getExperience() >= costFormulaHero3)
             {
-                playerHero3.setExperience(playerHero3.getExperience() - (costFormulaHero3));
-                playerHero3.setEndurance(playerHero3.getEndurance() + 1);
+                playerHero3.setExperience((int) (playerHero3.getExperience() - (costFormulaHero3)));
+                playerHero3.setEndurance((int) (playerHero3.getEndurance() + 1));
+
+                playerHero3.updateAllStats();
                 loadHeroData3();
             }
             else { System.out.println("Not enough exp! "); }
@@ -410,16 +421,18 @@ public class HeroSheetController {
 
     public void increaseAgility()
     {
-        double costFormulaHero1 = playerHero1.getAgility() * 69 * 1.2;
-        double costFormulaHero2 = playerHero2.getAgility() * 69 * 1.2;
-        double costFormulaHero3 = playerHero3.getAgility() * 69 * 1.2;
+        int costFormulaHero1 = (int) (playerHero1.getAgility() * 69);
+        int costFormulaHero2 = (int) (playerHero2.getAgility() * 69);
+        int costFormulaHero3 = (int) (playerHero3.getAgility() * 69);
 
         if (playerHero1.getActive())
         {
             if (playerHero1.getExperience() >= costFormulaHero1)
             {
-                playerHero1.setExperience(playerHero1.getExperience() - (costFormulaHero1));
-                playerHero1.setAgility(playerHero1.getAgility() + 1);
+                playerHero1.setExperience((int) (playerHero1.getExperience() - (costFormulaHero1)));
+                playerHero1.setAgility((int) (playerHero1.getAgility() + 1));
+
+                playerHero1.updateAllStats();
                 loadHeroData1();
             }
             else { System.out.println("Not enough exp! "); }
@@ -428,8 +441,10 @@ public class HeroSheetController {
         {
             if (playerHero2.getExperience() >= costFormulaHero2)
             {
-                playerHero2.setExperience(playerHero2.getExperience() - (costFormulaHero2));
-                playerHero2.setAgility(playerHero2.getAgility() + 1);
+                playerHero2.setExperience((int) (playerHero2.getExperience() - (costFormulaHero2)));
+                playerHero2.setAgility((int) (playerHero2.getAgility() + 1));
+
+                playerHero2.updateAllStats();
                 loadHeroData2();
             }
             else { System.out.println("Not enough exp! "); }
@@ -438,8 +453,10 @@ public class HeroSheetController {
         {
             if (playerHero3.getExperience() >= costFormulaHero3)
             {
-                playerHero3.setExperience(playerHero3.getExperience() - (costFormulaHero3));
-                playerHero3.setAgility(playerHero3.getAgility() + 1);
+                playerHero3.setExperience((int) (playerHero3.getExperience() - (costFormulaHero3)));
+                playerHero3.setAgility((int) (playerHero3.getAgility() + 1));
+
+                playerHero3.updateAllStats();
                 loadHeroData3();
             }
             else { System.out.println("Not enough exp! "); } // Add some visual signal?

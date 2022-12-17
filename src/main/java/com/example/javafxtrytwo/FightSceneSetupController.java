@@ -88,30 +88,9 @@ public class FightSceneSetupController {
         {
             System.out.println("Hero3 is: " + playerHero3.getActive());
             playerActiveHero = playerHero3;
-            System.out.println(playerActiveHero.getCurrenthp());
         }
 
         setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI);
-
-        System.out.println("\nGrand Test Print");
-        System.out.println("in class: FightSceneSetupController. ");
-        System.out.println("Hero 1 name: " + playerHero1.getName());
-        System.out.println("Hero 1 hp: " + playerHero1.getCurrenthp());
-        System.out.println("Hero 1 active: " + playerHero1.getActive());
-
-        System.out.println("\nHero 2 name: " + playerHero2.getName());
-        System.out.println("Hero 2 hp: " + playerHero2.getCurrenthp());
-        System.out.println("Hero 2 active: " + playerHero2.getActive());
-
-        System.out.println("\nHero 3 name: " + playerHero3.getName());
-        System.out.println("Hero 3 hp: " + playerHero3.getCurrenthp());
-        System.out.println("Hero 3 active: " + playerHero3.getActive());
-
-
-
-        System.out.println("\nACTIVEheroobject name: " + playerActiveHero.getName());
-        System.out.println("ACTIVEheroobject hp: " + playerActiveHero.getCurrenthp());
-        System.out.println("ACTIVEheroobject active:  " + playerActiveHero.getActive());
 
 
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -126,17 +105,22 @@ public class FightSceneSetupController {
         {
             System.out.println("Hero1 is: " + playerHero1.getActive());
             playerActiveHero = playerHero1;
+
+            fightSceneControllernotfrommain.loadFightSceneData();
         }
         if (playerHero2.getActive() == true)
         {
             System.out.println("Hero2 is: " + playerHero2.getActive());
             playerActiveHero = playerHero2;
+
+            fightSceneControllernotfrommain.loadFightSceneData();
         }
         if (playerHero3.getActive() == true)
         {
             System.out.println("Hero3 is: " + playerHero3.getActive());
             playerActiveHero = playerHero3;
-            System.out.println(playerActiveHero.getCurrenthp());
+
+            fightSceneControllernotfrommain.loadFightSceneData();
         }
 
         setToFightScene(fightScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, fightSceneControllernotfrommain);
@@ -151,18 +135,9 @@ public class FightSceneSetupController {
         if (selectedDifficulty == true && selectedBackground == true && selectedHero == true)
         {
 
-//            before going to fightscene also need to get a reference to its controller so we can load the activeHero
-//            data into the fightscene
-
-// here we can now call             fightSceneControllernotfrommain. insert method name to set/update data on the text/buttons
-
-
-
-
-
-
             Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             primaryStage.setScene(fightScene);
+
         }
         else
         {
@@ -178,9 +153,6 @@ public class FightSceneSetupController {
             {
                 button_set_map.setStyle("-fx-background-color: red");
             }
-
-
-
             System.out.println("\nSelect a hero, and a difficulty, and a background");
         }
 
