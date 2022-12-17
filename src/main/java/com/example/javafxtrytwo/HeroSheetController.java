@@ -6,6 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -59,6 +61,7 @@ public class HeroSheetController {
         {
             System.out.println("Hero1 is: " + playerHero1.getActive());
             playerActiveHero = playerHero1;
+
         }
         if (playerHero2.getActive() == true)
         {
@@ -75,29 +78,22 @@ public class HeroSheetController {
         setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI);
 
 
+//        if the player selected a hero
+        if (playerActiveHero.getActive() == true)
+        {
+            hero_text_active_hero.setStyle("-fx-background-color: lightgray");
+            Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            primaryStage.setScene(fightSceneSetupScene);
+        }
+        else if (playerActiveHero.getActive() == false)
+        {
+            hero_text_active_hero.setText("Select a hero!");
+            hero_text_active_hero.setFill(Color.RED);
+//            hero_text_active_hero.setScaleX(2);
+//            hero_text_active_hero.setScaleY(2);
 
+        }
 
-        System.out.println("\nGrand Test Print");
-        System.out.println("in class: HeroSheetController. ");
-        System.out.println("Hero 1 name: " + playerHero1.getName());
-        System.out.println("Hero 1 hp: " + playerHero1.getCurrenthp());
-        System.out.println("Hero 1 active: " + playerHero1.getActive());
-
-        System.out.println("\nHero 2 name: " + playerHero2.getName());
-        System.out.println("Hero 2 hp: " + playerHero2.getCurrenthp());
-        System.out.println("Hero 2 active: " + playerHero2.getActive());
-
-        System.out.println("\nHero 3 name: " + playerHero3.getName());
-        System.out.println("Hero 3 hp: " + playerHero3.getCurrenthp());
-        System.out.println("Hero 3 active: " + playerHero3.getActive());
-
-        System.out.println("\nACTIVEheroobject name: " + playerActiveHero.getName());
-        System.out.println("ACTIVEheroobject hp: " + playerActiveHero.getCurrenthp());
-        System.out.println("ACTIVEheroobject active:  " + playerActiveHero.getActive());
-
-
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(fightSceneSetupScene);
     }
 
 
@@ -123,7 +119,6 @@ public class HeroSheetController {
         {
             System.out.println("Hero3 is: " + playerHero3.getActive());
             playerActiveHero = playerHero3;
-            System.out.println(playerActiveHero.getCurrenthp());
         }
 
         System.out.println("Start by printing playerActiveHero name: "+ playerActiveHero.getName());
@@ -142,6 +137,10 @@ public class HeroSheetController {
         hero_text_cost_agi.setText("Cost: " + (playerHero1.getAgility() * 69 * 1.2) + ".");
 
         hero_text_active_hero.setText("Active Hero: " + playerHero1.getName() + ".");
+        hero_text_active_hero.setFill(Color.BLACK);
+        button_load_hero1.setStyle("-fx-background-color: limegreen");
+        button_load_hero2.setStyle("-fx-background-color: lightgray");
+        button_load_hero3.setStyle("-fx-background-color: lightgray");
         // set the loaded hero to active, and others to not active.
         playerHero1.active = true;
         playerHero2.active = false;
@@ -194,6 +193,10 @@ public class HeroSheetController {
         hero_text_cost_agi.setText("Cost: " + (playerHero2.getAgility() * 69 * 1.2)+ ".");
 
         hero_text_active_hero.setText("Active Hero: " + playerHero2.getName() + ".");
+        hero_text_active_hero.setFill(Color.BLACK);
+        button_load_hero1.setStyle("-fx-background-color: lightgray");
+        button_load_hero2.setStyle("-fx-background-color: limegreen");
+        button_load_hero3.setStyle("-fx-background-color: lightgray");
         // set the loaded hero to active, and others to not active.
         playerHero1.active = false;
         playerHero2.active = true;
@@ -246,6 +249,10 @@ public class HeroSheetController {
         hero_text_cost_agi.setText("Cost: " + (playerHero3.getAgility() * 69 * 1.2)+ ".");
 
         hero_text_active_hero.setText("Active Hero: " + playerHero3.getName() + ".");
+        hero_text_active_hero.setFill(Color.BLACK);
+        button_load_hero1.setStyle("-fx-background-color: lightgray");
+        button_load_hero2.setStyle("-fx-background-color: lightgray");
+        button_load_hero3.setStyle("-fx-background-color: limegreen");
         // set the loaded hero to active, and others to not active.
         playerHero1.active = false;
         playerHero2.active = false;
@@ -306,6 +313,13 @@ public class HeroSheetController {
     Button button_increase_end;
     @FXML
     Button button_increase_agi;
+
+    @FXML
+    Button button_load_hero1;
+    @FXML
+    Button button_load_hero2;
+    @FXML
+    Button button_load_hero3;
 
 
 

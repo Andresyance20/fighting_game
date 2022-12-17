@@ -166,6 +166,21 @@ public class FightSceneSetupController {
         }
         else
         {
+            if (selectedHero == false)
+            {
+                button_inspect_heroes.setStyle("-fx-background-color: red");
+            }
+            if (selectedDifficulty == false)
+            {
+                button_set_difficulty.setStyle("-fx-background-color: red");
+            }
+            if (selectedBackground == false)
+            {
+                button_set_map.setStyle("-fx-background-color: red");
+            }
+
+
+
             System.out.println("\nSelect a hero, and a difficulty, and a background");
         }
 
@@ -179,8 +194,6 @@ public class FightSceneSetupController {
         {
             System.out.println("Hero1 is: " + playerHero1.getActive());
             playerActiveHero = playerHero1;
-            // very start of experiment with color to showcase satisfied selection
-            button_inspect_heroes.setStyle("-fx-background-color: green");
 
             heroSheetControllernotfrommain.loadHeroData1();
         }
@@ -203,6 +216,8 @@ public class FightSceneSetupController {
 
         setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, heroSheetControllernotfrommain);
 
+        // set color correctly because we won't let them come back UNTIL they select a hero.
+        button_inspect_heroes.setStyle("-fx-background-color: limegreen");
 //        button_inspect_heroes.setText(playerActiveHero.getName());
 
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -224,6 +239,8 @@ public class FightSceneSetupController {
         selectedBackground = true;
         System.out.println("click registered for map");
 
+        button_set_map.setStyle("-fx-background-color: limegreen");
+
         // can redraw background, need a reference to fightscene controller?
        // need one anyway to load data
 
@@ -234,6 +251,9 @@ public class FightSceneSetupController {
     public String difficulty = "unselected";
     @FXML
     protected void difficultyButtonClick() {
+
+        button_set_difficulty.setStyle("-fx-background-color: limegreen");
+
         if (difficulty.equals("unselected"))
         {
             // if never clicked yet, set to hard so it sets to normal.
