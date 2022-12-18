@@ -27,10 +27,6 @@ public class ShopController {
 
     // setting money to textfield
 
-    public void setText_money(TextField text_money) {
-        this.text_money = text_money;
-    }
-
     public void setToMainMenu(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai, int money, int hpCount, int attackCount, int superCount) {
         mainScene = scene;
         playerHero1 = hero1;

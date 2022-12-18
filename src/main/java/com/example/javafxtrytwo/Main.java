@@ -96,7 +96,7 @@ public class Main extends Application {
             // injecting second scene into the controller of the first scene
             MainController mainController = (MainController) mainLoader.getController();
             mainController.setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
-            mainController.setToShop(shopScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
+            mainController.setToShop(shopScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, money, hpPotionCount, attackPotionCount, superPotionCount);
             //    To do:
             //    add logic for switchToShopScene (will require heros / inventory)
             //    add logic for switchToOptionScene (idk if we need to pass references here? maybe because it might lose reference on reenter? I am unsure)
