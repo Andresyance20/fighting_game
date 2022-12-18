@@ -83,6 +83,8 @@ public class Main extends Application {
 
             FXMLLoader shopLoader = new FXMLLoader(getClass().getResource("ShopScene.fxml"));
             Parent shopRoot = shopLoader.load();
+            ShopController shopCont = shopLoader.getController();
+            shopCont.displayMoney(String.valueOf(money));
             Scene shopScene = new Scene(shopRoot, 1080, 600);
 
            /* FXMLLoader ResultLoader = new FXMLLoader(getClass().getResource("Result.fxml"));

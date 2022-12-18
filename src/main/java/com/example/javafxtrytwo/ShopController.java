@@ -24,8 +24,10 @@ public class ShopController {
     private int attackPotionCount;
     private int superPotionCount;
 
-
-    // setting money to textfield
+    public void displayMoney(String mon)
+    {
+        label_Money.setText("Money: $" + mon);
+    }
 
     public void setToMainMenu(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai, int money, int hpCount, int attackCount, int superCount) {
         mainScene = scene;
@@ -93,7 +95,7 @@ public class ShopController {
     public Button button_healthPotion;
     public Button button_attackPotion;
     public Button button_superPotion;
-    public TextField text_money;
+    public Label label_Money;
 
     // potion buttons clicked
     @FXML
@@ -112,11 +114,12 @@ public class ShopController {
                 hpPotionCount++;
                 System.out.println("Money: " + money);
                 System.out.println("Number of Health Potions: " + hpPotionCount);
+                displayMoney(String.valueOf(money));
             }
         }
         else
         {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Not Enough Money");
             alert.setHeaderText("You don't have enough money");
         }
@@ -134,9 +137,10 @@ public class ShopController {
                 attackPotionCount++;
                 System.out.println("Money: " + money);
                 System.out.println("Number of Attack Potions: " + attackPotionCount);
+                displayMoney(String.valueOf(money));
             }
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Not Enough Money");
             alert.setHeaderText("You don't have enough money");
         }
@@ -154,9 +158,10 @@ public class ShopController {
                 superPotionCount++;
                 System.out.println("Money: " + money);
                 System.out.println("Number of Super Potions: " + superPotionCount);
+                displayMoney(String.valueOf(money));
             }
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Not Enough Money");
             alert.setHeaderText("You don't have enough money");
         }
