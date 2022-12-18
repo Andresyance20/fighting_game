@@ -31,13 +31,17 @@ public class ShopController {
         this.text_money = text_money;
     }
 
-    public void setToMainMenu(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai) {
+    public void setToMainMenu(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai, int money, int hpCount, int attackCount, int superCount) {
         mainScene = scene;
         playerHero1 = hero1;
         playerHero2 = hero2;
         playerHero3 = hero3;
         playerActiveHero = activeHero;
         heroAI = heroai;
+        this.money = money;
+        hpPotionCount = hpCount;
+        attackPotionCount = attackCount;
+        superPotionCount = superCount;
     }
 
     // back to menu
@@ -63,7 +67,7 @@ public class ShopController {
             System.out.println(playerActiveHero.getCurrenthp());
         }
 
-        setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI);
+        setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, money, hpPotionCount, attackPotionCount, superPotionCount);
 
         System.out.println("\nGrand Test Print");
         System.out.println("in class: FightSceneController. ");

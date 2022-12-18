@@ -129,7 +129,7 @@ public class Main extends Application {
             loseSceneController.setToFightScene(fightSceneScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
 
             ShopController shopController = (ShopController) shopLoader.getController();
-            shopController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
+            shopController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, money, hpPotionCount, attackPotionCount, superPotionCount);
 
             //ResultController ResultController = (ResultController) ResultLoader.getController();
 
