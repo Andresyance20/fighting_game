@@ -15,6 +15,10 @@ public class LoseSceneController {
     private Hero playerHero3;
     private Hero playerActiveHero;
     private Hero heroAI;
+    private int money;
+    private int hpPotionCount;
+    private int attackPotionCount;
+    private int superPotionCount;
 
     public void setToMainMenu(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai) {
         mainScene = scene;

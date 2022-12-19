@@ -97,7 +97,7 @@ public class Main extends Application {
             // These are how we pass data to the controller classes, check the controller classes to see the data copy
             // injecting second scene into the controller of the first scene
             MainController mainController = (MainController) mainLoader.getController();
-            mainController.setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
+            mainController.setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, money, hpPotionCount, attackPotionCount, superPotionCount);
             mainController.setToShop(shopScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, money, hpPotionCount, attackPotionCount, superPotionCount);
             //    To do:
             //    add logic for switchToShopScene (will require heros / inventory)
@@ -111,16 +111,16 @@ public class Main extends Application {
 
             // so, passing reference to the scene and hero object and storing it inside a private variable inside this specific control, basically we just copy contents of hero onto another hero object.
             FightSceneController fightSceneController = (FightSceneController) fightSceneLoader.getController();
-            fightSceneController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
-            fightSceneController.setToLoseScene(loseSceneScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
+            fightSceneController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, money, hpPotionCount, attackPotionCount, superPotionCount);
+            fightSceneController.setToLoseScene(loseSceneScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, money, hpPotionCount, attackPotionCount, superPotionCount);
 
 
             // injecting first scene into the controller of the second scene
             FightSceneSetupController fightSceneSetupController = (FightSceneSetupController) fightSceneSetupLoader.getController();
             // example: we access the "fightscenesetup controller" class methods(activate on buttons) and pass in the data we have here.
             // idk if that's the EXACT process, there's a lot of parts to it.
-            fightSceneSetupController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
-            fightSceneSetupController.setToFightScene(fightSceneScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, fightSceneController);
+            fightSceneSetupController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, money, hpPotionCount, attackPotionCount, superPotionCount);
+            fightSceneSetupController.setToFightScene(fightSceneScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, fightSceneController, money, hpPotionCount, attackPotionCount, superPotionCount);
             fightSceneSetupController.setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, heroSheetController);
 //            fightSceneSetupController.updateHeroInfo();
 
