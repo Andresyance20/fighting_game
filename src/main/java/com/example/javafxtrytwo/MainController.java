@@ -32,7 +32,10 @@ public class MainController {
     private Hero playerHero3;
     private Hero playerActiveHero;
     private Hero heroAI;
-
+    private int money;
+    private int hpPotionCount;
+    private int attackPotionCount;
+    private int superPotionCount;
     Stage stage;
 
 
@@ -48,13 +51,17 @@ public class MainController {
 
     }
 
-    public void setToShop (Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai) {
+    public void setToShop (Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai, int money, int hpCount, int attackCount, int superCount) {
         shopScene = scene;
         playerHero1 = hero1;
         playerHero2 = hero2;
         playerHero3 = hero3;
         playerActiveHero = activeHero;
         heroAI = heroai;
+        this.money = money;
+        hpPotionCount = hpCount;
+        attackPotionCount = attackCount;
+        superPotionCount = superCount;
     }
 
     // set the stage and scene
@@ -129,7 +136,7 @@ public class MainController {
             System.out.println(playerActiveHero.getCurrenthp());
         }
 
-        setToShop(shopScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI);
+        setToShop(shopScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, money, hpPotionCount, attackPotionCount, superPotionCount);
 
         System.out.println("\nGrand Test Print");
         System.out.println("in class: MainController. ");

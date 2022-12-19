@@ -25,14 +25,21 @@ public class Main extends Application {
     {
         // Construct heroes or other data here, so they are passable as parameters in the javafx scope.
         // we need 4 persistent heroes total, 3 for player to switch around, and 1 to represent an enemy.
-        Hero playerHero1 = new Hero(false,"Hero1 name", 100, 100, 10, 10, 10,  5,5, 0, 1, 10000, 0, 0, 0, 66, 200);
-        Hero playerHero2 = new Hero(false,"Hero2 name", 100, 100, 10, 10, 10, 5, 5, 0, 1, 10000, 0, 0, 0, 66, 200);
-        Hero playerHero3 = new Hero(false,"Hero3 name", 100, 100, 10, 10, 10, 5, 5, 0, 1, 10000, 0, 0, 0, 66, 200);
+        Hero playerHero1 = new Hero(false,"Hero1 name", 150, 150, 10, 10, 10,  5,5, 0, 100,1, 10000, 0, 0, 0, 66, 200);
+        Hero playerHero2 = new Hero(false,"Hero2 name", 150, 150, 10, 10, 10, 5, 5, 0,100, 1, 10000, 0, 0, 0, 66, 200);
+        Hero playerHero3 = new Hero(false,"Hero3 name", 150, 150, 10, 10, 10, 5, 5, 0,100, 1, 10000, 0, 0, 0, 66, 200);
 
         // TESTING
-        Hero playerActiveHero = new Hero(false,"Default active Hero", 100, 100, 10, 10, 10, 5, 5, 0, 1, 0, 0, 0, 0, 66, 200);
-        Hero aiHero = new Hero(false,"AI Hero", 100, 100, 10, 10, 10, 5, 5, 0, 1, 0, 0, 0, 0, 66, 200);
+        Hero playerActiveHero = new Hero(false,"Default active Hero", 100, 100, 10, 10, 10, 5, 5, 100,0, 1, 0, 0, 0, 0, 66, 200);
+        Hero aiHero = new Hero(false,"AI Hero", 100, 100, 10, 10, 10, 5, 5, 0, 100,1, 0, 0, 0, 0, 66, 200);
 
+        // default money supply
+        int money = 500;
+
+        // default potion count
+        int hpPotionCount = 0;
+        int attackPotionCount = 0;
+        int superPotionCount = 0;
 
         // add background
         /*Image image  = new Image("background2.jpg");
@@ -76,6 +83,8 @@ public class Main extends Application {
 
             FXMLLoader shopLoader = new FXMLLoader(getClass().getResource("ShopScene.fxml"));
             Parent shopRoot = shopLoader.load();
+            ShopController shopCont = shopLoader.getController();
+            shopCont.displayMoney(String.valueOf(money));
             Scene shopScene = new Scene(shopRoot, 1080, 600);
 
            /* FXMLLoader ResultLoader = new FXMLLoader(getClass().getResource("Result.fxml"));
@@ -89,7 +98,7 @@ public class Main extends Application {
             // injecting second scene into the controller of the first scene
             MainController mainController = (MainController) mainLoader.getController();
             mainController.setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
-            mainController.setToShop(shopScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
+            mainController.setToShop(shopScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, money, hpPotionCount, attackPotionCount, superPotionCount);
             //    To do:
             //    add logic for switchToShopScene (will require heros / inventory)
             //    add logic for switchToOptionScene (idk if we need to pass references here? maybe because it might lose reference on reenter? I am unsure)
@@ -99,27 +108,30 @@ public class Main extends Application {
             HeroSheetController heroSheetController = (HeroSheetController) heroSheetLoader.getController();
             heroSheetController.setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
 
-            // injecting first scene into the controller of the second scene
-            FightSceneSetupController fightSceneSetupController = (FightSceneSetupController) fightSceneSetupLoader.getController();
-            // example: we access the "fightscenesetup controller" class methods(activate on buttons) and pass in the data we have here.
-            // idk if that's the EXACT process, there's a lot of parts to it.
-            fightSceneSetupController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
-            fightSceneSetupController.setToFightScene(fightSceneScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
-            fightSceneSetupController.setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, heroSheetController);
-//            fightSceneSetupController.updateHeroInfo();
-
 
             // so, passing reference to the scene and hero object and storing it inside a private variable inside this specific control, basically we just copy contents of hero onto another hero object.
             FightSceneController fightSceneController = (FightSceneController) fightSceneLoader.getController();
             fightSceneController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
             fightSceneController.setToLoseScene(loseSceneScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
 
+
+            // injecting first scene into the controller of the second scene
+            FightSceneSetupController fightSceneSetupController = (FightSceneSetupController) fightSceneSetupLoader.getController();
+            // example: we access the "fightscenesetup controller" class methods(activate on buttons) and pass in the data we have here.
+            // idk if that's the EXACT process, there's a lot of parts to it.
+            fightSceneSetupController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
+            fightSceneSetupController.setToFightScene(fightSceneScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, fightSceneController);
+            fightSceneSetupController.setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, heroSheetController);
+//            fightSceneSetupController.updateHeroInfo();
+
+
+
             LoseSceneController loseSceneController = (LoseSceneController) loseSceneLoader.getController();
             loseSceneController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
             loseSceneController.setToFightScene(fightSceneScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
 
             ShopController shopController = (ShopController) shopLoader.getController();
-            shopController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
+            shopController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, money, hpPotionCount, attackPotionCount, superPotionCount);
 
             //ResultController ResultController = (ResultController) ResultLoader.getController();
 

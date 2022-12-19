@@ -6,6 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -13,7 +15,7 @@ import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-// think we need to initialize the text?
+//    think we need to initialize the text?
 //    was testing initialize, if you need any data, you can load it before the view is onscreen.
 //    idk that we will need to do this, but if we have issues with null data, this might be a solution so I will leave it here for now.
 
@@ -46,6 +48,9 @@ public class HeroSheetController {
         playerHero3 = hero3;
         playerActiveHero = activeHero;
         heroAI = heroai;
+
+
+
     }
 
     // here is where we can update the data we pass between scenes
@@ -56,6 +61,7 @@ public class HeroSheetController {
         {
             System.out.println("Hero1 is: " + playerHero1.getActive());
             playerActiveHero = playerHero1;
+
         }
         if (playerHero2.getActive() == true)
         {
@@ -72,29 +78,22 @@ public class HeroSheetController {
         setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI);
 
 
+//        if the player selected a hero
+        if (playerActiveHero.getActive() == true)
+        {
+            hero_text_active_hero.setStyle("-fx-background-color: lightgray");
+            Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+            primaryStage.setScene(fightSceneSetupScene);
+        }
+        else if (playerActiveHero.getActive() == false)
+        {
+            hero_text_active_hero.setText("Select a hero!");
+            hero_text_active_hero.setFill(Color.RED);
+//            hero_text_active_hero.setScaleX(2);
+//            hero_text_active_hero.setScaleY(2);
 
+        }
 
-        System.out.println("\nGrand Test Print");
-        System.out.println("in class: HeroSheetController. ");
-        System.out.println("Hero 1 name: " + playerHero1.getName());
-        System.out.println("Hero 1 hp: " + playerHero1.getCurrenthp());
-        System.out.println("Hero 1 active: " + playerHero1.getActive());
-
-        System.out.println("\nHero 2 name: " + playerHero2.getName());
-        System.out.println("Hero 2 hp: " + playerHero2.getCurrenthp());
-        System.out.println("Hero 2 active: " + playerHero2.getActive());
-
-        System.out.println("\nHero 3 name: " + playerHero3.getName());
-        System.out.println("Hero 3 hp: " + playerHero3.getCurrenthp());
-        System.out.println("Hero 3 active: " + playerHero3.getActive());
-
-        System.out.println("\nACTIVEheroobject name: " + playerActiveHero.getName());
-        System.out.println("ACTIVEheroobject hp: " + playerActiveHero.getCurrenthp());
-        System.out.println("ACTIVEheroobject active:  " + playerActiveHero.getActive());
-
-
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        primaryStage.setScene(fightSceneSetupScene);
     }
 
 
@@ -106,7 +105,6 @@ public class HeroSheetController {
 
     public void loadHeroData1()
     {
-
         if (playerHero1.getActive() == true)
         {
             System.out.println("Hero1 is: " + playerHero1.getActive());
@@ -121,7 +119,6 @@ public class HeroSheetController {
         {
             System.out.println("Hero3 is: " + playerHero3.getActive());
             playerActiveHero = playerHero3;
-            System.out.println(playerActiveHero.getCurrenthp());
         }
 
         System.out.println("Start by printing playerActiveHero name: "+ playerActiveHero.getName());
@@ -135,11 +132,17 @@ public class HeroSheetController {
         hero_text_losses.setText("Losses: " + playerHero1.getLossCount() + ".");
         hero_text_hp.setText("HP: " + playerHero1.getCurrenthp() + "/" + playerHero1.getMaxhp() + ".");
         hero_text_dodge.setText("Dodge: " + playerHero1.getDodge() + "%");
-        hero_text_cost_str.setText("Cost: " + (playerHero1.getStrength() * 69 * 1.2) + ".");
-        hero_text_cost_end.setText("Cost: " + (playerHero1.getEndurance() * 69 * 1.2)+ ".");
-        hero_text_cost_agi.setText("Cost: " + (playerHero1.getAgility() * 69 * 1.2) + ".");
+        hero_text_cost_str.setText("Cost: " + (playerHero1.getStrength() * 69) + ".");
+        hero_text_cost_end.setText("Cost: " + (playerHero1.getEndurance() * 69)+ ".");
+        hero_text_cost_agi.setText("Cost: " + (playerHero1.getAgility() * 69) + ".");
+
+        hero_text_damage.setText("Attack Damage: " + playerHero1.getAttackDamage() + ".");
 
         hero_text_active_hero.setText("Active Hero: " + playerHero1.getName() + ".");
+        hero_text_active_hero.setFill(Color.BLACK);
+        button_load_hero1.setStyle("-fx-background-color: limegreen");
+        button_load_hero2.setStyle("-fx-background-color: lightgray");
+        button_load_hero3.setStyle("-fx-background-color: lightgray");
         // set the loaded hero to active, and others to not active.
         playerHero1.active = true;
         playerHero2.active = false;
@@ -155,11 +158,6 @@ public class HeroSheetController {
 
         System.out.println("playerActiveHero name: "+ playerActiveHero.getName());
         System.out.println("playerHero1 name: "+ playerHero1.getName());
-
-
-
-
-
     }
 
     public void loadHeroData2()
@@ -196,7 +194,13 @@ public class HeroSheetController {
         hero_text_cost_end.setText("Cost: " + (playerHero2.getEndurance() * 69)+ ".");
         hero_text_cost_agi.setText("Cost: " + (playerHero2.getAgility() * 69)+ ".");
 
+        hero_text_damage.setText("Attack Damage: " + playerHero2.getAttackDamage() + ".");
+
         hero_text_active_hero.setText("Active Hero: " + playerHero2.getName() + ".");
+        hero_text_active_hero.setFill(Color.BLACK);
+        button_load_hero1.setStyle("-fx-background-color: lightgray");
+        button_load_hero2.setStyle("-fx-background-color: limegreen");
+        button_load_hero3.setStyle("-fx-background-color: lightgray");
         // set the loaded hero to active, and others to not active.
         playerHero1.active = false;
         playerHero2.active = true;
@@ -211,11 +215,10 @@ public class HeroSheetController {
         System.out.println("playerHero2 name: "+ playerHero2.getName());
 
 
+
     }
     public void loadHeroData3()
     {
-
-
         if (playerHero1.getActive() == true)
         {
             System.out.println("Hero1 is: " + playerHero1.getActive());
@@ -230,7 +233,6 @@ public class HeroSheetController {
         {
             System.out.println("Hero3 is: " + playerHero3.getActive());
             playerActiveHero = playerHero3;
-            System.out.println(playerActiveHero.getCurrenthp());
         }
 
 
@@ -248,8 +250,13 @@ public class HeroSheetController {
         hero_text_cost_str.setText("Cost: " + (playerHero3.getStrength() * 69) + ".");
         hero_text_cost_end.setText("Cost: " + (playerHero3.getEndurance() * 69)+ ".");
         hero_text_cost_agi.setText("Cost: " + (playerHero3.getAgility() * 69)+ ".");
+        hero_text_damage.setText("Attack Damage: " + playerHero3.getAttackDamage() + ".");
 
         hero_text_active_hero.setText("Active Hero: " + playerHero3.getName() + ".");
+        hero_text_active_hero.setFill(Color.BLACK);
+        button_load_hero1.setStyle("-fx-background-color: lightgray");
+        button_load_hero2.setStyle("-fx-background-color: lightgray");
+        button_load_hero3.setStyle("-fx-background-color: limegreen");
         // set the loaded hero to active, and others to not active.
         playerHero1.active = false;
         playerHero2.active = false;
@@ -268,12 +275,10 @@ public class HeroSheetController {
         System.out.println("playerHero3 current hp: " + playerHero3.getCurrenthp());
 
 
-        playerActiveHero.setCurrenthp(playerActiveHero.getCurrenthp()-1);
+        playerActiveHero.setCurrenthp((int) (playerActiveHero.getCurrenthp()-1));
         System.out.println("playerActiveHero current hp: " + playerActiveHero.getCurrenthp() + " did not change this one directly");
 
         System.out.println("After changing the active hero, here is playerHero3's current hp:" + playerHero3.getCurrenthp());
-
-
 
     }
 
@@ -305,6 +310,10 @@ public class HeroSheetController {
     private Text hero_text_cost_agi;
     @FXML
     private Text hero_text_active_hero;
+    @FXML
+    private Text hero_text_damage;
+
+
 
     @FXML
     Button button_increase_str;
@@ -312,6 +321,13 @@ public class HeroSheetController {
     Button button_increase_end;
     @FXML
     Button button_increase_agi;
+
+    @FXML
+    Button button_load_hero1;
+    @FXML
+    Button button_load_hero2;
+    @FXML
+    Button button_load_hero3;
 
 
 
@@ -321,9 +337,9 @@ public class HeroSheetController {
     // idk formula can be 69 funny number * 1.2
     public void increaseStrength()
     {
-        double costFormulaHero1 = playerHero1.getStrength() * 69 * 1.2;
-        double costFormulaHero2 = playerHero2.getStrength() * 69 * 1.2;
-        double costFormulaHero3 = playerHero3.getStrength() * 69 * 1.2;
+        int costFormulaHero1 = (int) (playerHero1.getStrength() * 70);
+        int costFormulaHero2 = (int) (playerHero2.getStrength() * 70);
+        int costFormulaHero3 = (int) (playerHero3.getStrength() * 70);
 
         // check if active
         if (playerHero1.getActive())
@@ -332,9 +348,11 @@ public class HeroSheetController {
             if (playerHero1.getExperience() >= costFormulaHero1)
             {
                 // pay the cost, increase the stat
-                playerHero1.setExperience(playerHero1.getExperience() - (costFormulaHero1));
-                playerHero1.setStrength(playerHero1.getStrength() + 1);
+                playerHero1.setExperience((int) (playerHero1.getExperience() - (costFormulaHero1)));
+                playerHero1.setStrength((int) (playerHero1.getStrength() + 1));
                 // update the screen to current data
+
+                playerHero1.updateAllStats();
                 loadHeroData1();
             }
             else { System.out.println("Not enough exp! "); }
@@ -343,8 +361,10 @@ public class HeroSheetController {
         {
             if (playerHero2.getExperience() >= costFormulaHero2)
             {
-                playerHero2.setExperience(playerHero2.getExperience() - (costFormulaHero2));
-                playerHero2.setStrength(playerHero2.getStrength() + 1);
+                playerHero2.setExperience((int) (playerHero2.getExperience() - (costFormulaHero2)));
+                playerHero2.setStrength((int) (playerHero2.getStrength() + 1));
+
+                playerHero2.updateAllStats();
                 loadHeroData2();
             }
             else { System.out.println("Not enough exp! "); }
@@ -354,8 +374,10 @@ public class HeroSheetController {
         {
             if (playerHero3.getExperience() >= costFormulaHero3)
             {
-                playerHero3.setExperience(playerHero3.getExperience() - (costFormulaHero3));
-                playerHero3.setStrength(playerHero3.getStrength() + 1);
+                playerHero3.setExperience((int) (playerHero3.getExperience() - (costFormulaHero3)));
+                playerHero3.setStrength((int) (playerHero3.getStrength() + 1));
+
+                playerHero3.updateAllStats();
                 loadHeroData3();
             }
             else { System.out.println("Not enough exp! "); }
@@ -364,16 +386,18 @@ public class HeroSheetController {
 
     public void increaseEndurance()
     {
-        double costFormulaHero1 = playerHero1.getEndurance() * 69 * 1.2;
-        double costFormulaHero2 = playerHero2.getEndurance() * 69 * 1.2;
-        double costFormulaHero3 = playerHero3.getEndurance() * 69 * 1.2;
+        int costFormulaHero1 = (int) (playerHero1.getEndurance() * 69);
+        int costFormulaHero2 = (int) (playerHero2.getEndurance() * 69);
+        int costFormulaHero3 = (int) (playerHero3.getEndurance() * 69);
 
         if (playerHero1.getActive())
         {
             if (playerHero1.getExperience() >= costFormulaHero1)
             {
-                playerHero1.setExperience(playerHero1.getExperience() - (costFormulaHero1));
-                playerHero1.setEndurance(playerHero1.getEndurance() + 1);
+                playerHero1.setExperience((int) (playerHero1.getExperience() - (costFormulaHero1)));
+                playerHero1.setEndurance((int) (playerHero1.getEndurance() + 1));
+
+                playerHero1.updateAllStats();
                 loadHeroData1();
             }
             else { System.out.println("Not enough exp! "); }
@@ -382,8 +406,10 @@ public class HeroSheetController {
         {
             if (playerHero2.getExperience() >= costFormulaHero2)
             {
-                playerHero2.setExperience(playerHero2.getExperience() - (costFormulaHero2));
-                playerHero2.setEndurance(playerHero2.getEndurance() + 1);
+                playerHero2.setExperience((int) (playerHero2.getExperience() - (costFormulaHero2)));
+                playerHero2.setEndurance((int) (playerHero2.getEndurance() + 1));
+
+                playerHero2.updateAllStats();
                 loadHeroData2();
             }
             else { System.out.println("Not enough exp! "); }
@@ -392,8 +418,10 @@ public class HeroSheetController {
         {
             if (playerHero3.getExperience() >= costFormulaHero3)
             {
-                playerHero3.setExperience(playerHero3.getExperience() - (costFormulaHero3));
-                playerHero3.setEndurance(playerHero3.getEndurance() + 1);
+                playerHero3.setExperience((int) (playerHero3.getExperience() - (costFormulaHero3)));
+                playerHero3.setEndurance((int) (playerHero3.getEndurance() + 1));
+
+                playerHero3.updateAllStats();
                 loadHeroData3();
             }
             else { System.out.println("Not enough exp! "); }
@@ -402,16 +430,18 @@ public class HeroSheetController {
 
     public void increaseAgility()
     {
-        double costFormulaHero1 = playerHero1.getAgility() * 69 * 1.2;
-        double costFormulaHero2 = playerHero2.getAgility() * 69 * 1.2;
-        double costFormulaHero3 = playerHero3.getAgility() * 69 * 1.2;
+        int costFormulaHero1 = (int) (playerHero1.getAgility() * 69);
+        int costFormulaHero2 = (int) (playerHero2.getAgility() * 69);
+        int costFormulaHero3 = (int) (playerHero3.getAgility() * 69);
 
         if (playerHero1.getActive())
         {
             if (playerHero1.getExperience() >= costFormulaHero1)
             {
-                playerHero1.setExperience(playerHero1.getExperience() - (costFormulaHero1));
-                playerHero1.setAgility(playerHero1.getAgility() + 1);
+                playerHero1.setExperience((int) (playerHero1.getExperience() - (costFormulaHero1)));
+                playerHero1.setAgility((int) (playerHero1.getAgility() + 1));
+
+                playerHero1.updateAllStats();
                 loadHeroData1();
             }
             else { System.out.println("Not enough exp! "); }
@@ -420,8 +450,10 @@ public class HeroSheetController {
         {
             if (playerHero2.getExperience() >= costFormulaHero2)
             {
-                playerHero2.setExperience(playerHero2.getExperience() - (costFormulaHero2));
-                playerHero2.setAgility(playerHero2.getAgility() + 1);
+                playerHero2.setExperience((int) (playerHero2.getExperience() - (costFormulaHero2)));
+                playerHero2.setAgility((int) (playerHero2.getAgility() + 1));
+
+                playerHero2.updateAllStats();
                 loadHeroData2();
             }
             else { System.out.println("Not enough exp! "); }
@@ -430,16 +462,15 @@ public class HeroSheetController {
         {
             if (playerHero3.getExperience() >= costFormulaHero3)
             {
-                playerHero3.setExperience(playerHero3.getExperience() - (costFormulaHero3));
-                playerHero3.setAgility(playerHero3.getAgility() + 1);
+                playerHero3.setExperience((int) (playerHero3.getExperience() - (costFormulaHero3)));
+                playerHero3.setAgility((int) (playerHero3.getAgility() + 1));
+
+                playerHero3.updateAllStats();
                 loadHeroData3();
             }
             else { System.out.println("Not enough exp! "); } // Add some visual signal?
         } else { System.out.println("No active hero? try to load one by clicking the button "); }
     }
-
-
-
 
 
 
@@ -456,11 +487,11 @@ public class HeroSheetController {
 
     }
 
+
+
     public void inspectAspect(int buttonElement)
     {
 //        display some deeper level of info about the clicked element
 //        clicking the Strength stat would make a popup explaining how it is used in calculations or something.
     }
-
-
 }
