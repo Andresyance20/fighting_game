@@ -23,6 +23,10 @@ public class FightSceneSetupController {
     private Hero playerHero3;
     private Hero playerActiveHero;
     private Hero heroAI;
+    private int money;
+    private int hpPotionCount;
+    private int attackPotionCount;
+    private int superPotionCount;
     private HeroSheetController heroSheetControllernotfrommain;
     private FightSceneController fightSceneControllernotfrommain;
 
@@ -35,7 +39,7 @@ public class FightSceneSetupController {
 
 
 //  setting data
-    public void setToMainMenu(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai)
+    public void setToMainMenu(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai, int money, int hpCount, int attackCount, int superCount)
     {
         mainScene = scene;
         playerHero1 = hero1;
@@ -43,10 +47,14 @@ public class FightSceneSetupController {
         playerHero3 = hero3;
         playerActiveHero = activeHero;
         heroAI = heroai;
+        this.money = money;
+        hpPotionCount = hpCount;
+        attackPotionCount = attackCount;
+        superPotionCount = superCount;
     }
 
 //    Hero activeHeroPlayer
-    public void setToFightScene(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai, FightSceneController fightSceneControllernotfrommain1)
+    public void setToFightScene(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai, FightSceneController fightSceneControllernotfrommain1, int money, int hpCount, int attackCount, int superCount)
     {
 
         fightSceneControllernotfrommain = fightSceneControllernotfrommain1;
@@ -56,6 +64,10 @@ public class FightSceneSetupController {
         playerHero3 = hero3;
         playerActiveHero = activeHero;
         heroAI = heroai;
+        this.money = money;
+        hpPotionCount = hpCount;
+        attackPotionCount = attackCount;
+        superPotionCount = superCount;
     }
 
     public void setToHeroSheet(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai, HeroSheetController heroSheetControllernotfrommain1)
@@ -90,7 +102,7 @@ public class FightSceneSetupController {
             playerActiveHero = playerHero3;
         }
 
-        setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI);
+        setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, money, hpPotionCount, attackPotionCount, superPotionCount);
 
 
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -123,7 +135,7 @@ public class FightSceneSetupController {
             fightSceneControllernotfrommain.loadFightSceneData();
         }
 
-        setToFightScene(fightScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, fightSceneControllernotfrommain);
+        setToFightScene(fightScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, fightSceneControllernotfrommain, money, hpPotionCount, attackPotionCount, superPotionCount);
 
 //        Checks in to see difficulty was set, background set, and hero set
         if (playerActiveHero.getActive() == true)

@@ -28,6 +28,10 @@ public class FightSceneController {
     private Hero playerHero3;
     private Hero playerActiveHero;
     private Hero heroAI;
+    private int money;
+    private int hpPotionCount;
+    private int attackPotionCount;
+    private int superPotionCount;
 
 
     // update every turn
@@ -35,22 +39,30 @@ public class FightSceneController {
 
 
     // set data
-    public void setToMainMenu(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai) {
+    public void setToMainMenu(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai, int money, int hpCount, int attackCount, int superCount) {
         mainScene = scene;
         playerHero1 = hero1;
         playerHero2 = hero2;
         playerHero3 = hero3;
         playerActiveHero = activeHero;
         heroAI = heroai;
+        this.money = money;
+        hpPotionCount = hpCount;
+        attackPotionCount = attackCount;
+        superPotionCount = superCount;
     }
 
-    public void setToLoseScene(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai) {
+    public void setToLoseScene(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai, int money, int hpCount, int attackCount, int superCount) {
         loseScene = scene;
         playerHero1 = hero1;
         playerHero2 = hero2;
         playerHero3 = hero3;
         playerActiveHero = activeHero;
         heroAI = heroai;
+        this.money = money;
+        hpPotionCount = hpCount;
+        attackPotionCount = attackCount;
+        superPotionCount = superCount;
     }
     // move scene
     // main menu
@@ -76,7 +88,7 @@ public class FightSceneController {
             System.out.println(playerActiveHero.getCurrenthp());
         }
 
-        setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI);
+        setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, money, hpPotionCount,attackPotionCount, superPotionCount);
 
 
 
@@ -108,6 +120,7 @@ public class FightSceneController {
             playerActiveHero = playerHero3;
             System.out.println(playerActiveHero.getCurrenthp());
         }
+        
 
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(loseScene);

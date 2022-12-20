@@ -34,7 +34,10 @@ public class HeroSheetController {
     private Scene fightSceneSetupScene;
     private Hero playerActiveHero;
     private Hero heroAI;
-
+    private int money;
+    private int hpPotionCount;
+    private int attackPotionCount;
+    private int superPotionCount;
 
 //    These sets are only the initial setting of data.
     // The only place we change activeHero is here ...
