@@ -4,14 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-import javax.swing.text.html.Option;
-
 // should this be a scene or is like a small window with the fightScene as background
 public class Result {
 
     boolean Result;
-    double score; // not sure
-    double experince;
+    double score;
+    double experience;
     String HeroName;
 
 
