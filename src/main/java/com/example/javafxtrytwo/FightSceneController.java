@@ -162,13 +162,17 @@ public class FightSceneController {
 //        go to inventory of the hero
     }
 
-    public void supermoveButtonClick()
-    {
+    public void supermoveButtonClick() throws InterruptedException {
+        button_supermove.setDisable(true);
+        Thread.sleep(100);
+
+
         if (playerTurn == true)
         {
 
             if (playerActiveHero.getCurrentSuperCharge() == playerActiveHero.getMaxSuperCharge())
             {
+                System.out.println("Player supermove");
                 heroAI.setCurrenthp(heroAI.getCurrenthp() - (playerActiveHero.getAttackDamage() * 3));
                 playerActiveHero.setCurrentSuperCharge(0);
 
@@ -186,8 +190,13 @@ public class FightSceneController {
     }
 
 
-    public void actionButtonClick()
-    {
+    public void actionButtonClick() throws InterruptedException {
+// disable button so player cant SPAM
+
+        button_action.setDisable(true);
+        Thread.sleep(100);
+        System.out.println("Player attack. ");
+
         // If they did not dodge, damage happens
         if (calculateDodge() == false)
         {
@@ -229,14 +238,16 @@ public class FightSceneController {
         // updates the turn count, switches the turn to the other, and calls the loadfightscene data
 
         // ai turn
+        Thread.sleep(400);
         responseHeroAiAttack();
     }
 
 
     // the enemy turn logic
-    public void responseHeroAiAttack()
-    {
+    public void responseHeroAiAttack() throws InterruptedException {
         // player doesn't dodge
+
+        System.out.println("Enemy attack. ");
         if (calculateDodge() == false)
         {
             if (heroAI.getCurrentSuperCharge() == heroAI.getMaxSuperCharge())
@@ -318,13 +329,17 @@ public class FightSceneController {
 
 
 
-    public void updateTurn()
-    {
+    public void updateTurn() throws InterruptedException {
         // check to see if loss
         if (playerActiveHero.getCurrenthp() <= 0)
         {
 //            go to the loss scene
             playerActiveHero.setLossCount(playerActiveHero.getLossCount() + 1);
+
+            // heal the heros
+            playerActiveHero.reset_hero_full_recovery();
+            heroAI.reset_hero_full_recovery();
+
             button_surrender.fire();
         }
         else if (heroAI.getCurrenthp() <= 0)
@@ -334,25 +349,38 @@ public class FightSceneController {
             playerActiveHero.setMoney(playerActiveHero.getMoney() + heroAI.getMoney());
             playerActiveHero.setVictoryCount((playerActiveHero.getVictoryCount()) + 1);
 
+
+            playerActiveHero.reset_hero_full_recovery();
+            heroAI.reset_hero_full_recovery();
+
 //            why don't we have a win scene?
 //            call the button.fire() for it here
         }
 
-        turn_count += 1;
 
         // switch turns
         if (playerTurn == true)
         {
+            // really only the player needs a turn count
+
+            turn_count += 1;
             playerTurn = false;
+            loadFightSceneData();
+            Thread.sleep(100);
 //            System.out.println("Enemy turn");
         }
         else if (playerTurn == false)
         {
             playerTurn = true;
+            // player can click buttons again
+//            Thread.sleep(700);
+            loadFightSceneData();
+            Thread.sleep(100);
+            button_action.setDisable(false);
+            button_supermove.setDisable(false);
 //            System.out.println("Player turn");
         }
 // update data to reflect changes
-        loadFightSceneData();
     }
 
 
