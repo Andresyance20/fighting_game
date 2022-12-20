@@ -64,6 +64,11 @@ public class FightSceneController {
         attackPotionCount = attackCount;
         superPotionCount = superCount;
     }
+    public Boolean Result()
+    {
+
+        return null;
+    }
     // move scene
     // main menu
     public void openMainMenu(ActionEvent actionEvent)

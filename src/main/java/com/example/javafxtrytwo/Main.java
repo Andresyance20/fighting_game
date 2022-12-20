@@ -61,7 +61,7 @@ public class Main extends Application {
             // all of them will be made here. Feel free to observe/copy patterns and get these done.
             FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
             Parent mainRoot = mainLoader.load();
-            mainRoot.setStyle("-fx-background-color: #00FF00;");
+            mainRoot.setStyle("-fx-background-color: blue;");
             Scene mainScene = new Scene(mainRoot, 1080, 600);
 
 
@@ -69,37 +69,38 @@ public class Main extends Application {
 
             FXMLLoader fightSceneSetupLoader = new FXMLLoader(getClass().getResource("FightSceneSetup.fxml"));
             Parent fightSceneSetupRoot = fightSceneSetupLoader.load();
-            fightSceneSetupRoot.setStyle("-fx-background-color: #00FF00;");
+            fightSceneSetupRoot.setStyle("-fx-background-color: blue");
             Scene fightSceneSetupScene = new Scene(fightSceneSetupRoot, 1080, 600);
 
 
             FXMLLoader fightSceneLoader = new FXMLLoader(getClass().getResource("FightScene.fxml"));
             Parent fightSceneRoot = fightSceneLoader.load();
-            fightSceneRoot.setStyle("-fx-background-color: #00FF00;");
+            fightSceneRoot.setStyle("-fx-background-color: blue;");
             Scene fightSceneScene = new Scene(fightSceneRoot, 1080, 600);
 
             FXMLLoader loseSceneLoader = new FXMLLoader(getClass().getResource("LoseScene.fxml"));
             Parent loseSceneRoot = loseSceneLoader.load();
-            loseSceneRoot.setStyle("-fx-background-color: #00FF00;");
+            loseSceneRoot.setStyle("-fx-background-color: blue;");
             Scene loseSceneScene = new Scene(loseSceneRoot, 1080, 600);
 
 
             FXMLLoader heroSheetLoader = new FXMLLoader(getClass().getResource("HeroSheet.fxml"));
             Parent heroSheetRoot = heroSheetLoader.load();
-            heroSheetRoot.setStyle("-fx-background-color: #00FF00;");
+            heroSheetRoot.setStyle("-fx-background-color: blue;");
             Scene heroSheetScene = new Scene(heroSheetRoot, 1080, 600);
 
             FXMLLoader shopLoader = new FXMLLoader(getClass().getResource("ShopScene.fxml"));
             Parent shopRoot = shopLoader.load();
             ShopController shopCont = shopLoader.getController();
             shopCont.displayMoney(String.valueOf(money));
-            shopRoot.setStyle("-fx-background-color: #00FF00;");
+            shopRoot.setStyle("-fx-background-color: blue;");
             Scene shopScene = new Scene(shopRoot, 1080, 600);
 
-           /* FXMLLoader ResultLoader = new FXMLLoader(getClass().getResource("Result.fxml"));
+            FXMLLoader ResultLoader = new FXMLLoader(getClass().getResource("Result.fxml"));
             Parent ResultRoot = ResultLoader.load();
+            ResultRoot.setStyle("-fx-background-color: blue;");
             Scene ResultScene = new Scene(ResultRoot, 1080, 600);
-*/
+
 
 
 
@@ -152,7 +153,8 @@ public class Main extends Application {
             primaryStage.setTitle("Way of the Fist");
             primaryStage.setResizable(true);
 //    scene is a "drawing surface for graphical content and a container for nodes"
-            primaryStage.setScene(mainScene); // Add scene to the stage
+            primaryStage.setScene(mainScene);
+            // Add scene to the stage
             primaryStage.show(); // Render the stage. This is always the last step.
 
             } catch (Exception e) {
