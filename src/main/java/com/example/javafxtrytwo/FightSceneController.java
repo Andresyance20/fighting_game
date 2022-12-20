@@ -164,17 +164,30 @@ public class FightSceneController {
 
     public void supermoveButtonClick()
     {
-        System.out.println("click registered for supermove");
+        if (playerTurn == true)
+        {
+
+            if (playerActiveHero.getCurrentSuperCharge() == playerActiveHero.getMaxSuperCharge())
+            {
+                heroAI.setCurrenthp(heroAI.getCurrenthp() - (playerActiveHero.getAttackDamage() * 3));
+                playerActiveHero.setCurrentSuperCharge(0);
+
+                updateTurn();
+                responseHeroAiAttack();
+            }
+            else if (playerActiveHero.getCurrentSuperCharge() < playerActiveHero.getMaxSuperCharge())
+            {
+             System.out.println("You need 100 supercharge to do this move");
+            }
+        }
 
         // After an action, the turn is done.
-        updateTurn();
+
     }
 
 
     public void actionButtonClick()
     {
-        System.out.println("click registered for action");
-
         // If they did not dodge, damage happens
         if (calculateDodge() == false)
         {
@@ -198,14 +211,41 @@ public class FightSceneController {
                     {
                         heroAI.setCurrentSuperCharge(100);
                     }
-
-
                 }
-
             }
 
+//             i guess we dont need to hardcode the AI response here, but it's ok for our purposes
             // AI attacking
+
+
             else if (playerTurn == false)
+            {
+
+
+            }
+        }
+// After an action, calculations happen and the turn is done.
+        updateTurn();
+        // updates the turn count, switches the turn to the other, and calls the loadfightscene data
+
+        // ai turn
+        responseHeroAiAttack();
+    }
+
+
+    // the enemy turn logic
+    public void responseHeroAiAttack()
+    {
+        // player doesn't dodge
+        if (calculateDodge() == false)
+        {
+            if (heroAI.getCurrentSuperCharge() == heroAI.getMaxSuperCharge())
+            {
+//              do supermove
+                responseHeroAiSupermove();
+            }
+
+            else
             {
                 playerActiveHero.setCurrenthp(playerActiveHero.getCurrenthp() - heroAI.getAttackDamage());
                 if (heroAI.getCurrentSuperCharge() < 100)
@@ -223,14 +263,24 @@ public class FightSceneController {
                     }
                 }
             }
-
-            System.out.println();
+            // pass turn back to player
+            updateTurn();
         }
 
-// After an action, calculations happen and the turn is done.
-        updateTurn();
-        // updates the turn count, switches the turn to the other, and calls the loadfightscene data
     }
+
+    public void responseHeroAiSupermove()
+    {
+        if (heroAI.getCurrentSuperCharge() == heroAI.getMaxSuperCharge())
+        {
+            playerActiveHero.setCurrenthp(playerActiveHero.getCurrenthp() - (heroAI.getAttackDamage() * 3));
+            heroAI.setCurrentSuperCharge(0);
+        }
+    }
+
+
+
+
 
     // let's assume you can only dodge normal attacks (so no dodge for supermove)
     public boolean calculateDodge()
@@ -294,10 +344,12 @@ public class FightSceneController {
         if (playerTurn == true)
         {
             playerTurn = false;
+//            System.out.println("Enemy turn");
         }
         else if (playerTurn == false)
         {
             playerTurn = true;
+//            System.out.println("Player turn");
         }
 // update data to reflect changes
         loadFightSceneData();
@@ -331,17 +383,17 @@ public class FightSceneController {
 // we do always need this check to stay updated otherwise it won't be the correct data displayed
         if (playerHero1.getActive() == true)
         {
-            System.out.println("Hero1 is: " + playerHero1.getActive());
+//            System.out.println("Hero1 is: " + playerHero1.getActive());
             playerActiveHero = playerHero1;
         }
         if (playerHero2.getActive() == true)
         {
-            System.out.println("Hero2 is: " + playerHero2.getActive());
+//            System.out.println("Hero2 is: " + playerHero2.getActive());
             playerActiveHero = playerHero2;
         }
         if (playerHero3.getActive() == true)
         {
-            System.out.println("Hero3 is: " + playerHero3.getActive());
+//            System.out.println("Hero3 is: " + playerHero3.getActive());
             playerActiveHero = playerHero3;
         }
 
