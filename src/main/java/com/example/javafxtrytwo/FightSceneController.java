@@ -178,14 +178,50 @@ public class FightSceneController {
         // If they did not dodge, damage happens
         if (calculateDodge() == false)
         {
+            // player attacking
             if (playerTurn == true)
             {
+                // deal dmg
                 heroAI.setCurrenthp(heroAI.getCurrenthp() - playerActiveHero.getAttackDamage());
+                // increase supercharge if not full
+                if (playerActiveHero.getCurrentSuperCharge() < 100)
+                {
+                    playerActiveHero.setCurrentSuperCharge(playerActiveHero.getCurrentSuperCharge() + playerActiveHero.getAttackDamage());
+                    // don't overfill the supermove charge bar
+                    if (playerActiveHero.getCurrentSuperCharge() > playerActiveHero.getMaxSuperCharge())
+                    {
+                        playerActiveHero.setCurrentSuperCharge(100);
+                    }
+//                    enemy gets some charge from taking damage
+                    heroAI.setCurrentSuperCharge(heroAI.getCurrentSuperCharge() + (playerActiveHero.getAttackDamage() / 2));
+                    if (heroAI.getCurrentSuperCharge() > heroAI.getMaxSuperCharge())
+                    {
+                        heroAI.setCurrentSuperCharge(100);
+                    }
+
+
+                }
+
             }
 
+            // AI attacking
             else if (playerTurn == false)
             {
                 playerActiveHero.setCurrenthp(playerActiveHero.getCurrenthp() - heroAI.getAttackDamage());
+                if (heroAI.getCurrentSuperCharge() < 100)
+                {
+                    heroAI.setCurrentSuperCharge(heroAI.currentSuperCharge + heroAI.getAttackDamage());
+                    if (heroAI.getCurrentSuperCharge() > heroAI.getMaxSuperCharge())
+                    {
+                        heroAI.setCurrentSuperCharge(100);
+                    }
+
+                    playerActiveHero.setCurrentSuperCharge(playerActiveHero.getCurrentSuperCharge() + (heroAI.getAttackDamage() / 2));
+                    if (playerActiveHero.getCurrentSuperCharge() > playerActiveHero.getMaxSuperCharge())
+                    {
+                        playerActiveHero.setCurrentSuperCharge(100);
+                    }
+                }
             }
 
             System.out.println();
