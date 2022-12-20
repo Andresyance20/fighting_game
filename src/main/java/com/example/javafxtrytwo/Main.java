@@ -61,30 +61,39 @@ public class Main extends Application {
             // all of them will be made here. Feel free to observe/copy patterns and get these done.
             FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
             Parent mainRoot = mainLoader.load();
+            mainRoot.setStyle("-fx-background-color: #00FF00;");
             Scene mainScene = new Scene(mainRoot, 1080, 600);
+
+
+
 
             FXMLLoader fightSceneSetupLoader = new FXMLLoader(getClass().getResource("FightSceneSetup.fxml"));
             Parent fightSceneSetupRoot = fightSceneSetupLoader.load();
+            fightSceneSetupRoot.setStyle("-fx-background-color: #00FF00;");
             Scene fightSceneSetupScene = new Scene(fightSceneSetupRoot, 1080, 600);
 
 
             FXMLLoader fightSceneLoader = new FXMLLoader(getClass().getResource("FightScene.fxml"));
             Parent fightSceneRoot = fightSceneLoader.load();
+            fightSceneRoot.setStyle("-fx-background-color: #00FF00;");
             Scene fightSceneScene = new Scene(fightSceneRoot, 1080, 600);
 
             FXMLLoader loseSceneLoader = new FXMLLoader(getClass().getResource("LoseScene.fxml"));
             Parent loseSceneRoot = loseSceneLoader.load();
+            loseSceneRoot.setStyle("-fx-background-color: #00FF00;");
             Scene loseSceneScene = new Scene(loseSceneRoot, 1080, 600);
 
 
             FXMLLoader heroSheetLoader = new FXMLLoader(getClass().getResource("HeroSheet.fxml"));
             Parent heroSheetRoot = heroSheetLoader.load();
+            heroSheetRoot.setStyle("-fx-background-color: #00FF00;");
             Scene heroSheetScene = new Scene(heroSheetRoot, 1080, 600);
 
             FXMLLoader shopLoader = new FXMLLoader(getClass().getResource("ShopScene.fxml"));
             Parent shopRoot = shopLoader.load();
             ShopController shopCont = shopLoader.getController();
             shopCont.displayMoney(String.valueOf(money));
+            shopRoot.setStyle("-fx-background-color: #00FF00;");
             Scene shopScene = new Scene(shopRoot, 1080, 600);
 
            /* FXMLLoader ResultLoader = new FXMLLoader(getClass().getResource("Result.fxml"));
