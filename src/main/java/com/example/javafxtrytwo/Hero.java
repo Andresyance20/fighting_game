@@ -276,6 +276,7 @@ public class Hero {
             this.setMaxhp((int) ((this.getEndurance() + (this.getStrength() / 2)) * 7));
             this.setCurrenthp((int) this.getMaxhp());
 
+
             this.setDodge((int) ((this.getAgility() + (this.getEndurance() / 2)) * 0.1));
 
 

@@ -164,7 +164,7 @@ public class FightSceneController {
 
     public void supermoveButtonClick() throws InterruptedException {
         button_supermove.setDisable(true);
-        Thread.sleep(100);
+//        Thread.sleep(100);
 
 
         if (playerTurn == true)
@@ -172,7 +172,7 @@ public class FightSceneController {
 
             if (playerActiveHero.getCurrentSuperCharge() == playerActiveHero.getMaxSuperCharge())
             {
-                System.out.println("Player supermove");
+                player_action_text_label.setText("Supermoved!");
                 heroAI.setCurrenthp(heroAI.getCurrenthp() - (playerActiveHero.getAttackDamage() * 3));
                 playerActiveHero.setCurrentSuperCharge(0);
 
@@ -194,8 +194,8 @@ public class FightSceneController {
 // disable button so player cant SPAM
 
         button_action.setDisable(true);
-        Thread.sleep(100);
-        System.out.println("Player attack. ");
+//        Thread.sleep(100);
+        player_action_text_label.setText("Attacked!");
 
         // If they did not dodge, damage happens
         if (calculateDodge() == false)
@@ -238,16 +238,19 @@ public class FightSceneController {
         // updates the turn count, switches the turn to the other, and calls the loadfightscene data
 
         // ai turn
-        Thread.sleep(400);
+//        Thread.sleep(400);
         responseHeroAiAttack();
     }
 
 
     // the enemy turn logic
     public void responseHeroAiAttack() throws InterruptedException {
-        // player doesn't dodge
 
-        System.out.println("Enemy attack. ");
+        Thread.onSpinWait();
+        Thread.sleep(500);
+        ai_action_text_label.setText("Attacked!");
+
+        // player doesn't dodge
         if (calculateDodge() == false)
         {
             if (heroAI.getCurrentSuperCharge() == heroAI.getMaxSuperCharge())
@@ -274,16 +277,18 @@ public class FightSceneController {
                     }
                 }
             }
-            // pass turn back to player
-            updateTurn();
-        }
 
+        }
+        // pass turn back to player
+        Thread.onSpinWait();
+        updateTurn();
     }
 
     public void responseHeroAiSupermove()
     {
         if (heroAI.getCurrentSuperCharge() == heroAI.getMaxSuperCharge())
         {
+            ai_action_text_label.setText("Supermoved!");
             playerActiveHero.setCurrenthp(playerActiveHero.getCurrenthp() - (heroAI.getAttackDamage() * 3));
             heroAI.setCurrentSuperCharge(0);
         }
@@ -294,16 +299,25 @@ public class FightSceneController {
 
 
     // let's assume you can only dodge normal attacks (so no dodge for supermove)
-    public boolean calculateDodge()
-    {
+    public boolean calculateDodge() throws InterruptedException {
         Random rng = new Random();
 
-        if (playerTurn == true)
+        System.out.println("player dodge: " + playerActiveHero.getDodge());
+
+        System.out.println("ai dodge: " + heroAI.getDodge());
+
+
+
+        if (playerTurn == false)
         {
-            // check player turn
+            // player being attacked
             if (rng.nextInt(100) < playerActiveHero.getDodge())
             {
-                System.out.println("The enemy dodged!");
+
+                player_action_text_label.setText("Dodged!");
+
+                Thread.onSpinWait();
+//                Thread.sleep(1000);
                 return true;
             }
             else
@@ -311,12 +325,14 @@ public class FightSceneController {
                 return false;
             }
         }
-        else if (playerTurn == false)
+        else if (playerTurn == true)
         {
-            // check AI turn
+            // AI being attacked
             if (rng.nextInt(100) < heroAI.getDodge())
             {
-                System.out.println("The player dodged!");
+                ai_action_text_label.setText("Dodged!");
+                Thread.onSpinWait();
+                Thread.sleep(1000);
                 return true;
             }
             else
@@ -366,7 +382,7 @@ public class FightSceneController {
             turn_count += 1;
             playerTurn = false;
             loadFightSceneData();
-            Thread.sleep(100);
+//            Thread.sleep(100);
 //            System.out.println("Enemy turn");
         }
         else if (playerTurn == false)
@@ -375,7 +391,7 @@ public class FightSceneController {
             // player can click buttons again
 //            Thread.sleep(700);
             loadFightSceneData();
-            Thread.sleep(100);
+//            Thread.sleep(100);
             button_action.setDisable(false);
             button_supermove.setDisable(false);
 //            System.out.println("Player turn");
@@ -402,6 +418,19 @@ public class FightSceneController {
     private Label hero_ai_super_text;
     @FXML
     private Label turn_count_text;
+    @FXML
+    private Label player_action_text_label;
+    @FXML
+    private Label ai_action_text_label;
+
+
+
+
+
+
+
+
+
 
 
 
