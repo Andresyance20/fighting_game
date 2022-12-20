@@ -3,13 +3,10 @@ package com.example.javafxtrytwo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
-import java.awt.*;
 import java.util.Random;
 
 
@@ -29,6 +26,10 @@ public class FightSceneController {
     private int hpPotionCount;
     private int attackPotionCount;
     private int superPotionCount;
+
+
+// so we can preload data onto the "Result" sceneController, based on win or loss
+    private LoseSceneController loseSceneControllerObjectReference;
 
 
     // update every turn
@@ -55,7 +56,7 @@ public class FightSceneController {
         superPotionCount = superCount;
     }
 
-    public void setToLoseScene(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai, int money, int hpCount, int attackCount, int superCount) {
+    public void setToLoseScene(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai, int money, int hpCount, int attackCount, int superCount, LoseSceneController loseSceneControllerObjectReference1) {
         loseScene = scene;
         playerHero1 = hero1;
         playerHero2 = hero2;
@@ -66,6 +67,10 @@ public class FightSceneController {
         hpPotionCount = hpCount;
         attackPotionCount = attackCount;
         superPotionCount = superCount;
+
+        loseSceneControllerObjectReference = loseSceneControllerObjectReference1;
+
+
     }
 
 
@@ -353,10 +358,17 @@ public class FightSceneController {
             playerActiveHero.setLossCount(playerActiveHero.getLossCount() + 1);
 
             // heal the heros
+//            playerActiveHero.reset_hero_full_recovery();
+//            heroAI.reset_hero_full_recovery();
+
+            loseSceneControllerObjectReference.loadLossScene();
+            button_surrender.fire();
+
+
+            turn_count = 0;
+            System.out.println("when does this print");
             playerActiveHero.reset_hero_full_recovery();
             heroAI.reset_hero_full_recovery();
-
-            button_surrender.fire();
         }
         else if (heroAI.getCurrenthp() <= 0)
         {
@@ -366,8 +378,17 @@ public class FightSceneController {
             playerActiveHero.setVictoryCount((playerActiveHero.getVictoryCount()) + 1);
 
 
+//            playerActiveHero.reset_hero_full_recovery();
+//            heroAI.reset_hero_full_recovery();
+
+            loseSceneControllerObjectReference.loadWinScene();
+            button_surrender.fire();
+
+            turn_count = 0;
+            System.out.println("when does this print");
             playerActiveHero.reset_hero_full_recovery();
             heroAI.reset_hero_full_recovery();
+
 
 //            why don't we have a win scene?
 //            call the button.fire() for it here

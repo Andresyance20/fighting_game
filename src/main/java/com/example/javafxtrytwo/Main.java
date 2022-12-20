@@ -119,10 +119,14 @@ public class Main extends Application {
             heroSheetController.setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
 
 
+            LoseSceneController loseSceneController = (LoseSceneController) loseSceneLoader.getController();
+            loseSceneController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
+            loseSceneController.setToFightScene(fightSceneScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
+
             // so, passing reference to the scene and hero object and storing it inside a private variable inside this specific control, basically we just copy contents of hero onto another hero object.
             FightSceneController fightSceneController = (FightSceneController) fightSceneLoader.getController();
             fightSceneController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, money, hpPotionCount, attackPotionCount, superPotionCount);
-            fightSceneController.setToLoseScene(loseSceneScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, money, hpPotionCount, attackPotionCount, superPotionCount);
+            fightSceneController.setToLoseScene(loseSceneScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, money, hpPotionCount, attackPotionCount, superPotionCount, loseSceneController);
 
 
             // injecting first scene into the controller of the second scene
@@ -134,11 +138,6 @@ public class Main extends Application {
             fightSceneSetupController.setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, heroSheetController);
 //            fightSceneSetupController.updateHeroInfo();
 
-
-
-            LoseSceneController loseSceneController = (LoseSceneController) loseSceneLoader.getController();
-            loseSceneController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
-            loseSceneController.setToFightScene(fightSceneScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
 
             ShopController shopController = (ShopController) shopLoader.getController();
             shopController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, money, hpPotionCount, attackPotionCount, superPotionCount);

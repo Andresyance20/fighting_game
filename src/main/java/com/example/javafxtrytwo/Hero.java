@@ -224,7 +224,7 @@ public class Hero {
         // reset hp
         this.setCurrenthp((int) getMaxhp());
         // set supercharge back down to 0
-        this.setMaxSuperCharge(0);
+        this.setCurrentSuperCharge(0);
         updateAllStats();
         // idk, we'll figure out what else we need when we run into it
     }

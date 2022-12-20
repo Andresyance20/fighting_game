@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class LoseSceneController {
@@ -50,19 +51,15 @@ public class LoseSceneController {
         // add some logic to make sure there is an active hero before going to fightscene?
         if (playerHero1.getActive() == true)
         {
-            System.out.println("Hero1 is: " + playerHero1.getActive());
             playerActiveHero = playerHero1;
         }
         if (playerHero2.getActive() == true)
         {
-            System.out.println("Hero2 is: " + playerHero2.getActive());
             playerActiveHero = playerHero2;
         }
         if (playerHero3.getActive() == true)
         {
-            System.out.println("Hero3 is: " + playerHero3.getActive());
             playerActiveHero = playerHero3;
-            System.out.println(playerActiveHero.getCurrenthp());
         }
 
 
@@ -80,25 +77,53 @@ public class LoseSceneController {
         // add some logic to make sure there is an active hero before going to fightscene?
         if (playerHero1.getActive() == true)
         {
-            System.out.println("Hero1 is: " + playerHero1.getActive());
             playerActiveHero = playerHero1;
         }
         if (playerHero2.getActive() == true)
         {
-            System.out.println("Hero2 is: " + playerHero2.getActive());
             playerActiveHero = playerHero2;
         }
         if (playerHero3.getActive() == true)
         {
-            System.out.println("Hero3 is: " + playerHero3.getActive());
             playerActiveHero = playerHero3;
-            System.out.println(playerActiveHero.getCurrenthp());
         }
 
 
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(fightScene);
     }
+
+
+    @FXML
+    private Label result_text;
+    @FXML
+    private Label result_money_text;
+    @FXML
+    private Label result_experience_text;
+
+    public void loadWinScene()
+    {
+        result_text.setText("You Won!");
+        result_experience_text.setText("Won: " + heroAI.getExperience() + " Experience");
+        result_money_text.setText("Won: " + heroAI.getMoney() + " Money");
+    }
+
+    public void loadLossScene()
+    {
+        result_text.setText("You lost!");
+        result_experience_text.setText("");
+        result_money_text.setText("");
+    }
+
+
+
+
+
+
+
+
+
+
 
     public Button button_losetomenu;
     public Button button_retry;
