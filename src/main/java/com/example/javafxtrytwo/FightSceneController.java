@@ -36,10 +36,7 @@ public class FightSceneController {
     public int turn_count = 0;
     public boolean playerTurn = true;
 
-    // when this is false, we end the fight, like 0 hp or surrender.
-    public boolean combatActive = true;
 
-    public boolean win = false;
 
 
     // set data
@@ -358,17 +355,17 @@ public class FightSceneController {
             playerActiveHero.setLossCount(playerActiveHero.getLossCount() + 1);
 
             // heal the heros
-//            playerActiveHero.reset_hero_full_recovery();
-//            heroAI.reset_hero_full_recovery();
+            playerActiveHero.reset_hero_full_recovery();
+            heroAI.reset_hero_full_recovery();
+            turn_count = 0;
 
             loseSceneControllerObjectReference.loadLossScene();
             button_surrender.fire();
 
 
-            turn_count = 0;
             System.out.println("when does this print");
-            playerActiveHero.reset_hero_full_recovery();
-            heroAI.reset_hero_full_recovery();
+//            playerActiveHero.reset_hero_full_recovery();
+//            heroAI.reset_hero_full_recovery();
         }
         else if (heroAI.getCurrenthp() <= 0)
         {
@@ -378,16 +375,16 @@ public class FightSceneController {
             playerActiveHero.setVictoryCount((playerActiveHero.getVictoryCount()) + 1);
 
 
-//            playerActiveHero.reset_hero_full_recovery();
-//            heroAI.reset_hero_full_recovery();
+            playerActiveHero.reset_hero_full_recovery();
+            heroAI.reset_hero_full_recovery();
+            turn_count = 0;
 
             loseSceneControllerObjectReference.loadWinScene();
             button_surrender.fire();
 
-            turn_count = 0;
-            System.out.println("when does this print");
-            playerActiveHero.reset_hero_full_recovery();
-            heroAI.reset_hero_full_recovery();
+//            System.out.println("when does this print");
+//            playerActiveHero.reset_hero_full_recovery();
+//            heroAI.reset_hero_full_recovery();
 
 
 //            why don't we have a win scene?
