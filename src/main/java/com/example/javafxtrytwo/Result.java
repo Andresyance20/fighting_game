@@ -25,6 +25,15 @@ public class Result {
     private void button_ReMatch() {
         optionsButtonText.setText("Options are not yet implemented!");
     }
+    public void gain_experience()
+    {
+        /*Label label = new Label();
+        StringProperty myStringProperty = new SimpleStringProperty();
+
+        myStringProperty.bind(Bindings.when(conditionProperty).then("Yes").otherwise("No"));
+        label.textProperty().bind(myStringProperty);
+    }*/
 
 
+}
 }
