@@ -7,19 +7,19 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxtrytwo.LoseSceneController">
    <children>
-      <Label fx:id="result_text" layoutX="603.0" layoutY="45.0" text="win/lose">
+      <Label fx:id="result_text" layoutX="602.0" layoutY="57.0" text="win/lose">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
       <Button fx:id="button_retry" layoutX="328.0" layoutY="435.0" mnemonicParsing="false" onAction="#openFightScene" prefHeight="60.0" prefWidth="114.0" text="Retry" />
       <Button fx:id="button_losetomenu" layoutX="834.0" layoutY="435.0" mnemonicParsing="false" onAction="#openMainMenu" prefHeight="60.0" prefWidth="114.0" text="Main Menu" />
-      <Label fx:id="result_experience_text" layoutX="602.0" layoutY="117.0" text="experience">
+      <Label fx:id="result_experience_text" layoutX="602.0" layoutY="100.0" text="experience">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="result_money_text" layoutX="602.0" layoutY="180.0" text="money">
+      <Label fx:id="result_money_text" layoutX="602.0" layoutY="145.0" text="money">
          <font>
             <Font size="20.0" />
          </font>
