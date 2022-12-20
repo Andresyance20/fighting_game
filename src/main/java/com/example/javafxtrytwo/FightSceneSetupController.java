@@ -115,23 +115,27 @@ public class FightSceneSetupController {
         // logic to make sure there is an active hero before going to fightscene
         if (playerHero1.getActive() == true)
         {
-            System.out.println("Hero1 is: " + playerHero1.getActive());
+//          make sure they are reset for a new fight (fight should be done in one go, not leave to main menu and come back to same fight).
+            playerActiveHero.reset_hero_full_recovery();
+            heroAI.reset_hero_full_recovery();
             playerActiveHero = playerHero1;
 
             fightSceneControllernotfrommain.loadFightSceneData();
         }
         if (playerHero2.getActive() == true)
         {
-            System.out.println("Hero2 is: " + playerHero2.getActive());
+            playerActiveHero.reset_hero_full_recovery();
+            heroAI.reset_hero_full_recovery();
             playerActiveHero = playerHero2;
 
             fightSceneControllernotfrommain.loadFightSceneData();
         }
         if (playerHero3.getActive() == true)
         {
-            System.out.println("Hero3 is: " + playerHero3.getActive());
             playerActiveHero = playerHero3;
 
+            playerActiveHero.reset_hero_full_recovery();
+            heroAI.reset_hero_full_recovery();
             fightSceneControllernotfrommain.loadFightSceneData();
         }
 
@@ -146,6 +150,7 @@ public class FightSceneSetupController {
 
         if (selectedDifficulty == true && selectedBackground == true && selectedHero == true)
         {
+
 
             Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             primaryStage.setScene(fightScene);
