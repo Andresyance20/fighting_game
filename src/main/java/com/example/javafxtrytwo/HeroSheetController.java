@@ -340,9 +340,9 @@ public class HeroSheetController {
     // idk formula can be 69 funny number * 1.2
     public void increaseStrength()
     {
-        int costFormulaHero1 = (int) (playerHero1.getStrength() * 70);
-        int costFormulaHero2 = (int) (playerHero2.getStrength() * 70);
-        int costFormulaHero3 = (int) (playerHero3.getStrength() * 70);
+        int costFormulaHero1 = (int) (playerHero1.getStrength() * 69);
+        int costFormulaHero2 = (int) (playerHero2.getStrength() * 69);
+        int costFormulaHero3 = (int) (playerHero3.getStrength() * 69);
 
         // check if active
         if (playerHero1.getActive())

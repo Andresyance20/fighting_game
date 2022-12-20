@@ -16,13 +16,9 @@ import java.util.Random;
 public class FightSceneController {
 
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
 
     private Scene mainScene;
     private Scene loseScene;
-    private Scene fightSceneSetup;
 
     private Hero playerHero1;
     private Hero playerHero2;
@@ -38,6 +34,11 @@ public class FightSceneController {
     // update every turn
     public int turn_count = 0;
     public boolean playerTurn = true;
+
+    // when this is false, we end the fight, like 0 hp or surrender.
+    public boolean combatActive = true;
+
+    public boolean win = false;
 
 
     // set data
@@ -66,6 +67,8 @@ public class FightSceneController {
         attackPotionCount = attackCount;
         superPotionCount = superCount;
     }
+
+
     public Boolean Result()
     {
 
@@ -96,19 +99,21 @@ public class FightSceneController {
 
         setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, money, hpPotionCount,attackPotionCount, superPotionCount);
 
+
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(mainScene);
+
     }
 
-    // lose scene
+    // lose scene for surrender or when player reaches 0 hp
     public void openLoseScene(ActionEvent actionEvent) {
 
+        // you dont need this, just do a set to loss scene method call after the activehero checks but before the primary stage change
         playerHero1 = playerHero1;
         playerHero2 = playerHero2;
         playerHero3 = playerHero3;
         heroAI = heroAI;
 
-        // add some logic to make sure there is an active hero before going to fightscene?
         if (playerHero1.getActive() == true)
         {
             System.out.println("Hero1 is: " + playerHero1.getActive());
@@ -152,6 +157,8 @@ public class FightSceneController {
             System.out.println(playerActiveHero.getCurrenthp());
         }
 
+
+
 //        go to inventory of the hero
     }
 
@@ -168,36 +175,83 @@ public class FightSceneController {
     {
         System.out.println("click registered for action");
 
-        // After an action, the turn is done.
-        calculateDodge();
+        // If they did not dodge, damage happens
+        if (calculateDodge() == false)
+        {
+            if (playerTurn == true)
+            {
+                heroAI.setCurrenthp(heroAI.getCurrenthp() - playerActiveHero.getAttackDamage());
+            }
 
+            else if (playerTurn == false)
+            {
+                playerActiveHero.setCurrenthp(playerActiveHero.getCurrenthp() - heroAI.getAttackDamage());
+            }
+
+            System.out.println();
+        }
+
+// After an action, calculations happen and the turn is done.
         updateTurn();
+        // updates the turn count, switches the turn to the other, and calls the loadfightscene data
     }
 
-    public void calculateDodge()
+    // let's assume you can only dodge normal attacks (so no dodge for supermove)
+    public boolean calculateDodge()
     {
         Random rng = new Random();
 
         if (playerTurn == true)
         {
+            // check player turn
             if (rng.nextInt(100) < playerActiveHero.getDodge())
             {
                 System.out.println("The enemy dodged!");
-
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
         else if (playerTurn == false)
         {
+            // check AI turn
             if (rng.nextInt(100) < heroAI.getDodge())
             {
                 System.out.println("The player dodged!");
-
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
+        return false;
     }
+
+
 
     public void updateTurn()
     {
+        // check to see if loss
+        if (playerActiveHero.getCurrenthp() <= 0)
+        {
+//            go to the loss scene
+            playerActiveHero.setLossCount(playerActiveHero.getLossCount() + 1);
+            button_surrender.fire();
+        }
+        else if (heroAI.getCurrenthp() <= 0)
+        {
+//            claim prize for victory
+            playerActiveHero.setExperience(playerActiveHero.getExperience() + heroAI.getExperience());
+            playerActiveHero.setMoney(playerActiveHero.getMoney() + heroAI.getMoney());
+            playerActiveHero.setVictoryCount((playerActiveHero.getVictoryCount()) + 1);
+
+//            why don't we have a win scene?
+//            call the button.fire() for it here
+        }
+
         turn_count += 1;
 
         // switch turns
@@ -209,7 +263,7 @@ public class FightSceneController {
         {
             playerTurn = true;
         }
-
+// update data to reflect changes
         loadFightSceneData();
     }
 
@@ -232,6 +286,8 @@ public class FightSceneController {
     private Label hero_ai_super_text;
     @FXML
     private Label turn_count_text;
+
+
 
 
     public void loadFightSceneData()
@@ -276,13 +332,15 @@ public class FightSceneController {
     public Button button_menu;
 
 
-//    i still dont know how we wanna do abilities but here is a dummy action button
+
+    // currently our attack button
     public Button button_action;
+    public Button button_supermove;
+
     //  see above. not sure how we want to do this (UI mockup is different)
     public Button button_abilities;
 
     public Button button_inventory;
-    public Button button_supermove;
     public Button button_surrender;
 
 
