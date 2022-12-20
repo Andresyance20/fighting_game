@@ -106,8 +106,6 @@ public class LoseSceneController {
         result_text.setText("You Won!");
         result_experience_text.setText("Won: " + heroAI.getExperience() + " Experience");
         result_money_text.setText("Won: " + heroAI.getMoney() + " Money");
-        heroAI.reset_hero_full_recovery();
-        playerActiveHero.reset_hero_full_recovery();
     }
 
     public void loadLossScene()
@@ -115,8 +113,6 @@ public class LoseSceneController {
         result_text.setText("You lost!");
         result_experience_text.setText("");
         result_money_text.setText("");
-        heroAI.reset_hero_full_recovery();
-        playerActiveHero.reset_hero_full_recovery();
     }
 
 
