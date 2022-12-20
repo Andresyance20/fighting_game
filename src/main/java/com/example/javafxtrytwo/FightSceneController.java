@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.awt.*;
+import java.util.Random;
 
 
 public class FightSceneController {
@@ -36,6 +37,7 @@ public class FightSceneController {
 
     // update every turn
     public int turn_count = 0;
+    public boolean playerTurn = true;
 
 
     // set data
@@ -69,12 +71,11 @@ public class FightSceneController {
 
         return null;
     }
-    // move scene
-    // main menu
+
+
+
     public void openMainMenu(ActionEvent actionEvent)
     {
-
-
         // add some logic to make sure there is an active hero before going to fightscene?
         if (playerHero1.getActive() == true)
         {
@@ -95,11 +96,10 @@ public class FightSceneController {
 
         setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, money, hpPotionCount,attackPotionCount, superPotionCount);
 
-
-
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(mainScene);
     }
+
     // lose scene
     public void openLoseScene(ActionEvent actionEvent) {
 
@@ -131,12 +131,7 @@ public class FightSceneController {
         primaryStage.setScene(loseScene);
     }
 
-    // back to fight scene
 
-
-
-
-//    some troubleshooting prints
     public void inventoryButtonClick()
     {
 
@@ -157,27 +152,69 @@ public class FightSceneController {
             System.out.println(playerActiveHero.getCurrenthp());
         }
 
-        System.out.println("\n\n" + playerActiveHero.getName());
-
-//        System.out.println("click registered for inventory");
-        System.out.println(playerActiveHero + " object ID from FightScene Controller"); // print hero object id
-        System.out.println("Hero HP is: " + playerActiveHero.getCurrenthp());
-        playerActiveHero.setCurrenthp((int) ((playerActiveHero.getCurrenthp())-1));
-        System.out.println("Hero HP is: " + playerActiveHero.getCurrenthp());
-
 //        go to inventory of the hero
     }
 
     public void supermoveButtonClick()
     {
         System.out.println("click registered for supermove");
-//        check if charged or not
+
+        // After an action, the turn is done.
+        updateTurn();
     }
+
 
     public void actionButtonClick()
     {
         System.out.println("click registered for action");
+
+        // After an action, the turn is done.
+        calculateDodge();
+
+        updateTurn();
     }
+
+    public void calculateDodge()
+    {
+        Random rng = new Random();
+
+        if (playerTurn == true)
+        {
+            if (rng.nextInt(100) < playerActiveHero.getDodge())
+            {
+                System.out.println("The enemy dodged!");
+
+            }
+        }
+        else if (playerTurn == false)
+        {
+            if (rng.nextInt(100) < heroAI.getDodge())
+            {
+                System.out.println("The player dodged!");
+
+            }
+        }
+    }
+
+    public void updateTurn()
+    {
+        turn_count += 1;
+
+        // switch turns
+        if (playerTurn == true)
+        {
+            playerTurn = false;
+        }
+        else if (playerTurn == false)
+        {
+            playerTurn = true;
+        }
+
+        loadFightSceneData();
+    }
+
+
+
 
 
     @FXML
