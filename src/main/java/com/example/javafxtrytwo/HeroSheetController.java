@@ -42,7 +42,7 @@ public class HeroSheetController {
 //    These sets are only the initial setting of data.
     // The only place we change activeHero is here ...
     // So we should be able to just do if checks to set it to the correct one?
-    public void setToFightSceneSetup(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai)
+    public void setToFightSceneSetup(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai, int money, int hpCount, int attackCount, int superCount)
     {
 
         fightSceneSetupScene = scene;
@@ -51,7 +51,10 @@ public class HeroSheetController {
         playerHero3 = hero3;
         playerActiveHero = activeHero;
         heroAI = heroai;
-
+        this.money = money;
+        hpPotionCount = hpCount;
+        attackPotionCount = attackCount;
+        superPotionCount = superCount;
 
 
     }
@@ -78,7 +81,10 @@ public class HeroSheetController {
 //            System.out.println(playerActiveHero.getCurrenthp());
         }
 
-        setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI);
+        System.out.println("Potions:");
+        System.out.println("HP: " + hpPotionCount + " Attack: " + attackPotionCount + " Super: " + superPotionCount);
+
+        setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, money, hpPotionCount, attackPotionCount, superPotionCount);
 
 
 //        if the player selected a hero

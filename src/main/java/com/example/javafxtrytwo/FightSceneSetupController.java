@@ -70,7 +70,7 @@ public class FightSceneSetupController {
         superPotionCount = superCount;
     }
 
-    public void setToHeroSheet(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai, HeroSheetController heroSheetControllernotfrommain1)
+    public void setToHeroSheet(Scene scene, Hero hero1, Hero hero2, Hero hero3, Hero activeHero, Hero heroai, HeroSheetController heroSheetControllernotfrommain1, int money, int hpCount, int attackCount, int superCount)
     {
         heroSheetControllernotfrommain = heroSheetControllernotfrommain1;
         heroSheetScene = scene;
@@ -79,6 +79,10 @@ public class FightSceneSetupController {
         playerHero3 = hero3;
         playerActiveHero = activeHero;
         heroAI = heroai;
+        this.money = money;
+        hpPotionCount = hpCount;
+        attackPotionCount = attackCount;
+        superPotionCount = superCount;
     }
 
 
@@ -101,6 +105,9 @@ public class FightSceneSetupController {
             System.out.println("Hero3 is: " + playerHero3.getActive());
             playerActiveHero = playerHero3;
         }
+
+        System.out.println("Potions:");
+        System.out.println("HP: " + hpPotionCount + " Attack: " + attackPotionCount + " Super: " + superPotionCount);
 
         setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, money, hpPotionCount, attackPotionCount, superPotionCount);
 
@@ -134,6 +141,9 @@ public class FightSceneSetupController {
 
             fightSceneControllernotfrommain.loadFightSceneData();
         }
+
+        System.out.println("Potions:");
+        System.out.println("HP: " + hpPotionCount + " Attack: " + attackPotionCount + " Super: " + superPotionCount);
 
         setToFightScene(fightScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, fightSceneControllernotfrommain, money, hpPotionCount, attackPotionCount, superPotionCount);
 
@@ -197,8 +207,10 @@ public class FightSceneSetupController {
             heroSheetControllernotfrommain.loadHeroData3();
         }
 
+        System.out.println("Potions:");
+        System.out.println("HP: " + hpPotionCount + " Attack: " + attackPotionCount + " Super: " + superPotionCount);
 
-        setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, heroSheetControllernotfrommain);
+        setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, heroSheetControllernotfrommain, money, hpPotionCount, attackPotionCount, superPotionCount);
 
         // set color correctly because we won't let them come back UNTIL they select a hero.
         button_inspect_heroes.setStyle("-fx-background-color: limegreen");

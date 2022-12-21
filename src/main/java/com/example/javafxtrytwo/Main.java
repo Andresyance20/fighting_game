@@ -116,7 +116,7 @@ public class Main extends Application {
 
 
             HeroSheetController heroSheetController = (HeroSheetController) heroSheetLoader.getController();
-            heroSheetController.setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero);
+            heroSheetController.setToFightSceneSetup(fightSceneSetupScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, money, hpPotionCount, attackPotionCount, superPotionCount);
 
 
             LoseSceneController loseSceneController = (LoseSceneController) loseSceneLoader.getController();
@@ -135,7 +135,7 @@ public class Main extends Application {
             // idk if that's the EXACT process, there's a lot of parts to it.
             fightSceneSetupController.setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, money, hpPotionCount, attackPotionCount, superPotionCount);
             fightSceneSetupController.setToFightScene(fightSceneScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, fightSceneController, money, hpPotionCount, attackPotionCount, superPotionCount);
-            fightSceneSetupController.setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, heroSheetController);
+            fightSceneSetupController.setToHeroSheet(heroSheetScene, playerHero1, playerHero2, playerHero3, playerActiveHero, aiHero, heroSheetController, money, hpPotionCount, attackPotionCount, superPotionCount);
 //            fightSceneSetupController.updateHeroInfo();
 
 

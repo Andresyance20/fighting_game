@@ -34,6 +34,8 @@ public class FightSceneController {
 
     // update every turn
     public int turn_count = 0;
+    public int attack_boost_turns = -1;
+    public int attack_boost_end = -1;
     public boolean playerTurn = true;
 
 
@@ -99,6 +101,9 @@ public class FightSceneController {
             System.out.println(playerActiveHero.getCurrenthp());
         }
 
+        System.out.println("Potions:");
+        System.out.println("HP: " + hpPotionCount + " Attack: " + attackPotionCount + " Super: " + superPotionCount);
+
         setToMainMenu(mainScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, money, hpPotionCount,attackPotionCount, superPotionCount);
 
 
@@ -132,7 +137,9 @@ public class FightSceneController {
             playerActiveHero = playerHero3;
             System.out.println(playerActiveHero.getCurrenthp());
         }
-        
+
+        System.out.println("Potions:");
+        System.out.println("HP: " + hpPotionCount + " Attack: " + attackPotionCount + " Super: " + superPotionCount);
 
         Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(loseScene);
@@ -164,6 +171,86 @@ public class FightSceneController {
 //        go to inventory of the hero
     }
 
+    // potion clicks
+    public void hpPotionClick() throws InterruptedException
+    {
+        button_hpPotion.setDisable((true));
+        // Thread.sleep(100);
+        if (playerTurn == true)
+        {
+            if (hpPotionCount > 0) {
+                if (playerActiveHero.getCurrenthp() == playerActiveHero.getMaxhp()) {
+                    if (playerActiveHero.getCurrenthp() >= playerActiveHero.getMaxhp() - 25) {
+                        playerActiveHero.setCurrenthp(playerActiveHero.getCurrenthp() + 25);
+                    } else {
+                        playerActiveHero.setCurrenthp(playerActiveHero.getCurrenthp() + 25 - playerActiveHero.getCurrenthp());
+                    }
+                    player_action_text_label.setText("Used HP potion!");
+                    hpPotionCount--;
+                    System.out.println("HP Potion count: " + hpPotionCount);
+                    updateTurn();
+                    responseHeroAiAttack();
+                }
+                else {
+                    System.out.println("Hero already at Max HP!");
+                }
+            }
+            else {
+                System.out.println("No HP potions!");
+            }
+        }
+    }
+
+    public void superPotionClick() throws InterruptedException
+    {
+        button_superPotion.setDisable(true);
+        // Thread.sleep(100);
+
+        if (playerTurn == true)
+        {
+            if (superPotionCount > 0) {
+                if (playerActiveHero.getCurrentSuperCharge() < playerActiveHero.getMaxSuperCharge()) {
+                    if (playerActiveHero.getCurrentSuperCharge() <= playerActiveHero.getMaxSuperCharge() - 15){
+                        playerActiveHero.setCurrentSuperCharge(playerActiveHero.getCurrentSuperCharge() + 15);
+                    }
+                    else {
+                        playerActiveHero.setCurrentSuperCharge(playerActiveHero.getCurrentSuperCharge() + 15 - playerActiveHero.getMaxSuperCharge());
+                    }
+                    player_action_text_label.setText("Used Super Potion!");
+                    superPotionCount--;
+                    System.out.println("Super Potion count: " + superPotionCount);
+                    updateTurn();
+                    responseHeroAiAttack();
+                } else {
+                    System.out.println("Super Charge at Max Charge!");
+                }
+            }
+            else {
+                System.out.println("No Super Potions!");
+            }
+        }
+    }
+
+    public void attackPotionClick() throws InterruptedException
+    {
+        button_attackPotion.setDisable(true);
+        // Thread.sleep(100);
+        if (playerTurn == true) {
+            if (attack_boost_turns > 0) {
+                attack_boost_turns = turn_count;
+                attack_boost_end = attack_boost_turns + 3;
+                playerActiveHero.setAttackDamage(playerActiveHero.getCurrenthp() * 2);
+                player_action_text_label.setText("Used Attack Potion!");
+                attackPotionCount--;
+                System.out.println("Attack Potion count: " + attackPotionCount);
+                updateTurn();
+                responseHeroAiAttack();
+            }
+            else {
+                System.out.println("Attack Potion already active!");
+            }
+        }
+    }
     public void supermoveButtonClick() throws InterruptedException {
         button_supermove.setDisable(true);
 //        Thread.sleep(100);
@@ -398,6 +485,15 @@ public class FightSceneController {
             // really only the player needs a turn count
 
             turn_count += 1;
+            if (attack_boost_turns >= 0) {
+                if (attack_boost_turns < attack_boost_end) {
+                    attack_boost_turns++;
+                }
+                else {
+                    attack_boost_turns = -1;
+                    attack_boost_end = -1;
+                }
+            }
             playerTurn = false;
             loadFightSceneData();
 //            Thread.sleep(100);
@@ -412,6 +508,9 @@ public class FightSceneController {
 //            Thread.sleep(100);
             button_action.setDisable(false);
             button_supermove.setDisable(false);
+            button_hpPotion.setDisable(false);
+            button_attackPotion.setDisable(false);
+            button_superPotion.setDisable(false);
 //            System.out.println("Player turn");
         }
 // update data to reflect changes
@@ -501,9 +600,10 @@ public class FightSceneController {
     public Button button_supermove;
 
     //  see above. not sure how we want to do this (UI mockup is different)
-    public Button button_abilities;
+    public Button button_hpPotion;
+    public Button button_attackPotion;
+    public Button button_superPotion;
 
-    public Button button_inventory;
     public Button button_surrender;
 
 

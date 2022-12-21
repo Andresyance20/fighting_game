@@ -89,6 +89,8 @@ public class MainController {
             System.out.println(playerActiveHero.getCurrenthp());
         }
 
+        System.out.println("Potions:");
+        System.out.println("HP: " + hpPotionCount + " Attack: " + attackPotionCount + " Super: " + superPotionCount);
 
 
 
@@ -138,6 +140,9 @@ public class MainController {
             playerActiveHero = playerHero3;
             System.out.println(playerActiveHero.getCurrenthp());
         }
+
+        System.out.println("Potions:");
+        System.out.println("HP: " + hpPotionCount + " Attack: " + attackPotionCount + " Super: " + superPotionCount);
 
         setToShop(shopScene, playerHero1, playerHero2, playerHero3, playerActiveHero, heroAI, money, hpPotionCount, attackPotionCount, superPotionCount);
 
