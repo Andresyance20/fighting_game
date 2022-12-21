@@ -18,7 +18,7 @@
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button fx:id="button_inventory" layoutX="102.0" layoutY="535.0" mnemonicParsing="false" onAction="#inventoryButtonClick" text="Inventory">
+      <Button fx:id="button_hpPotion" layoutX="35.0" layoutY="535.0" mnemonicParsing="false" onAction="#hpPotionClick" text="HP Potion">
          <font>
             <Font size="18.0" />
          </font></Button>
@@ -81,5 +81,15 @@
             <Font size="20.0" />
          </font>
       </Label>
+      <Button fx:id="button_superPotion" layoutX="292.0" layoutY="535.0" mnemonicParsing="false" onAction="#superPotionClick" text="Super Potion">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="button_attackPotion" layoutX="149.0" layoutY="535.0" mnemonicParsing="false" onAction="#attackPotionClick" text="Attack Potion">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

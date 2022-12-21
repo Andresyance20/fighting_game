@@ -23,9 +23,9 @@ public class FightSceneController {
     private Hero playerActiveHero;
     private Hero heroAI;
     private int money;
-    private int hpPotionCount;
-    private int attackPotionCount;
-    private int superPotionCount;
+    private int hpPotionCount = 1;
+    private int attackPotionCount = 1;
+    private int superPotionCount = 1;
 
 
 // so we can preload data onto the "Result" sceneController, based on win or loss
@@ -236,18 +236,22 @@ public class FightSceneController {
         button_attackPotion.setDisable(true);
         // Thread.sleep(100);
         if (playerTurn == true) {
-            if (attack_boost_turns > 0) {
-                attack_boost_turns = turn_count;
-                attack_boost_end = attack_boost_turns + 3;
-                playerActiveHero.setAttackDamage(playerActiveHero.getCurrenthp() * 2);
-                player_action_text_label.setText("Used Attack Potion!");
-                attackPotionCount--;
-                System.out.println("Attack Potion count: " + attackPotionCount);
-                updateTurn();
-                responseHeroAiAttack();
+            if (attackPotionCount > 0) {
+                if (attack_boost_turns > 0) {
+                    attack_boost_turns = turn_count;
+                    attack_boost_end = attack_boost_turns + 3;
+                    playerActiveHero.setAttackDamage(playerActiveHero.getCurrenthp() * 2);
+                    player_action_text_label.setText("Used Attack Potion!");
+                    attackPotionCount--;
+                    System.out.println("Attack Potion count: " + attackPotionCount);
+                    updateTurn();
+                    responseHeroAiAttack();
+                } else {
+                    System.out.println("Attack Potion already active!");
+                }
             }
             else {
-                System.out.println("Attack Potion already active!");
+                System.out.println("No Attack Potions!");
             }
         }
     }
