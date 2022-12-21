@@ -34,7 +34,6 @@ public class FightSceneController {
 
     // update every turn
     public int turn_count = 0;
-    public int attack_boost_turns = -1;
     public int attack_boost_end = -1;
     public boolean playerTurn = true;
 
@@ -179,12 +178,8 @@ public class FightSceneController {
         if (playerTurn == true)
         {
             if (hpPotionCount > 0) {
-                if (playerActiveHero.getCurrenthp() == playerActiveHero.getMaxhp()) {
-                    if (playerActiveHero.getCurrenthp() >= playerActiveHero.getMaxhp() - 25) {
-                        playerActiveHero.setCurrenthp(playerActiveHero.getCurrenthp() + 25);
-                    } else {
-                        playerActiveHero.setCurrenthp(playerActiveHero.getCurrenthp() + 25 - playerActiveHero.getCurrenthp());
-                    }
+                if (playerActiveHero.getCurrenthp() < playerActiveHero.getMaxhp()) {
+                    playerActiveHero.setCurrenthp(playerActiveHero.getCurrenthp() + 25);
                     player_action_text_label.setText("Used HP potion!");
                     hpPotionCount--;
                     System.out.println("HP Potion count: " + hpPotionCount);
@@ -209,12 +204,12 @@ public class FightSceneController {
         if (playerTurn == true)
         {
             if (superPotionCount > 0) {
-                if (playerActiveHero.getCurrentSuperCharge() < playerActiveHero.getMaxSuperCharge()) {
+                if (playerActiveHero.getCurrentSuperCharge() < 100) {
                     if (playerActiveHero.getCurrentSuperCharge() <= playerActiveHero.getMaxSuperCharge() - 15){
                         playerActiveHero.setCurrentSuperCharge(playerActiveHero.getCurrentSuperCharge() + 15);
                     }
                     else {
-                        playerActiveHero.setCurrentSuperCharge(playerActiveHero.getCurrentSuperCharge() + 15 - playerActiveHero.getMaxSuperCharge());
+                        playerActiveHero.setCurrentSuperCharge(playerActiveHero.getCurrentSuperCharge() + 15 - 100);
                     }
                     player_action_text_label.setText("Used Super Potion!");
                     superPotionCount--;
@@ -223,6 +218,7 @@ public class FightSceneController {
                     responseHeroAiAttack();
                 } else {
                     System.out.println("Super Charge at Max Charge!");
+                    playerActiveHero.setCurrentSuperCharge(100);
                 }
             }
             else {
@@ -233,27 +229,27 @@ public class FightSceneController {
 
     public void attackPotionClick() throws InterruptedException
     {
-        button_attackPotion.setDisable(true);
-        // Thread.sleep(100);
-        if (playerTurn == true) {
-            if (attackPotionCount > 0) {
-                if (attack_boost_turns > 0) {
-                    attack_boost_turns = turn_count;
-                    attack_boost_end = attack_boost_turns + 3;
-                    playerActiveHero.setAttackDamage(playerActiveHero.getCurrenthp() * 2);
-                    player_action_text_label.setText("Used Attack Potion!");
-                    attackPotionCount--;
-                    System.out.println("Attack Potion count: " + attackPotionCount);
-                    updateTurn();
-                    responseHeroAiAttack();
-                } else {
-                    System.out.println("Attack Potion already active!");
-                }
-            }
-            else {
-                System.out.println("No Attack Potions!");
-            }
-        }
+//        button_attackPotion.setDisable(true);
+//        // Thread.sleep(100);
+//        if (playerTurn == true) {
+//            if (attackPotionCount > 0) {
+//                if (attack_boost_end < 0) {
+//                    attack_boost_end = turn_count + 3;
+//                    playerActiveHero.setAttackDamage(playerActiveHero.getCurrenthp() + 5);
+//                    player_action_text_label.setText("Used Attack Potion!");
+//                    attackPotionCount--;
+//                    System.out.println("Attack Potion count: " + attackPotionCount);
+//                    updateTurn();
+//                    responseHeroAiAttack();
+//                } else {
+//                    System.out.println("Attack Potion already active!");
+//                }
+//            }
+//            else {
+//                System.out.println("No Attack Potions!");
+//            }
+//        }
+        System.out.println("Attack Potion not yet implemented!");
     }
     public void supermoveButtonClick() throws InterruptedException {
         button_supermove.setDisable(true);
@@ -489,15 +485,9 @@ public class FightSceneController {
             // really only the player needs a turn count
 
             turn_count += 1;
-            if (attack_boost_turns >= 0) {
-                if (attack_boost_turns < attack_boost_end) {
-                    attack_boost_turns++;
-                }
-                else {
-                    attack_boost_turns = -1;
-                    attack_boost_end = -1;
-                }
-            }
+//            if (attack_boost_end == turn_count) {
+//                attack_boost_end = -1;
+//            }
             playerTurn = false;
             loadFightSceneData();
 //            Thread.sleep(100);
@@ -591,7 +581,9 @@ public class FightSceneController {
 
         turn_count_text.setText("Turn Count: " + turn_count);
 
-
+        hpPotionCount = 1;
+        attackPotionCount = 1;
+        superPotionCount = 1;
 
     }
 
