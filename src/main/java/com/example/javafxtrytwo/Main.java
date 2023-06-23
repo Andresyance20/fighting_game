@@ -7,11 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.scene.layout.*;
 import javafx.scene.image.Image;
 
-import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
+
 
 
 public class Main extends Application {
@@ -41,27 +40,33 @@ public class Main extends Application {
         int attackPotionCount = 0;
         int superPotionCount = 0;
 
-        // add background
-        /*Image image  = new Image("background2.jpg");
-        ImageView imageView = new ImageView(image);
 
-        Group root = new Group();
-        root.getChildren().addAll(imageView);
 
-        Scene scene = new Scene(root,500,300);
-        primaryStage.setScene(scene);*/
+
+
+
+
 
 
 
 //    stage << scene << root node << node
-//    scene requires a stage and stage construction requires a root node
+//    scene requires a stage and stage construction requires a root nodeB
 //    our first stage is premade in the background here I think.
         try {
             // Making loaders for controllers.
             // all of them will be made here. Feel free to observe/copy patterns and get these done.
             FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
             Parent mainRoot = mainLoader.load();
-            mainRoot.setStyle("-fx-background-color: blue;");
+            MainController mainControlle = mainLoader.getController();
+            Image backgroundImage = new Image("file:///J:/new_Game/src/main/java/images_files/backG.jpg");
+            Image backgroundF = new Image("file:///J:/new_Game/src/main/java/images_files/OGC.gif");
+
+
+
+            // Set the background image using CSS
+            mainRoot.setStyle("-fx-background-image: url('" + backgroundImage.getUrl() + "');"
+                    + "-fx-background-size: cover;");
+
             Scene mainScene = new Scene(mainRoot, 1080, 600);
 
 
@@ -69,36 +74,42 @@ public class Main extends Application {
 
             FXMLLoader fightSceneSetupLoader = new FXMLLoader(getClass().getResource("FightSceneSetup.fxml"));
             Parent fightSceneSetupRoot = fightSceneSetupLoader.load();
-            fightSceneSetupRoot.setStyle("-fx-background-color: blue");
+            fightSceneSetupRoot.setStyle("-fx-background-image: url('" + backgroundImage.getUrl() + "');"
+                    + "-fx-background-size: cover;");
             Scene fightSceneSetupScene = new Scene(fightSceneSetupRoot, 1080, 600);
 
 
             FXMLLoader fightSceneLoader = new FXMLLoader(getClass().getResource("FightScene.fxml"));
             Parent fightSceneRoot = fightSceneLoader.load();
-            fightSceneRoot.setStyle("-fx-background-color: blue;");
+            fightSceneRoot.setStyle("-fx-background-image: url('" + backgroundF.getUrl() + "');"
+                    + "-fx-background-size: cover;");
             Scene fightSceneScene = new Scene(fightSceneRoot, 1080, 600);
 
             FXMLLoader loseSceneLoader = new FXMLLoader(getClass().getResource("LoseScene.fxml"));
             Parent loseSceneRoot = loseSceneLoader.load();
-            loseSceneRoot.setStyle("-fx-background-color: blue;");
+            loseSceneRoot.setStyle("-fx-background-image: url('" + backgroundImage.getUrl() + "');"
+                    + "-fx-background-size: cover;");
             Scene loseSceneScene = new Scene(loseSceneRoot, 1080, 600);
 
 
             FXMLLoader heroSheetLoader = new FXMLLoader(getClass().getResource("HeroSheet.fxml"));
             Parent heroSheetRoot = heroSheetLoader.load();
-            heroSheetRoot.setStyle("-fx-background-color: blue;");
+            heroSheetRoot.setStyle("-fx-background-image: url('" + backgroundImage.getUrl() + "');"
+                    + "-fx-background-size: cover;");
             Scene heroSheetScene = new Scene(heroSheetRoot, 1080, 600);
 
             FXMLLoader shopLoader = new FXMLLoader(getClass().getResource("ShopScene.fxml"));
             Parent shopRoot = shopLoader.load();
             ShopController shopCont = shopLoader.getController();
             shopCont.displayMoney(String.valueOf(money));
-            shopRoot.setStyle("-fx-background-color: blue;");
+            shopRoot.setStyle("-fx-background-image: url('" + backgroundImage.getUrl() + "');"
+                    + "-fx-background-size: cover;");
             Scene shopScene = new Scene(shopRoot, 1080, 600);
 
             FXMLLoader ResultLoader = new FXMLLoader(getClass().getResource("Result.fxml"));
             Parent ResultRoot = ResultLoader.load();
-            ResultRoot.setStyle("-fx-background-color: blue;");
+            ResultRoot.setStyle("-fx-background-image: url('" + backgroundImage.getUrl() + "');"
+                    + "-fx-background-size: cover;");
             Scene ResultScene = new Scene(ResultRoot, 1080, 600);
 
 
